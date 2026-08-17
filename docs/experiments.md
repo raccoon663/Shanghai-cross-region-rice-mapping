@@ -89,7 +89,7 @@ Two evaluation modes are reported:
 
 Predicted rice area after clipping to the M0 footprint (ha):
 
-| Product | Predicted rice area (ha) | Coverage |
+| Product | Predicted rice area (ha) | Spatial retention |
 |---|---:|---:|
 | M0 raw | 31,079.76 | 100% |
 | M1 FTW | 9,919.00 | 28.1% |
@@ -111,9 +111,9 @@ Weak-reference F1:
 
 The low weak-reference F1 is driven by **precision**, not recall. The official reference is sparse (7,134 ha within the M0 region) while the deployment products are wall-to-wall, so most predicted rice pixels fall outside the reference rice footprint and count as false positives. This is expected for a consistency check against a partial reference and does not by itself imply poor field-level accuracy.
 
-The FTW gates (M1, M1b) raise both conditional-retained recall and agreement, but in Mode A they remove reference rice they abstain on; full-grid recall therefore falls (M0 0.882 → M1 0.610 → M1b 0.575) and coverage shrinks to 28.1% and 15.7%. M2 and M2 QA produce identical binary masks, so QA does not change the weak-reference score; QA only trims the Uncertain/QA-risk tail that the binary evaluation already treats as non-rice.
+The FTW gates (M1, M1b) raise both conditional-retained recall and agreement, but in Mode A they remove reference rice they abstain on; full-grid recall therefore falls (M0 0.882 → M1 0.610 → M1b 0.575) and spatial retention shrinks to 28.1% and 15.7%. M2 and M2 QA produce identical binary masks, so QA does not change the weak-reference score; QA only trims the Uncertain/QA-risk tail that the binary evaluation already treats as non-rice.
 
-A 36-block paired analysis shows M1 improves block-level F1 versus M0 in 22/35 blocks (median ΔF1 ≈ +0.060) and M1b in 21/32 blocks (median ΔF1 ≈ +0.067), while M2 and M2 QA are neutral (median 0.0; 14 improved vs 13 worsened). The negative result is preserved: gating and parcel aggregation do not uniformly beat M0 in full-grid weak-reference F1.
+A 36-block paired analysis shows M1 improves block-level F1 versus M0 in 22/35 blocks (median ΔF1 ≈ +0.060) and M1b in 21/32 blocks (median ΔF1 ≈ +0.067), while M2 and M2 QA are neutral (median 0.0; 14 improved vs 13 worsened). The common grid contains 36 blocks, but paired ΔF1 is computed only where F1 is defined for both M0 and the compared product (n_evaluable: 35 M1, 32 M1b, 31 M2/M2_QA). The negative result is preserved: gating and parcel aggregation do not uniformly beat M0 in full-grid weak-reference F1.
 
 Machine-readable outputs: [`results/tables/wall_to_wall_weak_reference_metrics.csv`](../results/tables/wall_to_wall_weak_reference_metrics.csv), [`results/tables/wall_to_wall_block_summary.csv`](../results/tables/wall_to_wall_block_summary.csv), and the narrative in [`results/summary/wall_to_wall_weak_reference_report.md`](../results/summary/wall_to_wall_weak_reference_report.md).
 

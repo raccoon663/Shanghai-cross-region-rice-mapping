@@ -12,7 +12,7 @@ The repository also includes a wall-to-wall weak-reference consistency evaluatio
 
 Key distinctions from the independent protocol:
 
-- It uses the official product as a reference, which is partial (sparse) and not field truth; low F1 reflects reference sparsity and class imbalance, not a measured recall failure.
+- It uses the official product as a reference, which is partial (sparse) and not field truth; low wall-to-wall F1 reflects the frozen source model's many false-positive rice predictions under low rice prevalence (precision 0.202 for M0), not a measured recall failure — recall is high (0.88).
 - It scores the full raster grid, including abstained and excluded pixels, so it answers "what the whole map says" rather than "how accurate the retained parcels are".
 - The conditional-retained (Mode B) agreement is a subset statistic and must not be read as a same-population improvement over M0.
 
