@@ -1,0 +1,56 @@
+version: 1
+description: >
+  Wall-to-wall weak-reference consistency evaluation of the Shanghai
+  (Chongming prototype) rice-mapping products against the official-product
+  weak reference. All classifier thresholds and frozen artifacts are
+  inherited from the deployment pipeline; nothing is retrained or tuned
+  against the official product.
+
+  This is a DEPLOYMENT experiment (M0 raw -> M1 FTW gate -> M1b FTW + Dynamic
+  World gate -> M2 parcel aggregation -> M2_QA final safeguard). It is separate
+  from the earlier SAMPLED REPRESENTATION experiment (temporal / AlphaEarth on
+  balanced weak-reference pixels). The two families must never be conflated:
+  AlphaEarth 0.836 is NOT M1b.
+
+# Override the root used to resolve the frozen raster/GPKG inputs.
+# Mirrors the RICE_FUSION_DATA_ROOT convention used by scripts/check_data.py.
+# Defaults to the repository root. Set this if your outputs/ and inputs/
+# live outside the repository.
+data_root_env: WALL_TO_WALL_DATA_ROOT
+
+inputs:
+  reference: inputs/official_reference/shanghai_2022_rice_aligned_20m.tif
+  M0:      outputs/final_chongming_parcel_product/M0_raw_probability.tif
+  M1:      outputs/phase4_chongming_staged/products/M1_ftw_gated_probability.tif
+  M1b:     outputs/phase4_chongming_staged/products/M1b_ftw_dynamicworld_gated_probability.tif
+  M2:      outputs/phase4_chongming_staged/products/parcel_class_20m.tif
+  M2_QA:  outputs/final_chongming_parcel_product/final_parcel_class.gpkg
+
+parameters:
+  inherited_threshold: 0.50     # frozen Jiangxi source threshold; never retuned
+  pixel_size_m: 20
+  block_grid: 6                 # 6 x 6 spatial blocks for robustness analysis
+  min_block_pixels: 200         # blocks smaller than this are dropped from block stats
+
+common_region:
+  # The wall-to-wall evaluation grid is the raw predictor's (M0) valid footprint
+  # intersected with the reference extent. Every product is clipped to this common
+  # grid so that the positive prediction mask - and therefore predicted rice area -
+  # is identical across evaluation modes. Parcel products that extend slightly
+  # beyond the M0 footprint are evaluated only over their intersection with it.
+  basis: M0_valid_footprint
+
+# Retained from docs/experiments.md. Reported ONLY as a separate
+# evaluation_family ("sampled_representation"). These are NOT wall-to-wall
+# deployment products and must never be labelled M0 / M1 / M1b.
+sampled_representation_note: >-
+  Source: docs/experiments.md. Balanced 6000 rice + 6000 non-rice
+  weak-reference pixels. Reported F1 only; precision/recall/iou are not
+  retained for this protocol.
+sampled_representation:
+  temporal:
+    f1: 0.813
+    population: "balanced 6000 rice + 6000 non-rice weak-reference pixels"
+  alphaearth:
+    f1: 0.836
+    population: "balanced 6000 rice + 6000 non-rice weak-reference pixels"

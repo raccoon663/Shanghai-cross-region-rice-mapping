@@ -110,3 +110,32 @@ labels are optional for running the code but required before making
 ground-truth accuracy or true-error claims.
 
 No manual labels are fabricated or inferred from the official product.
+
+## Wall-to-wall weak-reference evaluation artifacts
+
+The wall-to-wall weak-reference consistency evaluation commits only lightweight artifacts. The frozen deployment-product rasters and the official reference raster are runtime artifacts (git-ignored, under `outputs/` and `inputs/`):
+
+- `outputs/final_chongming_parcel_product/M0_raw_probability.tif`
+- `outputs/phase4_chongming_staged/products/M1_ftw_gated_probability.tif`
+- `outputs/phase4_chongming_staged/products/M1b_ftw_dynamicworld_gated_probability.tif`
+- `outputs/phase4_chongming_staged/products/parcel_class_20m.tif` (M2; 0 = Non-rice, 1 = Rice, 2 = Uncertain)
+- `outputs/final_chongming_parcel_product/final_parcel_class.gpkg` (M2 QA)
+- `inputs/official_reference/shanghai_2022_rice_aligned_20m.tif` (weak reference)
+
+Committed, tracked outputs (reproducible from the frozen CSV and figures without the rasters; re-runnable with the rasters present):
+
+- `configs/wall_to_wall_weak_reference.yaml`
+- `scripts/parcel_mapping/evaluate_wall_to_wall_weak_reference.py`
+- `scripts/parcel_mapping/analyze_wall_to_wall_blocks.py`
+- `results/tables/wall_to_wall_weak_reference_metrics.csv`
+- `results/tables/wall_to_wall_block_metrics.csv`
+- `results/tables/wall_to_wall_block_summary.csv`
+- `results/summary/wall_to_wall_alignment_audit.json`
+- `results/summary/wall_to_wall_experiment_summary.json`
+- `results/summary/wall_to_wall_weak_reference_report.md`
+- `assets/figures/wall_to_wall_performance_comparison.png`
+- `assets/figures/wall_to_wall_area_coverage_tradeoff.png`
+- `assets/figures/wall_to_wall_block_delta.png`
+- `tests/test_wall_to_wall_metrics.py`
+
+Run `python scripts/parcel_mapping/evaluate_wall_to_wall_weak_reference.py` from the repository root with the frozen rasters present to regenerate the tables and figures.

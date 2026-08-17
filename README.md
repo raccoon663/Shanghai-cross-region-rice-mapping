@@ -94,9 +94,31 @@ The project supports conclusions about:
 - AlphaEarth vs. Sentinel representation behavior;
 - OOD risk ranking and selective prediction;
 - field geometry and parcel aggregation;
-- label-independent QA for the Chongming deployment prototype.
+- label-independent QA for the Chongming deployment prototype;
+- wall-to-wall weak-reference consistency of the deployment products (consistency with an official product, not independent accuracy).
 
 It does **not** yet support independent Shanghai parcel precision, recall, F1, accuracy, or area accuracy. A 400-parcel validation sample has been prepared, but its reference-label fields are intentionally blank until independent labels are collected. See [validation.md](docs/validation.md).
+
+## Wall-to-wall deployment evaluation
+
+Beyond the sampled weak-reference scores above, I evaluated the full deployment products against the official Shanghai rice product as a **weak reference** — a consistency and coverage check, not independent accuracy. All deployment rasters (M0 raw probability, M1 FTW-gated, M1b FTW + Dynamic World-gated, M2 parcel class, M2 QA final parcel) and the reference raster are already co-registered (EPSG:32651, 20 m, 1071 × 1437), so no resampling was needed. Every product is clipped to the common M0 valid footprint (1,500,751 pixels), which makes the predicted rice area invariant between the two evaluation modes below.
+
+Two evaluation modes are reported:
+
+- **Mode A — full-grid non-rice interpretation:** pixels a product excludes or abstains on are scored as predicted non-rice. This is the whole-map reading.
+- **Mode B — conditional retained-coverage agreement:** agreement is measured only on the pixels each product actually retains. This is a conditional subset statistic and must not be read as a same-population improvement over M0.
+
+| Product | Mode A F1 | Mode B F1 | Coverage |
+|---|---:|---:|---:|
+| M0 raw transfer | 0.329 | 0.329 | 100% |
+| M1 FTW-gated | 0.510 | 0.602 | 28.1% |
+| M1b FTW + Dynamic World | 0.528 | 0.648 | 15.7% |
+| M2 parcel | 0.359 | 0.621 | 8.7% |
+| M2 QA | 0.359 | 0.621 | 8.7% |
+
+The weak-reference F1 is low mainly because precision is the binding term (e.g. M0 precision 0.202): the official reference is sparse (7,134 ha within the M0 region) while the deployment products are wall-to-wall, so most predicted rice falls outside the reference rice footprint. This reflects reference sparsity and class imbalance, not a recall failure. The FTW gates raise conditional-retained recall and agreement, but in Mode A they remove reference rice they abstain on, so full-grid recall falls (M0 0.882 → M1 0.610 → M1b 0.575) while coverage shrinks. M2 and M2 QA produce identical binary masks, so QA does not change the weak-reference score.
+
+A 36-block paired analysis shows M1 and M1b improve block-level F1 versus M0 in roughly 63–66% of blocks (median ΔF1 ≈ +0.06), while M2 and M2 QA are neutral (median 0.0; about as many blocks improve as worsen). Full metrics, per-block tables, figures, and the methodology are in [`results/summary/wall_to_wall_weak_reference_report.md`](results/summary/wall_to_wall_weak_reference_report.md) and [`docs/experiments.md`](docs/experiments.md).
 
 ## Reproducing the project
 
@@ -128,6 +150,7 @@ tests/                   split, manifest, portability, and area tests
 ## Limitations
 
 - Shanghai evaluation currently relies on an official-product weak reference rather than independent field truth.
+- The wall-to-wall weak-reference F1 measures consistency with an official product, not field accuracy; its low value reflects reference sparsity and class imbalance, not a recall failure.
 - The deployment prototype covers central/eastern Chongming rather than all of Shanghai.
 - FTW boundaries are useful agricultural field approximations, not cadastral truth.
 - Ten-metre field delineation and 20 m rice probabilities cannot resolve every narrow bund, ditch, or tiny parcel.

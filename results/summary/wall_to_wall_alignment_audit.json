@@ -1,0 +1,164 @@
+{
+  "crs": "EPSG:32651",
+  "pixel_size_m": 20.0,
+  "shape_rows_cols": [
+    1071,
+    1437
+  ],
+  "transform": [
+    20.0,
+    0.0,
+    362320.0,
+    0.0,
+    -20.0,
+    3510320.0,
+    0.0,
+    0.0,
+    1.0
+  ],
+  "reference_class_coding": "0=non-rice, 1=rice; no nodata (fully coded)",
+  "reference_unique_values": [
+    0,
+    1
+  ],
+  "products": {
+    "M0": {
+      "crs": "EPSG:32651",
+      "transform": [
+        20.0,
+        0.0,
+        362320.0,
+        0.0,
+        -20.0,
+        3510320.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "shape": [
+        1071,
+        1437
+      ],
+      "dtype": "float32",
+      "nodata": -9999.0,
+      "bounds": [
+        362320.0,
+        3488900.0,
+        391060.0,
+        3510320.0
+      ],
+      "width": 1437,
+      "height": 1071
+    },
+    "M1": {
+      "crs": "EPSG:32651",
+      "transform": [
+        20.0,
+        0.0,
+        362320.0,
+        0.0,
+        -20.0,
+        3510320.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "shape": [
+        1071,
+        1437
+      ],
+      "dtype": "float32",
+      "nodata": -9999.0,
+      "bounds": [
+        362320.0,
+        3488900.0,
+        391060.0,
+        3510320.0
+      ],
+      "width": 1437,
+      "height": 1071
+    },
+    "M1b": {
+      "crs": "EPSG:32651",
+      "transform": [
+        20.0,
+        0.0,
+        362320.0,
+        0.0,
+        -20.0,
+        3510320.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "shape": [
+        1071,
+        1437
+      ],
+      "dtype": "float32",
+      "nodata": -9999.0,
+      "bounds": [
+        362320.0,
+        3488900.0,
+        391060.0,
+        3510320.0
+      ],
+      "width": 1437,
+      "height": 1071
+    },
+    "M2": {
+      "crs": "EPSG:32651",
+      "transform": [
+        20.0,
+        0.0,
+        362320.0,
+        0.0,
+        -20.0,
+        3510320.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "shape": [
+        1071,
+        1437
+      ],
+      "dtype": "uint8",
+      "nodata": 255.0,
+      "bounds": [
+        362320.0,
+        3488900.0,
+        391060.0,
+        3510320.0
+      ],
+      "width": 1437,
+      "height": 1071
+    },
+    "M2_QA": {
+      "crs": "EPSG:32651",
+      "shape": [
+        1071,
+        1437
+      ],
+      "transform": [
+        20.0,
+        0.0,
+        362320.0,
+        0.0,
+        -20.0,
+        3510320.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "nodata": 255,
+      "n_rice_parcels": 4324,
+      "n_nonrice_parcels": 545,
+      "n_total_parcels": 7330
+    }
+  },
+  "alignment_result": "PASS - all products perfectly co-registered (identical CRS/transform/shape)",
+  "threshold_used": 0.5,
+  "pixel_area_ha": 0.04,
+  "common_region_basis": "M0_valid_footprint"
+}

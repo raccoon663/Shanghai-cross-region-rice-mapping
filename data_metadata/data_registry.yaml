@@ -28,4 +28,53 @@ assets:
     path: outputs/alphaearth/alphaearth_samples_2022.csv
     status: present_and_reconstructable
     recovery: scripts/extract_alphaearth_gee.py
+  wall_to_wall_M0_raw_probability:
+    path: outputs/final_chongming_parcel_product/M0_raw_probability.tif
+    status: present_locally_ignored_by_git
+    note: frozen deployment product used by the wall-to-wall weak-reference evaluation
+  wall_to_wall_M1_ftw_gated_probability:
+    path: outputs/phase4_chongming_staged/products/M1_ftw_gated_probability.tif
+    status: present_locally_ignored_by_git
+  wall_to_wall_M1b_ftw_dynamicworld_gated_probability:
+    path: outputs/phase4_chongming_staged/products/M1b_ftw_dynamicworld_gated_probability.tif
+    status: present_locally_ignored_by_git
+  wall_to_wall_M2_parcel_class_20m:
+    path: outputs/phase4_chongming_staged/products/parcel_class_20m.tif
+    status: present_locally_ignored_by_git
+    note: 0 = Non-rice, 1 = Rice, 2 = Uncertain
+  wall_to_wall_M2_QA_final_parcel_class:
+    path: outputs/final_chongming_parcel_product/final_parcel_class.gpkg
+    status: present_locally_ignored_by_git
+    note: final parcel product used as M2_QA
+  wall_to_wall_reference_raster:
+    path: inputs/official_reference/shanghai_2022_rice_aligned_20m.tif
+    status: present_locally_ignored_by_git
+    note: official-product weak reference; not independent ground truth
+  wall_to_wall_metrics_csv:
+    path: results/tables/wall_to_wall_weak_reference_metrics.csv
+    status: committed_in_git
+  wall_to_wall_block_metrics_csv:
+    path: results/tables/wall_to_wall_block_metrics.csv
+    status: committed_in_git
+  wall_to_wall_block_summary_csv:
+    path: results/tables/wall_to_wall_block_summary.csv
+    status: committed_in_git
+  wall_to_wall_alignment_audit:
+    path: results/summary/wall_to_wall_alignment_audit.json
+    status: committed_in_git
+  wall_to_wall_experiment_summary:
+    path: results/summary/wall_to_wall_experiment_summary.json
+    status: committed_in_git
+  wall_to_wall_report:
+    path: results/summary/wall_to_wall_weak_reference_report.md
+    status: committed_in_git
+  wall_to_wall_figure_performance:
+    path: assets/figures/wall_to_wall_performance_comparison.png
+    status: committed_in_git
+  wall_to_wall_figure_coverage:
+    path: assets/figures/wall_to_wall_area_coverage_tradeoff.png
+    status: committed_in_git
+  wall_to_wall_figure_block_delta:
+    path: assets/figures/wall_to_wall_block_delta.png
+    status: committed_in_git
 

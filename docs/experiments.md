@@ -76,6 +76,47 @@ For parcel aggregation, the raw M2 product has mean/median correlation 0.991681,
 
 The final parcel output contains 4,324 Rice, 545 Non-rice, and 2,461 Uncertain/QA-risk parcels. These are model predictions awaiting independent validation.
 
+## Wall-to-wall weak-reference consistency evaluation
+
+The sampled weak-reference scores above use balanced 6,000 + 6,000 product samples. I also ran a wall-to-wall consistency evaluation that scores the full deployment rasters against the official Shanghai product as a weak reference. This is a deployment-consistency check, not an independent accuracy estimate.
+
+All deployment rasters (M0 raw probability, M1 FTW-gated, M1b FTW + Dynamic World-gated, M2 parcel class, M2 QA final parcel) and the reference raster are co-registered at EPSG:32651, 20 m, 1071 × 1437. Each product is clipped to the common M0 valid footprint (1,500,751 pixels), which makes the predicted rice area invariant between the two evaluation modes and removes a previously reported M2 area discrepancy.
+
+Two evaluation modes are reported:
+
+- **Mode A — full-grid non-rice interpretation:** pixels a product excludes or abstains on are scored as predicted non-rice. This is the whole-map reading.
+- **Mode B — conditional retained-coverage agreement:** agreement is computed only on the pixels each product retains. It is a conditional statistic on a subset and must not be read as a same-population improvement over M0.
+
+Predicted rice area after clipping to the M0 footprint (ha):
+
+| Product | Predicted rice area (ha) | Coverage |
+|---|---:|---:|
+| M0 raw | 31,079.76 | 100% |
+| M1 FTW | 9,919.00 | 28.1% |
+| M1b FTW + DW | 8,399.88 | 15.7% |
+| M2 parcel | 4,646.80 | 8.7% |
+| M2 QA | 4,646.80 | 8.7% |
+
+These M0-footprint-clipped raster areas differ from the parcel-QA-retained area figures in the Pixel-to-parcel ablation section above, because they are measured on the binary raster within the M0 coverage and before the parcel-QA trim.
+
+Weak-reference F1:
+
+| Product | Mode A F1 (P / R) | Mode B F1 (P / R) |
+|---|---|---|
+| M0 raw | 0.329 (0.202 / 0.882) | 0.329 (0.202 / 0.882) |
+| M1 FTW | 0.510 (0.438 / 0.610) | 0.602 (0.438 / 0.960) |
+| M1b FTW + DW | 0.528 (0.488 / 0.575) | 0.648 (0.488 / 0.964) |
+| M2 parcel | 0.359 (0.455 / 0.296) | 0.621 (0.455 / 0.978) |
+| M2 QA | 0.359 (0.455 / 0.296) | 0.621 (0.455 / 0.978) |
+
+The low weak-reference F1 is driven by **precision**, not recall. The official reference is sparse (7,134 ha within the M0 region) while the deployment products are wall-to-wall, so most predicted rice pixels fall outside the reference rice footprint and count as false positives. This is expected for a consistency check against a partial reference and does not by itself imply poor field-level accuracy.
+
+The FTW gates (M1, M1b) raise both conditional-retained recall and agreement, but in Mode A they remove reference rice they abstain on; full-grid recall therefore falls (M0 0.882 → M1 0.610 → M1b 0.575) and coverage shrinks to 28.1% and 15.7%. M2 and M2 QA produce identical binary masks, so QA does not change the weak-reference score; QA only trims the Uncertain/QA-risk tail that the binary evaluation already treats as non-rice.
+
+A 36-block paired analysis shows M1 improves block-level F1 versus M0 in 22/35 blocks (median ΔF1 ≈ +0.060) and M1b in 21/32 blocks (median ΔF1 ≈ +0.067), while M2 and M2 QA are neutral (median 0.0; 14 improved vs 13 worsened). The negative result is preserved: gating and parcel aggregation do not uniformly beat M0 in full-grid weak-reference F1.
+
+Machine-readable outputs: [`results/tables/wall_to_wall_weak_reference_metrics.csv`](../results/tables/wall_to_wall_weak_reference_metrics.csv), [`results/tables/wall_to_wall_block_summary.csv`](../results/tables/wall_to_wall_block_summary.csv), and the narrative in [`results/summary/wall_to_wall_weak_reference_report.md`](../results/summary/wall_to_wall_weak_reference_report.md).
+
 ## What did not work
 
 - DAv2 ran successfully but produced objects that were too coarse for this parcel workflow.

@@ -1,0 +1,101 @@
+{
+  "region_pixels": 1500751,
+  "reference_rice_pixels_region": 178357,
+  "reference_rice_area_ha_region": 7134.28,
+  "common_region_basis": "M0_valid_footprint",
+  "predicted_rice_area_invariant_across_modes": true,
+  "metrics_modeB_conditional_retained": {
+    "M0": {
+      "f1": 0.3293491083381919,
+      "precision": 0.2024751799885198,
+      "recall": 0.8820623805065122,
+      "coverage_fraction": 1.0,
+      "predicted_rice_area_ha": 31079.76,
+      "reference_rice_area_ha": 7134.28
+    },
+    "M1": {
+      "f1": 0.6019896502745252,
+      "precision": 0.4383909668313338,
+      "recall": 0.9603865929289538,
+      "coverage_fraction": 0.2809386767025309,
+      "predicted_rice_area_ha": 9919.0,
+      "reference_rice_area_ha": 4527.76
+    },
+    "M1b": {
+      "f1": 0.6482997540822971,
+      "precision": 0.4883403096234708,
+      "recall": 0.9640966823040548,
+      "coverage_fraction": 0.1571066752579208,
+      "predicted_rice_area_ha": 8399.880000000001,
+      "reference_rice_area_ha": 4254.76
+    },
+    "M2": {
+      "f1": 0.6207723082888313,
+      "precision": 0.4547903933889989,
+      "recall": 0.9775380687179676,
+      "coverage_fraction": 0.0870144347729903,
+      "predicted_rice_area_ha": 4646.8,
+      "reference_rice_area_ha": 2161.88
+    },
+    "M2_QA": {
+      "f1": 0.6207723082888313,
+      "precision": 0.4547903933889989,
+      "recall": 0.9775380687179676,
+      "coverage_fraction": 0.0870144347729903,
+      "predicted_rice_area_ha": 4646.8,
+      "reference_rice_area_ha": 2161.88
+    }
+  },
+  "metrics_modeA_full_grid": {
+    "M0": {
+      "f1": 0.3293491083381919,
+      "precision": 0.2024751799885198,
+      "recall": 0.8820623805065122,
+      "coverage_fraction": 1.0,
+      "predicted_rice_area_ha": 31079.76,
+      "reference_rice_area_ha": 7134.28
+    },
+    "M1": {
+      "f1": 0.5099781391028588,
+      "precision": 0.4383909668313338,
+      "recall": 0.609507897082817,
+      "coverage_fraction": 0.2809386767025309,
+      "predicted_rice_area_ha": 9919.0,
+      "reference_rice_area_ha": 7134.28
+    },
+    "M1b": {
+      "f1": 0.5281264001400784,
+      "precision": 0.4883403096234708,
+      "recall": 0.5749704244857224,
+      "coverage_fraction": 0.1571066752579208,
+      "predicted_rice_area_ha": 8399.880000000001,
+      "reference_rice_area_ha": 7134.28
+    },
+    "M2": {
+      "f1": 0.358765070774496,
+      "precision": 0.4547903933889989,
+      "recall": 0.2962205015782952,
+      "coverage_fraction": 0.0870144347729903,
+      "predicted_rice_area_ha": 4646.8,
+      "reference_rice_area_ha": 7134.28
+    },
+    "M2_QA": {
+      "f1": 0.358765070774496,
+      "precision": 0.4547903933889989,
+      "recall": 0.2962205015782952,
+      "coverage_fraction": 0.0870144347729903,
+      "predicted_rice_area_ha": 4646.8,
+      "reference_rice_area_ha": 7134.28
+    }
+  },
+  "sampled_representation": {
+    "temporal": {
+      "f1": 0.813,
+      "population": "balanced 6000 rice + 6000 non-rice weak-reference pixels"
+    },
+    "alphaearth": {
+      "f1": 0.836,
+      "population": "balanced 6000 rice + 6000 non-rice weak-reference pixels"
+    }
+  }
+}

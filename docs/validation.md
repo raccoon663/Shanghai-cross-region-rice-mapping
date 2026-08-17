@@ -6,6 +6,18 @@ The Chongming prototype is ready for independent parcel-level validation. No ind
 
 The validation sample was defined on 2026-08-14, before any independent labels were added. The sampling manifest is [`results/summary/independent_validation_sampling_manifest.json`](../results/summary/independent_validation_sampling_manifest.json), and the blank 400-parcel table is [`results/selected_outputs/independent_validation_sample_400.csv`](../results/selected_outputs/independent_validation_sample_400.csv).
 
+## Wall-to-wall weak-reference consistency (deployment check, not independent accuracy)
+
+The repository also includes a wall-to-wall weak-reference consistency evaluation of the deployment products (M0, M1, M1b, M2, M2 QA) against the official Shanghai product as a weak reference. This is a deployment-consistency and coverage check, **not** a substitute for the independent validation described below.
+
+Key distinctions from the independent protocol:
+
+- It uses the official product as a reference, which is partial (sparse) and not field truth; low F1 reflects reference sparsity and class imbalance, not a measured recall failure.
+- It scores the full raster grid, including abstained and excluded pixels, so it answers "what the whole map says" rather than "how accurate the retained parcels are".
+- The conditional-retained (Mode B) agreement is a subset statistic and must not be read as a same-population improvement over M0.
+
+The full results, the two evaluation modes, and a 36-block paired analysis are in [`results/summary/wall_to_wall_weak_reference_report.md`](../results/summary/wall_to_wall_weak_reference_report.md) and [`docs/experiments.md`](experiments.md). Independent Shanghai parcel accuracy remains pending the adjudicated 400-parcel reference set.
+
 ## Sample design
 
 The sample contains 400 unique parcels in EPSG:32651, covers all 30 deployment tiles, and uses random seed `20260814`. Seven mutually exclusive strata intentionally include more difficult mapping contexts:
