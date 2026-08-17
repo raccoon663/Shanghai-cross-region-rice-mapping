@@ -1,0 +1,6 @@
+method,spatial_unit,deployment_structure,predicted_rice_area_ha,parcel_count,mean_median_correlation,three_summary_agreement,fragmentation_reduction,qa_risk_fraction,interpretation_limit
+M0 raw transfer,20 m pixel,none,31079.76,,,,,,Raw positive area; not validated accuracy
+M1 FTW gating,20 m pixel inside raw FTW,FTW,9919.0,,,,,,Phase-4 gate; removed pixels are not classification errors
+M1b FTW + independent land-cover gate,20 m pixel,FTW + Dynamic World,8399.88,,,,,,Phase-4 conservative intersection
+M2 parcel aggregation,raw FTW parcel,FTW,,8227.0,0.991681,0.985049,0.926204,0.408168,Phase-4 structural metrics
+M2 + deployment safeguards,deployment-safe parcel,FTW + label-independent safeguards,,7330.0,0.991621,0.986494,0.907436,0.33574351978171896,Final prototype; 6 overlap pairs resolved

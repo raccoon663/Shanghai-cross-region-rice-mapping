@@ -1,0 +1,12 @@
+category,metric,value,unit,interpretation_limit
+source,temporal_fusion_f1,0.947,F1,Jiangxi frozen source test
+source,alphaearth_f1,0.962,F1,Jiangxi frozen source test
+target_weak_reference,temporal_zero_shot_f1,0.813,F1,official-product agreement not independent accuracy
+target_weak_reference,alphaearth_zero_shot_f1,0.836,F1,official-product agreement not independent accuracy
+ood,distance_error_auroc,0.800,AUROC,maximum retained weak-reference disagreement ranking
+field_comparison,dav2_cleaned_objects,116,count,same label-free AOI
+field_comparison,ftw_cleaned_objects,231,count,same label-free AOI
+deployment,raw_parcels,8227,count,Phase-4 reconciled FTW objects
+deployment,safe_parcels,7330,count,Phase-5 valid-for-mapping objects
+deployment,fragmentation_reduction,0.907436,fraction,spatial coherence not classification accuracy
+deployment,mean_median_correlation,0.991621,correlation,parcel aggregation stability

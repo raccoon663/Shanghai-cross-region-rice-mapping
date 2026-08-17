@@ -1,0 +1,24 @@
+project:
+  seed: 20260803
+  output_dir: outputs/experiments/rf_baseline_m2_v1
+
+data:
+  # Relative paths resolve from the repository. Alternatively set
+  # RICE_FUSION_DATA_ROOT and keep the same relative layout outside Git.
+  source_features: data/raw/jiangxi_official_2022_binary_features_gee_s1_s2.csv
+  source_ancillary: data/raw/jiangxi_official_2022_ancillary_features.csv
+  target_features: data/raw/shanghai_light_2022_fusion_92_20m.tif
+  target_reference: inputs/official_reference/shanghai_2022_rice_aligned_20m.tif
+  target_ancillary: null
+
+split:
+  block_degrees: 0.05
+  test_fraction: 0.20
+  val_fraction: 0.20
+
+random_forest:
+  n_estimators: 500
+  min_samples_leaf: 2
+  max_features: sqrt
+  class_weight: balanced_subsample
+  n_jobs: -1

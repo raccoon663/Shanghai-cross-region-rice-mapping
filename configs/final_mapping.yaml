@@ -1,0 +1,11 @@
+data_config: configs/data.yaml
+weak_label_config: configs/weak_label_budget.yaml
+output_dir: outputs/experiments/final_mapping_m7_v1
+seed: 42
+target_budget: 500
+n_estimators: 500
+calibration_fraction: 0.50
+threshold: 0.50
+area_samples_per_map_class: 1000
+bootstrap_replicates: 1000
+

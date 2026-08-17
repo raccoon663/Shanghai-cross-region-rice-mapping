@@ -1,0 +1,10 @@
+data_config: configs/data.yaml
+weak_label_config: configs/weak_label_budget.yaml
+output_dir: outputs/experiments/pseudolabel_rf_m5_v1
+seeds: [42, 43, 44]
+rounds: 3
+confidence_threshold: 0.90
+top_k_per_class: 1000
+pseudo_weight: 0.5
+n_estimators: 300
+

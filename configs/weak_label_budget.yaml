@@ -1,0 +1,15 @@
+data_config: configs/data.yaml
+output_dir: outputs/experiments/weak_label_budget_m4_v1
+target_sample_per_class: 6000
+target_val_fraction: 0.20
+target_block_pixels: 100
+budgets: [0, 20, 50, 100, 200, 500]
+seeds: [42, 43, 44]
+methods: [source_only, target_only, joint]
+feature_set: s1_s2_fusion
+random_forest:
+  n_estimators: 300
+  min_samples_leaf: 2
+  max_features: sqrt
+  n_jobs: -1
+

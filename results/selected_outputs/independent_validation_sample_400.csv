@@ -1,0 +1,401 @@
+validation_id,field_id,sample_source,sampling_stratum,target_n,source_tile_id,mapping_status,parcel_class_phase5,area_ha,repaired_area_m2,parcel_exclusion_reason,parcel_geometry_risk,parcel_landcover_risk,reference_label,interpreter_1,interpreter_2,adjudicated_label,reference_confidence,evidence_source,imagery_date,field_visit_date,validation_notes,centroid_x,centroid_y
+CMV-0001,CMFTW_000049,Product B,large_or_extreme,20,r00c00,retained_QA_risk,Uncertain / QA-risk,36.19,361900.0,,extreme_area,,,,,,,,,,,366755.36474164133,3509613.5935341255
+CMV-0002,CMFTW_000111,Product C,large_or_extreme,20,r00c00,excluded,,125.79,1257900.0,extreme_area,extreme_area;cross_tile_overlap,,,,,,,,,,,366772.0776691311,3506933.4235630813
+CMV-0003,CMFTW_000158,Product B,large_or_extreme,20,r00c01,retained_QA_risk,Uncertain / QA-risk,32.19,321900.0,,extreme_area,,,,,,,,,,,367882.7819198509,3509060.1972662318
+CMV-0004,CMFTW_000186,Product C,large_or_extreme,20,r00c02,excluded,,312.91,3129100.0,water_dominant;tidal_flat_like;extreme_area,extreme_area,water_dominant;tidal_flat_like,,,,,,,,,,372699.1510338436,3508888.9883672623
+CMV-0005,CMFTW_000197,Product C,large_or_extreme,20,r00c03,excluded,,1894.97,18949700.0,water_dominant;tidal_flat_like;extreme_area,extreme_area;cross_tile_overlap,water_dominant;tidal_flat_like,,,,,,,,,,379301.3270658638,3507290.485469427
+CMV-0006,CMFTW_000358,Product C,large_or_extreme,20,r00c04,excluded,,753.84,7538400.0,water_dominant;tidal_flat_like;extreme_area,extreme_area;cross_tile_overlap,water_dominant;tidal_flat_like,,,,,,,,,,383626.00512045,3506153.286639075
+CMV-0007,CMFTW_000454,Product B,large_or_extreme,20,r00c05,retained_QA_risk,Uncertain / QA-risk,21.27,212700.0,,extreme_area,,,,,,,,,,,388149.72496473906,3506939.7907851436
+CMV-0008,CMFTW_000546,Product B,large_or_extreme,20,r01c00,retained_QA_risk,Uncertain / QA-risk,20.48,204800.0,,extreme_area,,,,,,,,,,,364025.2783203125,3503481.1865234375
+CMV-0009,CMFTW_000570,Product C,large_or_extreme,20,r01c00,excluded,,62.21,622100.0,extreme_area,extreme_area,,,,,,,,,,,363841.50217006914,3501544.0708889244
+CMV-0010,CMFTW_000562,Product C,large_or_extreme,20,r01c00,excluded,,70.1,701000.0,extreme_area,extreme_area,,,,,,,,,,,363932.6833095578,3502220.659058488
+CMV-0011,CMFTW_000550,Product C,large_or_extreme,20,r01c00,excluded,,68.67,686700.0,extreme_area,extreme_area,,,,,,,,,,,366013.380661133,3503206.025192952
+CMV-0012,CMFTW_000730,Product C,large_or_extreme,20,r01c01,excluded,,132.63,1326300.0,extreme_area,extreme_area,,,,,,,,,,,369065.64691246324,3503274.871823871
+CMV-0013,CMFTW_000761,Product B,large_or_extreme,20,r01c01,retained_QA_risk,Uncertain / QA-risk,36.08,360800.0,,extreme_area,,,,,,,,,,,370706.3941241685,3501605.327050998
+CMV-0014,CMFTW_000835,Product C,large_or_extreme,20,r01c01,excluded,,112.51,1125100.0,extreme_area,extreme_area,,,,,,,,,,,371254.8844547151,3500578.7943293927
+CMV-0015,CMFTW_000840,Product B,large_or_extreme,20,r01c02,retained_QA_risk,Uncertain / QA-risk,22.91,229100.0,,extreme_area,tree_dominant,,,,,,,,,,373366.50152771716,3504310.338280227
+CMV-0016,CMFTW_000959,Product C,large_or_extreme,20,r01c05,excluded,,1520.68,15206800.0,water_dominant;tidal_flat_like;extreme_area,extreme_area;deployment_edge,water_dominant;tidal_flat_like,,,,,,,,,,388889.97507693927,3502174.2146276664
+CMV-0017,CMFTW_002286,Product C,large_or_extreme,20,r02c02,excluded,,58.27,582700.0,extreme_area,extreme_area,,,,,,,,,,,375510.5792002746,3499334.279217436
+CMV-0018,CMFTW_003006,Product B,large_or_extreme,20,r02c03,retained_QA_risk,Uncertain / QA-risk,23.81,238100.0,,extreme_area,,,,,,,,,,,380596.34817303653,3497174.4750105
+CMV-0019,CMFTW_003288,Product C,large_or_extreme,20,r02c04,excluded,,117.87,1178700.0,extreme_area,extreme_area;high_tile_disagreement,tree_dominant,,,,,,,,,,383611.7065411046,3499231.930516671
+CMV-0020,CMFTW_003475,Product B,large_or_extreme,20,r02c05,retained_QA_risk,Uncertain / QA-risk,37.09,370900.0,,extreme_area,tree_dominant,,,,,,,,,,390529.1709355622,3499215.9463467244
+CMV-0021,CMFTW_000031,Product B,cross_tile_or_edge,20,r00c00,retained_QA_risk,Uncertain / QA-risk,1.98,19800.0,,deployment_edge,water_dominant,,,,,,,,,,362453.9898989899,3509760.404040404
+CMV-0022,CMFTW_000679,Product B,cross_tile_or_edge,20,r01c00,retained_clear,Uncertain / QA-risk,3.34,33400.0,,,,,,,,,,,,,364625.32934131735,3500382.9640718563
+CMV-0023,CMFTW_000466,Product B,cross_tile_or_edge,20,r01c00,retained_clear,Uncertain / QA-risk,1.38,13800.0,,,,,,,,,,,,,366627.8985507246,3505155.9420289854
+CMV-0024,CMFTW_000965,Product B,cross_tile_or_edge,20,r02c00,retained_clear,Uncertain / QA-risk,0.79,7900.0,,,,,,,,,,,,,365086.5189873418,3500299.3037974685
+CMV-0025,CMFTW_001332,Product B,cross_tile_or_edge,20,r02c01,retained_clear,Uncertain / QA-risk,0.78,7800.0,,,,,,,,,,,,,369213.3333333333,3500244.6153846155
+CMV-0026,CMFTW_002649,Product B,cross_tile_or_edge,20,r02c02,retained_clear,Uncertain / QA-risk,1.11,11100.0,,,,,,,,,,,,,377283.91891891893,3496318.873873874
+CMV-0027,CMFTW_002842,Product B,cross_tile_or_edge,20,r02c03,retained_clear,Uncertain / QA-risk,0.41,4100.0,,,,,,,,,,,,,382329.39024390245,3498970.3658536584
+CMV-0028,CMFTW_003466,Product B,cross_tile_or_edge,20,r02c04,retained_clear,Uncertain / QA-risk,1.59,15900.0,,,,,,,,,,,,,386490.3459119497,3495358.3333333335
+CMV-0029,CMFTW_003497,Product B,cross_tile_or_edge,20,r02c05,retained_QA_risk,Uncertain / QA-risk,0.27,2700.0,,deployment_edge,,,,,,,,,,,391047.962962963,3495352.777777778
+CMV-0030,CMFTW_004091,Product B,cross_tile_or_edge,20,r03c00,retained_clear,Uncertain / QA-risk,0.27,2700.0,,,,,,,,,,,,,364770.55555555556,3490327.222222222
+CMV-0031,CMFTW_004689,Product B,cross_tile_or_edge,20,r03c01,retained_clear,Uncertain / QA-risk,0.33,3300.0,,,,,,,,,,,,,371133.48484848486,3490354.696969697
+CMV-0032,CMFTW_005082,Product B,cross_tile_or_edge,20,r03c02,retained_clear,Uncertain / QA-risk,0.32,3200.0,,,,,,,,,,,,,372351.875,3492633.125
+CMV-0033,CMFTW_006145,Product B,cross_tile_or_edge,20,r03c03,retained_clear,Uncertain / QA-risk,0.75,7500.0,,,,,,,,,,,,,381306.73333333334,3490349.533333333
+CMV-0034,CMFTW_006682,Product B,cross_tile_or_edge,20,r03c04,retained_clear,Uncertain / QA-risk,0.33,3300.0,,,,,,,,,,,,,387299.54545454547,3492601.0606060605
+CMV-0035,CMFTW_006162,Product B,cross_tile_or_edge,20,r03c04,retained_clear,Uncertain / QA-risk,2.02,20200.0,,,,,,,,,,,,,386661.78217821784,3495278.5643564356
+CMV-0036,CMFTW_007497,Product B,cross_tile_or_edge,20,r03c05,retained_clear,Uncertain / QA-risk,1.15,11500.0,,,,,,,,,,,,,390760.3043478261,3490338.565217391
+CMV-0037,CMFTW_007648,Product B,cross_tile_or_edge,20,r04c02,retained_QA_risk,Uncertain / QA-risk,0.25,2500.0,,high_tile_disagreement,,,,,,,,,,,374517.4,3490318.6
+CMV-0038,CMFTW_007824,Product B,cross_tile_or_edge,20,r04c03,retained_clear,Uncertain / QA-risk,1.55,15500.0,,,,,,,,,,,,,381335.6451612903,3490211.3225806453
+CMV-0039,CMFTW_008130,Product B,cross_tile_or_edge,20,r04c04,retained_QA_risk,Uncertain / QA-risk,0.38,3800.0,,deployment_edge,,,,,,,,,,,383158.4210526316,3488918.1578947366
+CMV-0040,CMFTW_008136,Product B,cross_tile_or_edge,20,r04c05,retained_clear,Uncertain / QA-risk,0.42,4200.0,,,,,,,,,,,,,390368.8095238095,3490272.8571428573
+CMV-0041,CMFTW_000019,Product C,excluded_water_coastal,30,r00c00,excluded,,2.13,21300.0,water_dominant,,water_dominant,,,,,,,,,,362876.3615023474,3510093.3568075118
+CMV-0042,CMFTW_000029,Product C,excluded_water_coastal,30,r00c00,excluded,,1.33,13300.0,water_dominant,deployment_edge,water_dominant,,,,,,,,,,362424.1729323308,3509812.7443609023
+CMV-0043,CMFTW_000011,Product C,excluded_water_coastal,30,r00c00,excluded,,0.26,2600.0,water_dominant,deployment_edge,water_dominant,,,,,,,,,,362337.3076923077,3510077.6923076925
+CMV-0044,CMFTW_000022,Product C,excluded_water_coastal,30,r00c00,excluded,,2.21,22100.0,water_dominant,,water_dominant,,,,,,,,,,362980.74660633487,3510031.606334842
+CMV-0045,CMFTW_000003,Product C,excluded_water_coastal,30,r00c00,excluded,,0.98,9800.0,water_dominant,deployment_edge,water_dominant,,,,,,,,,,362453.2653061224,3510238.06122449
+CMV-0046,CMFTW_000153,Product C,excluded_water_coastal,30,r00c01,excluded,,0.28,2800.0,water_dominant,,water_dominant,,,,,,,,,,369732.85714285716,3509346.0714285714
+CMV-0047,CMFTW_000151,Product C,excluded_water_coastal,30,r00c01,excluded,,0.41,4100.0,water_dominant,,water_dominant,,,,,,,,,,371087.9268292683,3509447.1951219514
+CMV-0048,CMFTW_000184,Product C,excluded_water_coastal,30,r00c02,excluded,,5.75,36200.0,water_dominant,cross_tile_overlap,water_dominant,,,,,,,,,,376899.6961325967,3509312.7900552484
+CMV-0049,CMFTW_000192,Product C,excluded_water_coastal,30,r00c03,excluded,,2.4,24000.0,water_dominant,high_tile_disagreement,water_dominant,,,,,,,,,,379272.625,3509548.4166666665
+CMV-0050,CMFTW_000355,Product C,excluded_water_coastal,30,r00c04,excluded,,1.26,12600.0,water_dominant,,water_dominant,,,,,,,,,,386428.09523809527,3505513.492063492
+CMV-0051,CMFTW_000504,Product C,excluded_water_coastal,30,r01c00,excluded,,0.27,2700.0,water_dominant,high_tile_disagreement,water_dominant,,,,,,,,,,364873.14814814815,3504669.074074074
+CMV-0052,CMFTW_000940,Product C,excluded_water_coastal,30,r01c04,excluded,,1.94,19400.0,water_dominant,,water_dominant,,,,,,,,,,385651.7010309278,3503631.597938144
+CMV-0053,CMFTW_000935,Product C,excluded_water_coastal,30,r01c04,excluded,,1.2,12000.0,water_dominant,high_tile_disagreement,water_dominant,,,,,,,,,,382738.8333333333,3504669.0
+CMV-0054,CMFTW_000956,Product C,excluded_water_coastal,30,r01c05,excluded,,0.26,2600.0,water_dominant,,water_dominant,,,,,,,,,,388449.6153846154,3500504.6153846155
+CMV-0055,CMFTW_000950,Product C,excluded_water_coastal,30,r01c05,excluded,,0.26,2600.0,water_dominant,,water_dominant,,,,,,,,,,390156.1538461539,3503295.0
+CMV-0056,CMFTW_000949,Product C,excluded_water_coastal,30,r01c05,excluded,,0.47,4700.0,water_dominant,,water_dominant,,,,,,,,,,389928.829787234,3503451.170212766
+CMV-0057,CMFTW_001857,Product C,excluded_water_coastal,30,r02c01,excluded,,1.0,10000.0,water_dominant,,water_dominant,,,,,,,,,,368671.4,3497435.0
+CMV-0058,CMFTW_002571,Product C,excluded_water_coastal,30,r02c02,excluded,,0.39,3900.0,water_dominant,,water_dominant,,,,,,,,,,374665.0,3496591.6666666665
+CMV-0059,CMFTW_003174,Product C,excluded_water_coastal,30,r02c03,excluded,,0.51,5100.0,water_dominant,,water_dominant,,,,,,,,,,381826.96078431373,3495920.294117647
+CMV-0060,CMFTW_003467,Product C,excluded_water_coastal,30,r02c05,excluded,,1.29,12900.0,water_dominant,,water_dominant,,,,,,,,,,390170.1937984496,3499296.3178294576
+CMV-0061,CMFTW_003591,Product C,excluded_water_coastal,30,r03c00,excluded,,0.49,4900.0,water_dominant,,water_dominant,,,,,,,,,,363424.387755102,3494196.4285714286
+CMV-0062,CMFTW_004554,Product C,excluded_water_coastal,30,r03c01,excluded,,0.43,4300.0,water_dominant,,water_dominant,,,,,,,,,,371438.488372093,3491568.7209302327
+CMV-0063,CMFTW_004699,Product C,excluded_water_coastal,30,r03c02,excluded,,0.39,3900.0,water_dominant,,water_dominant,,,,,,,,,,374886.0256410256,3495261.4102564105
+CMV-0064,CMFTW_005736,Product C,excluded_water_coastal,30,r03c03,excluded,,0.63,6300.0,water_dominant,,water_dominant,,,,,,,,,,380463.8888888889,3493632.9365079366
+CMV-0065,CMFTW_005595,Product C,excluded_water_coastal,30,r03c03,excluded,,0.52,5200.0,water_dominant,high_tile_disagreement,water_dominant,,,,,,,,,,379769.03846153844,3494535.9615384615
+CMV-0066,CMFTW_005601,Product C,excluded_water_coastal,30,r03c03,excluded,,0.37,3700.0,water_dominant,,water_dominant,,,,,,,,,,379662.2972972973,3494452.8378378376
+CMV-0067,CMFTW_005578,Product C,excluded_water_coastal,30,r03c03,excluded,,0.45,4500.0,water_dominant,,water_dominant,,,,,,,,,,379760.77777777775,3494597.4444444445
+CMV-0068,CMFTW_006699,Product C,excluded_water_coastal,30,r03c04,excluded,,0.92,9200.0,water_dominant,high_tile_disagreement,water_dominant,,,,,,,,,,384483.152173913,3492571.6304347827
+CMV-0069,CMFTW_007242,Product C,excluded_water_coastal,30,r03c05,excluded,,0.56,5600.0,water_dominant,,water_dominant,,,,,,,,,,388938.5714285714,3492466.0714285714
+CMV-0070,CMFTW_008167,Product C,excluded_water_coastal,30,r04c05,excluded,,0.35,3500.0,water_dominant,,water_dominant,,,,,,,,,,389675.5714285714,3490023.5714285714
+CMV-0071,CMFTW_000253,Product C,excluded_built_greenhouse,50,r00c04,excluded,,0.79,7900.0,built_dominant,,built_dominant,,,,,,,,,,383042.7215189873,3509338.7974683545
+CMV-0072,CMFTW_000432,Product C,excluded_built_greenhouse,50,r00c05,excluded,,0.32,3200.0,built_dominant,,built_dominant,,,,,,,,,,390814.6875,3507734.0625
+CMV-0073,CMFTW_000646,Product C,excluded_built_greenhouse,50,r01c00,excluded,,0.95,9500.0,built_dominant,,built_dominant,,,,,,,,,,366856.4736842105,3500701.1052631577
+CMV-0074,CMFTW_000828,Product C,excluded_built_greenhouse,50,r01c01,excluded,,0.63,6300.0,built_dominant,,built_dominant,,,,,,,,,,369743.7301587302,3500413.253968254
+CMV-0075,CMFTW_000972,Product C,excluded_built_greenhouse,50,r02c00,excluded,,0.28,2800.0,built_dominant,,built_dominant,,,,,,,,,,366212.14285714284,3500202.8571428573
+CMV-0076,CMFTW_001205,Product C,excluded_built_greenhouse,50,r02c00,excluded,,0.29,2900.0,built_dominant,,built_dominant,,,,,,,,,,366658.4482758621,3497208.103448276
+CMV-0077,CMFTW_001511,Product C,excluded_built_greenhouse,50,r02c01,excluded,,0.39,3900.0,built_dominant,,built_dominant,,,,,,,,,,369486.7948717949,3499261.153846154
+CMV-0078,CMFTW_002066,Product C,excluded_built_greenhouse,50,r02c01,excluded,,0.46,4600.0,built_dominant,,built_dominant,,,,,,,,,,370443.04347826086,3496334.565217391
+CMV-0079,CMFTW_001864,Product C,excluded_built_greenhouse,50,r02c01,excluded,,0.63,6300.0,built_dominant,,built_dominant,,,,,,,,,,372143.25396825396,3497341.984126984
+CMV-0080,CMFTW_002757,Product C,excluded_built_greenhouse,50,r02c02,excluded,,0.3,3000.0,built_dominant,high_tile_disagreement,built_dominant,,,,,,,,,,374546.6666666667,3495754.6666666665
+CMV-0081,CMFTW_002797,Product C,excluded_built_greenhouse,50,r02c02,excluded,,0.3,3000.0,built_dominant,,built_dominant,,,,,,,,,,372868.6666666667,3495473.6666666665
+CMV-0082,CMFTW_002494,Product C,excluded_built_greenhouse,50,r02c02,excluded,,0.79,7900.0,built_dominant,,built_dominant,,,,,,,,,,373071.2025316456,3496975.759493671
+CMV-0083,CMFTW_002332,Product C,excluded_built_greenhouse,50,r02c02,excluded,,0.34,3400.0,built_dominant,,built_dominant,,,,,,,,,,373991.76470588235,3498192.0588235296
+CMV-0084,CMFTW_003216,Product C,excluded_built_greenhouse,50,r02c03,excluded,,0.3,3000.0,built_dominant,,built_dominant,,,,,,,,,,379072.6666666667,3495613.6666666665
+CMV-0085,CMFTW_003292,Product C,excluded_built_greenhouse,50,r02c04,excluded,,0.25,2500.0,built_dominant,,built_dominant,,,,,,,,,,383914.6,3497839.4
+CMV-0086,CMFTW_003822,Product C,excluded_built_greenhouse,50,r03c00,excluded,,0.28,2800.0,built_dominant,high_tile_disagreement,built_dominant,,,,,,,,,,366860.71428571426,3492128.5714285714
+CMV-0087,CMFTW_003747,Product C,excluded_built_greenhouse,50,r03c00,excluded,,0.49,4900.0,built_dominant,,built_dominant,,,,,,,,,,365613.1632653061,3492639.897959184
+CMV-0088,CMFTW_003665,Product C,excluded_built_greenhouse,50,r03c00,excluded,,0.62,6200.0,built_dominant,,built_dominant,,,,,,,,,,364061.6129032258,3493598.709677419
+CMV-0089,CMFTW_003806,Product C,excluded_built_greenhouse,50,r03c00,excluded,,0.54,5400.0,built_dominant,,built_dominant,,,,,,,,,,363310.0,3492267.222222222
+CMV-0090,CMFTW_004469,Product C,excluded_built_greenhouse,50,r03c01,excluded,,0.32,3200.0,built_dominant,,built_dominant,,,,,,,,,,371891.875,3492178.125
+CMV-0091,CMFTW_004417,Product C,excluded_built_greenhouse,50,r03c01,excluded,,0.26,2600.0,built_dominant,,built_dominant,,,,,,,,,,368921.53846153844,3492476.5384615385
+CMV-0092,CMFTW_004226,Product C,excluded_built_greenhouse,50,r03c01,excluded,,0.75,7500.0,built_dominant,,built_dominant,,,,,,,,,,370996.06666666665,3494086.3333333335
+CMV-0093,CMFTW_004684,Product C,excluded_built_greenhouse,50,r03c01,excluded,,0.25,2500.0,built_dominant,,built_dominant,,,,,,,,,,370591.8,3490415.8
+CMV-0094,CMFTW_004390,Product C,excluded_built_greenhouse,50,r03c01,excluded,,0.55,5500.0,built_dominant,,built_dominant,,,,,,,,,,370493.0,3492754.272727273
+CMV-0095,CMFTW_004920,Product C,excluded_built_greenhouse,50,r03c02,excluded,,0.51,5100.0,built_dominant,,built_dominant,,,,,,,,,,374905.98039215687,3493727.3529411764
+CMV-0096,CMFTW_005342,Product C,excluded_built_greenhouse,50,r03c02,excluded,,0.53,5300.0,built_dominant,,built_dominant,,,,,,,,,,375662.92452830187,3491132.7358490564
+CMV-0097,CMFTW_005299,Product C,excluded_built_greenhouse,50,r03c02,excluded,,0.25,2500.0,built_dominant,,built_dominant,,,,,,,,,,375664.6,3491363.8
+CMV-0098,CMFTW_005449,Product C,excluded_built_greenhouse,50,r03c02,excluded,,0.35,3500.0,built_dominant,,built_dominant,,,,,,,,,,375033.28571428574,3490461.285714286
+CMV-0099,CMFTW_004950,Product C,excluded_built_greenhouse,50,r03c02,excluded,,0.28,2800.0,built_dominant,,built_dominant,,,,,,,,,,375269.64285714284,3493565.714285714
+CMV-0100,CMFTW_005199,Product C,excluded_built_greenhouse,50,r03c02,excluded,,0.73,7300.0,built_dominant,,built_dominant,,,,,,,,,,375630.61643835617,3492050.205479452
+CMV-0101,CMFTW_004999,Product C,excluded_built_greenhouse,50,r03c02,excluded,,0.72,7200.0,built_dominant,,built_dominant,,,,,,,,,,374646.3888888889,3493187.777777778
+CMV-0102,CMFTW_005281,Product C,excluded_built_greenhouse,50,r03c02,excluded,,0.56,5600.0,built_dominant,,built_dominant,,,,,,,,,,375549.28571428574,3491501.4285714286
+CMV-0103,CMFTW_004906,Product C,excluded_built_greenhouse,50,r03c02,excluded,,0.52,5200.0,built_dominant,,built_dominant,,,,,,,,,,374777.6923076923,3493825.576923077
+CMV-0104,CMFTW_005193,Product C,excluded_built_greenhouse,50,r03c02,excluded,,0.33,3300.0,built_dominant,,built_dominant,,,,,,,,,,376126.8181818182,3492101.0606060605
+CMV-0105,CMFTW_006011,Product C,excluded_built_greenhouse,50,r03c03,excluded,,0.45,4500.0,built_dominant,high_tile_disagreement,built_dominant,,,,,,,,,,379574.55555555556,3491377.0
+CMV-0106,CMFTW_005542,Product C,excluded_built_greenhouse,50,r03c03,excluded,,0.45,4500.0,built_dominant,high_tile_disagreement,built_dominant,,,,,,,,,,381534.3333333333,3494843.6666666665
+CMV-0107,CMFTW_006044,Product C,excluded_built_greenhouse,50,r03c03,excluded,,1.47,14700.0,built_dominant,,built_dominant,,,,,,,,,,379594.65986394556,3491266.156462585
+CMV-0108,CMFTW_006365,Product C,excluded_built_greenhouse,50,r03c04,excluded,,0.34,3400.0,built_dominant,,built_dominant,,,,,,,,,,383869.4117647059,3493844.411764706
+CMV-0109,CMFTW_006581,Product C,excluded_built_greenhouse,50,r03c04,excluded,,0.25,2500.0,built_dominant,,built_dominant,,,,,,,,,,385264.2,3493011.0
+CMV-0110,CMFTW_006639,Product C,excluded_built_greenhouse,50,r03c04,excluded,,0.3,3000.0,built_dominant,,built_dominant,,,,,,,,,,384957.0,3492751.3333333335
+CMV-0111,CMFTW_006583,Product C,excluded_built_greenhouse,50,r03c04,excluded,,0.61,6100.0,built_dominant,,built_dominant,,,,,,,,,,387256.8032786885,3493016.8032786883
+CMV-0112,CMFTW_007045,Product C,excluded_built_greenhouse,50,r03c04,excluded,,0.5,5000.0,built_dominant,,built_dominant,,,,,,,,,,384009.0,3490483.4
+CMV-0113,CMFTW_007097,Product C,excluded_built_greenhouse,50,r03c05,excluded,,0.32,3200.0,built_dominant,high_tile_disagreement,built_dominant,,,,,,,,,,387899.0625,3494604.0625
+CMV-0114,CMFTW_007512,Product C,excluded_built_greenhouse,50,r04c00,excluded,,0.26,2600.0,built_dominant,,built_dominant,,,,,,,,,,365600.3846153846,3490019.6153846155
+CMV-0115,CMFTW_007632,Product C,excluded_built_greenhouse,50,r04c01,excluded,,0.29,2900.0,built_dominant,,built_dominant,,,,,,,,,,369400.1724137931,3489181.206896552
+CMV-0116,CMFTW_007666,Product C,excluded_built_greenhouse,50,r04c02,excluded,,0.39,3900.0,built_dominant,,built_dominant,,,,,,,,,,373765.5128205128,3490221.6666666665
+CMV-0117,CMFTW_007944,Product C,excluded_built_greenhouse,50,r04c03,excluded,,0.39,3900.0,built_dominant,,built_dominant,,,,,,,,,,378915.76923076925,3489300.128205128
+CMV-0118,CMFTW_007905,Product C,excluded_built_greenhouse,50,r04c03,excluded,,0.42,4200.0,built_dominant,,built_dominant,,,,,,,,,,379745.4761904762,3489540.0
+CMV-0119,CMFTW_008104,Product C,excluded_built_greenhouse,50,r04c04,excluded,,0.3,3000.0,built_dominant,,built_dominant,,,,,,,,,,382881.3333333333,3489105.0
+CMV-0120,CMFTW_008189,Product C,excluded_built_greenhouse,50,r04c05,excluded,,0.4,4000.0,built_dominant,,built_dominant,,,,,,,,,,387367.25,3489760.75
+CMV-0121,CMFTW_000064,Product B,retained_QA_risk,80,r00c00,retained_QA_risk,Uncertain / QA-risk,24.59,245900.0,,extreme_area,,,,,,,,,,,366665.65880439203,3508986.2891419274
+CMV-0122,CMFTW_000178,Product B,retained_QA_risk,80,r00c01,retained_QA_risk,Uncertain / QA-risk,0.34,3400.0,,high_tile_disagreement,tree_dominant,,,,,,,,,,369371.76470588235,3507429.117647059
+CMV-0123,CMFTW_000310,Product B,retained_QA_risk,80,r00c04,retained_QA_risk,Uncertain / QA-risk,0.27,2700.0,,,built_dominant,,,,,,,,,,385723.51851851854,3508562.407407407
+CMV-0124,CMFTW_000243,Product B,retained_QA_risk,80,r00c04,retained_QA_risk,Uncertain / QA-risk,7.19,71900.0,,high_tile_disagreement,,,,,,,,,,,383266.5438108484,3509547.197496523
+CMV-0125,CMFTW_000390,Product B,retained_QA_risk,80,r00c05,retained_QA_risk,Uncertain / QA-risk,0.47,4700.0,,high_tile_disagreement,,,,,,,,,,,389466.27659574465,3508705.425531915
+CMV-0126,CMFTW_000549,Product B,retained_QA_risk,80,r01c00,retained_QA_risk,Uncertain / QA-risk,20.48,204800.0,,extreme_area,,,,,,,,,,,364603.1396484375,3503114.3310546875
+CMV-0127,CMFTW_000523,Product B,retained_QA_risk,80,r01c00,retained_QA_risk,Uncertain / QA-risk,1.11,11100.0,,deployment_edge,,,,,,,,,,,362352.2972972973,3504211.4864864866
+CMV-0128,CMFTW_000633,Product B,retained_QA_risk,80,r01c00,retained_QA_risk,Uncertain / QA-risk,0.98,9800.0,,,built_dominant,,,,,,,,,,365873.36734693876,3500823.163265306
+CMV-0129,CMFTW_000825,Product B,retained_QA_risk,80,r01c01,retained_QA_risk,Uncertain / QA-risk,0.8,8000.0,,,built_dominant,,,,,,,,,,368065.375,3500435.875
+CMV-0130,CMFTW_000845,Product B,retained_QA_risk,80,r01c02,retained_QA_risk,Uncertain / QA-risk,4.81,48100.0,,,tree_dominant,,,,,,,,,,373825.70686070685,3504079.3035343033
+CMV-0131,CMFTW_000848,Product B,retained_QA_risk,80,r01c02,retained_QA_risk,Uncertain / QA-risk,0.33,3300.0,,,tree_dominant,,,,,,,,,,372698.3333333333,3503858.6363636362
+CMV-0132,CMFTW_000877,Product B,retained_QA_risk,80,r01c02,retained_QA_risk,Uncertain / QA-risk,0.48,4800.0,,,tree_dominant,,,,,,,,,,373382.5,3503333.3333333335
+CMV-0133,CMFTW_000958,Product B,retained_QA_risk,80,r01c05,retained_QA_risk,Uncertain / QA-risk,1.7,17000.0,,,tree_dominant,,,,,,,,,,388270.29411764705,3500477.1764705884
+CMV-0134,CMFTW_001131,Product B,retained_QA_risk,80,r02c00,retained_QA_risk,Uncertain / QA-risk,0.7,7000.0,,,built_dominant,,,,,,,,,,364311.4285714286,3498528.1428571427
+CMV-0135,CMFTW_001297,Product B,retained_QA_risk,80,r02c00,retained_QA_risk,Uncertain / QA-risk,0.25,2500.0,,,tree_dominant,,,,,,,,,,367226.6,3495615.4
+CMV-0136,CMFTW_001490,Product B,retained_QA_risk,80,r02c01,retained_QA_risk,Uncertain / QA-risk,0.3,3000.0,,,built_dominant,,,,,,,,,,367362.6666666667,3499354.3333333335
+CMV-0137,CMFTW_002168,Product B,retained_QA_risk,80,r02c01,retained_QA_risk,Uncertain / QA-risk,0.57,5700.0,,,built_dominant,,,,,,,,,,370087.8070175439,3495428.6842105263
+CMV-0138,CMFTW_001826,Product B,retained_QA_risk,80,r02c01,retained_QA_risk,Uncertain / QA-risk,0.31,3100.0,,high_tile_disagreement,,,,,,,,,,,370089.51612903224,3497448.5483870967
+CMV-0139,CMFTW_002030,Product B,retained_QA_risk,80,r02c01,retained_QA_risk,Uncertain / QA-risk,0.29,2900.0,,,tree_dominant,,,,,,,,,,369032.9310344828,3496548.4482758623
+CMV-0140,CMFTW_001555,Product B,retained_QA_risk,80,r02c01,retained_QA_risk,Uncertain / QA-risk,0.7,7000.0,,,built_dominant,,,,,,,,,,367617.0,3499059.4285714286
+CMV-0141,CMFTW_001840,Product B,retained_QA_risk,80,r02c01,retained_QA_risk,Uncertain / QA-risk,0.46,4600.0,,high_tile_disagreement,,,,,,,,,,,370009.1304347826,3497461.5217391304
+CMV-0142,CMFTW_002489,Product B,retained_QA_risk,80,r02c02,retained_QA_risk,Uncertain / QA-risk,0.25,2500.0,,,built_dominant,,,,,,,,,,376865.0,3496941.8
+CMV-0143,CMFTW_002222,Product B,retained_QA_risk,80,r02c02,retained_QA_risk,Uncertain / QA-risk,0.35,3500.0,,,built_dominant,,,,,,,,,,376166.71428571426,3499742.714285714
+CMV-0144,CMFTW_002684,Product B,retained_QA_risk,80,r02c02,retained_QA_risk,Uncertain / QA-risk,0.87,8700.0,,,tree_dominant,,,,,,,,,,374969.8275862069,3496155.3448275863
+CMV-0145,CMFTW_002311,Product B,retained_QA_risk,80,r02c02,retained_QA_risk,Uncertain / QA-risk,0.28,2800.0,,,built_dominant,,,,,,,,,,372883.5714285714,3498482.1428571427
+CMV-0146,CMFTW_002777,Product B,retained_QA_risk,80,r02c02,retained_QA_risk,Uncertain / QA-risk,0.31,3100.0,,,tree_dominant,,,,,,,,,,373955.96774193546,3495615.9677419355
+CMV-0147,CMFTW_003120,Product B,retained_QA_risk,80,r02c03,retained_QA_risk,Uncertain / QA-risk,0.47,4700.0,,,tree_dominant,,,,,,,,,,377631.59574468085,3496225.0
+CMV-0148,CMFTW_003165,Product B,retained_QA_risk,80,r02c03,retained_QA_risk,Uncertain / QA-risk,0.39,3900.0,,,built_dominant,,,,,,,,,,380321.92307692306,3495965.2564102565
+CMV-0149,CMFTW_003181,Product B,retained_QA_risk,80,r02c03,retained_QA_risk,Uncertain / QA-risk,1.77,17700.0,,,tree_dominant,,,,,,,,,,379222.6836158192,3495892.7401129943
+CMV-0150,CMFTW_003150,Product B,retained_QA_risk,80,r02c03,retained_QA_risk,Uncertain / QA-risk,0.31,3100.0,,,built_dominant,,,,,,,,,,380497.9032258064,3496054.6774193547
+CMV-0151,CMFTW_003051,Product B,retained_QA_risk,80,r02c03,retained_QA_risk,Uncertain / QA-risk,0.39,3900.0,,,built_dominant,,,,,,,,,,377849.358974359,3496581.153846154
+CMV-0152,CMFTW_003185,Product B,retained_QA_risk,80,r02c03,retained_QA_risk,Uncertain / QA-risk,0.91,9100.0,,high_tile_disagreement,,,,,,,,,,,381580.3846153846,3495870.3846153845
+CMV-0153,CMFTW_003422,Product B,retained_QA_risk,80,r02c04,retained_QA_risk,Uncertain / QA-risk,0.74,7400.0,,high_tile_disagreement,,,,,,,,,,,386816.35135135136,3495966.2162162163
+CMV-0154,CMFTW_003495,Product B,retained_QA_risk,80,r02c05,retained_QA_risk,Uncertain / QA-risk,3.57,35700.0,,deployment_edge,,,,,,,,,,,390999.48179271707,3495505.9803921566
+CMV-0155,CMFTW_003960,Product B,retained_QA_risk,80,r03c00,retained_QA_risk,Uncertain / QA-risk,0.73,7300.0,,,built_dominant,,,,,,,,,,364006.5068493151,3491419.383561644
+CMV-0156,CMFTW_004050,Product B,retained_QA_risk,80,r03c00,retained_QA_risk,Uncertain / QA-risk,0.75,7500.0,,,tree_dominant,,,,,,,,,,364561.8,3490693.8
+CMV-0157,CMFTW_003850,Product B,retained_QA_risk,80,r03c00,retained_QA_risk,Uncertain / QA-risk,0.26,2600.0,,high_tile_disagreement,,,,,,,,,,,366922.6923076923,3491981.923076923
+CMV-0158,CMFTW_003891,Product B,retained_QA_risk,80,r03c00,retained_QA_risk,Uncertain / QA-risk,0.4,4000.0,,,built_dominant,,,,,,,,,,365349.5,3491685.0
+CMV-0159,CMFTW_003612,Product B,retained_QA_risk,80,r03c00,retained_QA_risk,Uncertain / QA-risk,0.97,9700.0,,,built_dominant,,,,,,,,,,363541.90721649484,3494095.206185567
+CMV-0160,CMFTW_003752,Product B,retained_QA_risk,80,r03c00,retained_QA_risk,Uncertain / QA-risk,0.48,4800.0,,,built_dominant,,,,,,,,,,363600.0,3492578.5416666665
+CMV-0161,CMFTW_003566,Product B,retained_QA_risk,80,r03c00,retained_QA_risk,Uncertain / QA-risk,0.35,3500.0,,high_tile_disagreement,tree_dominant,,,,,,,,,,366058.4285714286,3494476.4285714286
+CMV-0162,CMFTW_004624,Product B,retained_QA_risk,80,r03c01,retained_QA_risk,Uncertain / QA-risk,1.3,13000.0,,,tree_dominant,,,,,,,,,,370522.53846153844,3491159.923076923
+CMV-0163,CMFTW_004396,Product B,retained_QA_risk,80,r03c01,retained_QA_risk,Uncertain / QA-risk,0.5,5000.0,,high_tile_disagreement,,,,,,,,,,,369582.0,3492718.2
+CMV-0164,CMFTW_004175,Product B,retained_QA_risk,80,r03c01,retained_QA_risk,Uncertain / QA-risk,1.34,13400.0,,high_tile_disagreement,,,,,,,,,,,369394.4029850746,3494567.76119403
+CMV-0165,CMFTW_004668,Product B,retained_QA_risk,80,r03c01,retained_QA_risk,Uncertain / QA-risk,0.28,2800.0,,,built_dominant,,,,,,,,,,370716.4285714286,3490574.285714286
+CMV-0166,CMFTW_004184,Product B,retained_QA_risk,80,r03c01,retained_QA_risk,Uncertain / QA-risk,2.29,22900.0,,high_tile_disagreement,,,,,,,,,,,371429.7598253275,3494486.091703057
+CMV-0167,CMFTW_004629,Product B,retained_QA_risk,80,r03c01,retained_QA_risk,Uncertain / QA-risk,0.84,8400.0,,,built_dominant,,,,,,,,,,371848.21428571426,3491101.5476190476
+CMV-0168,CMFTW_004137,Product B,retained_QA_risk,80,r03c01,retained_QA_risk,Uncertain / QA-risk,0.34,3400.0,,,built_dominant,,,,,,,,,,368703.82352941175,3494860.588235294
+CMV-0169,CMFTW_004750,Product B,retained_QA_risk,80,r03c02,retained_QA_risk,Uncertain / QA-risk,0.53,5300.0,,,built_dominant,,,,,,,,,,374532.92452830187,3494764.433962264
+CMV-0170,CMFTW_004764,Product B,retained_QA_risk,80,r03c02,retained_QA_risk,Uncertain / QA-risk,0.26,2600.0,,high_tile_disagreement,,,,,,,,,,,375087.6923076923,3494588.4615384615
+CMV-0171,CMFTW_005317,Product B,retained_QA_risk,80,r03c02,retained_QA_risk,Uncertain / QA-risk,0.33,3300.0,,,built_dominant,,,,,,,,,,376268.3333333333,3491274.090909091
+CMV-0172,CMFTW_005184,Product B,retained_QA_risk,80,r03c02,retained_QA_risk,Uncertain / QA-risk,0.25,2500.0,,,built_dominant,,,,,,,,,,373420.2,3492139.0
+CMV-0173,CMFTW_004730,Product B,retained_QA_risk,80,r03c02,retained_QA_risk,Uncertain / QA-risk,0.76,7600.0,,,built_dominant,,,,,,,,,,375224.34210526315,3494901.052631579
+CMV-0174,CMFTW_005397,Product B,retained_QA_risk,80,r03c02,retained_QA_risk,Uncertain / QA-risk,0.34,3400.0,,,water_dominant,,,,,,,,,,376335.8823529412,3490750.588235294
+CMV-0175,CMFTW_004930,Product B,retained_QA_risk,80,r03c02,retained_QA_risk,Uncertain / QA-risk,0.26,2600.0,,,built_dominant,,,,,,,,,,373337.3076923077,3493658.076923077
+CMV-0176,CMFTW_005807,Product B,retained_QA_risk,80,r03c03,retained_QA_risk,Uncertain / QA-risk,0.76,7600.0,,high_tile_disagreement,,,,,,,,,,,379513.2894736842,3493162.1052631577
+CMV-0177,CMFTW_005565,Product B,retained_QA_risk,80,r03c03,retained_QA_risk,Uncertain / QA-risk,0.45,4500.0,,high_tile_disagreement,,,,,,,,,,,378921.22222222225,3494607.6666666665
+CMV-0178,CMFTW_005866,Product B,retained_QA_risk,80,r03c03,retained_QA_risk,Uncertain / QA-risk,0.59,5900.0,,,built_dominant,,,,,,,,,,381203.30508474575,3492739.915254237
+CMV-0179,CMFTW_005878,Product B,retained_QA_risk,80,r03c03,retained_QA_risk,Uncertain / QA-risk,0.31,3100.0,,,built_dominant,,,,,,,,,,380439.1935483871,3492548.870967742
+CMV-0180,CMFTW_005897,Product B,retained_QA_risk,80,r03c03,retained_QA_risk,Uncertain / QA-risk,0.36,3600.0,,,built_dominant,,,,,,,,,,378766.1111111111,3492382.222222222
+CMV-0181,CMFTW_006100,Product B,retained_QA_risk,80,r03c03,retained_QA_risk,Uncertain / QA-risk,0.42,4200.0,,,built_dominant,,,,,,,,,,381102.14285714284,3490761.4285714286
+CMV-0182,CMFTW_006000,Product B,retained_QA_risk,80,r03c03,retained_QA_risk,Uncertain / QA-risk,0.29,2900.0,,,tree_dominant,,,,,,,,,,382027.7586206897,3491428.793103448
+CMV-0183,CMFTW_006626,Product B,retained_QA_risk,80,r03c04,retained_QA_risk,Uncertain / QA-risk,0.29,2900.0,,,tree_dominant,,,,,,,,,,384999.4827586207,3492817.4137931033
+CMV-0184,CMFTW_006805,Product B,retained_QA_risk,80,r03c04,retained_QA_risk,Uncertain / QA-risk,0.29,2900.0,,,tree_dominant,,,,,,,,,,385203.6206896552,3491976.0344827585
+CMV-0185,CMFTW_006771,Product B,retained_QA_risk,80,r03c04,retained_QA_risk,Uncertain / QA-risk,0.26,2600.0,,,built_dominant,,,,,,,,,,382930.0,3492135.0
+CMV-0186,CMFTW_006950,Product B,retained_QA_risk,80,r03c04,retained_QA_risk,Uncertain / QA-risk,0.31,3100.0,,,tree_dominant,,,,,,,,,,387003.06451612903,3491071.129032258
+CMV-0187,CMFTW_006464,Product B,retained_QA_risk,80,r03c04,retained_QA_risk,Uncertain / QA-risk,0.3,3000.0,,,built_dominant,,,,,,,,,,383529.0,3493503.3333333335
+CMV-0188,CMFTW_006688,Product B,retained_QA_risk,80,r03c04,retained_QA_risk,Uncertain / QA-risk,0.5,5000.0,,high_tile_disagreement,,,,,,,,,,,384688.2,3492553.8
+CMV-0189,CMFTW_006693,Product B,retained_QA_risk,80,r03c04,retained_QA_risk,Uncertain / QA-risk,0.44,4400.0,,high_tile_disagreement,,,,,,,,,,,384291.13636363635,3492527.9545454546
+CMV-0190,CMFTW_006936,Product B,retained_QA_risk,80,r03c04,retained_QA_risk,Uncertain / QA-risk,0.46,4600.0,,high_tile_disagreement,tree_dominant,,,,,,,,,,386702.82608695654,3491235.652173913
+CMV-0191,CMFTW_007215,Product B,retained_QA_risk,80,r03c05,retained_QA_risk,Uncertain / QA-risk,0.29,2900.0,,,water_dominant,,,,,,,,,,389141.5517241379,3492789.827586207
+CMV-0192,CMFTW_007540,Product B,retained_QA_risk,80,r04c00,retained_QA_risk,Uncertain / QA-risk,0.6,6000.0,,,tree_dominant,,,,,,,,,,366430.8333333333,3489502.6666666665
+CMV-0193,CMFTW_007635,Product B,retained_QA_risk,80,r04c01,retained_QA_risk,Uncertain / QA-risk,0.58,5800.0,,,tree_dominant,,,,,,,,,,370423.7931034483,3489183.9655172415
+CMV-0194,CMFTW_007667,Product B,retained_QA_risk,80,r04c02,retained_QA_risk,Uncertain / QA-risk,0.3,3000.0,,,tree_dominant,,,,,,,,,,374640.3333333333,3490216.3333333335
+CMV-0195,CMFTW_007775,Product B,retained_QA_risk,80,r04c02,retained_QA_risk,Uncertain / QA-risk,0.57,5700.0,,,built_dominant,,,,,,,,,,373941.1403508772,3489134.8245614036
+CMV-0196,CMFTW_007943,Product B,retained_QA_risk,80,r04c03,retained_QA_risk,Uncertain / QA-risk,1.28,12800.0,,high_tile_disagreement,,,,,,,,,,,381495.78125,3489370.46875
+CMV-0197,CMFTW_007837,Product B,retained_QA_risk,80,r04c03,retained_QA_risk,Uncertain / QA-risk,1.23,12300.0,,high_tile_disagreement,,,,,,,,,,,381589.14634146343,3490041.0162601625
+CMV-0198,CMFTW_008031,Product B,retained_QA_risk,80,r04c04,retained_QA_risk,Uncertain / QA-risk,1.1,11000.0,,,built_dominant,,,,,,,,,,385123.1818181818,3490016.909090909
+CMV-0199,CMFTW_008109,Product B,retained_QA_risk,80,r04c04,retained_QA_risk,Uncertain / QA-risk,0.84,8400.0,,,tree_dominant,,,,,,,,,,384818.45238095237,3489097.380952381
+CMV-0200,CMFTW_008170,Product B,retained_QA_risk,80,r04c05,retained_QA_risk,Uncertain / QA-risk,1.14,11400.0,,,water_dominant,,,,,,,,,,387695.0,3490090.5263157897
+CMV-0201,CMFTW_000209,Product B,clear_non_rice,60,r00c04,retained_clear,Non-rice,0.77,7700.0,,,,,,,,,,,,,386980.06493506493,3509985.0
+CMV-0202,CMFTW_000446,Product B,clear_non_rice,60,r00c05,retained_clear,Non-rice,3.03,30300.0,,,,,,,,,,,,,388148.89438943897,3507222.7557755774
+CMV-0203,CMFTW_000471,Product B,clear_non_rice,60,r01c00,retained_clear,Non-rice,0.27,2700.0,,,,,,,,,,,,,364164.6296296296,3504968.3333333335
+CMV-0204,CMFTW_000819,Product B,clear_non_rice,60,r01c01,retained_clear,Non-rice,0.76,7600.0,,,,,,,,,,,,,367614.6052631579,3500487.8947368423
+CMV-0205,CMFTW_000847,Product B,clear_non_rice,60,r01c02,retained_clear,Non-rice,1.78,17800.0,,,,,,,,,,,,,372693.93258426967,3503982.9775280897
+CMV-0206,CMFTW_000933,Product B,clear_non_rice,60,r01c03,retained_clear,Non-rice,0.82,8200.0,,,,,,,,,,,,,377971.2195121951,3500404.2682926827
+CMV-0207,CMFTW_001004,Product B,clear_non_rice,60,r02c00,retained_clear,Non-rice,0.32,3200.0,,,,,,,,,,,,,363835.9375,3499988.75
+CMV-0208,CMFTW_001923,Product B,clear_non_rice,60,r02c01,retained_clear,Non-rice,0.46,4600.0,,,,,,,,,,,,,371742.82608695654,3497045.652173913
+CMV-0209,CMFTW_002141,Product B,clear_non_rice,60,r02c01,retained_clear,Non-rice,0.43,4300.0,,,,,,,,,,,,,368292.20930232556,3495804.534883721
+CMV-0210,CMFTW_001918,Product B,clear_non_rice,60,r02c01,retained_clear,Non-rice,0.98,9800.0,,,,,,,,,,,,,371618.2653061224,3497145.102040816
+CMV-0211,CMFTW_002367,Product B,clear_non_rice,60,r02c02,retained_clear,Non-rice,0.91,9100.0,,,,,,,,,,,,,372858.1868131868,3497905.10989011
+CMV-0212,CMFTW_002436,Product B,clear_non_rice,60,r02c02,retained_clear,Non-rice,0.75,7500.0,,,,,,,,,,,,,373695.6666666667,3497331.0
+CMV-0213,CMFTW_002628,Product B,clear_non_rice,60,r02c02,retained_clear,Non-rice,0.37,3700.0,,,,,,,,,,,,,373911.2162162162,3496337.972972973
+CMV-0214,CMFTW_002362,Product B,clear_non_rice,60,r02c02,retained_clear,Non-rice,1.62,16200.0,,,,,,,,,,,,,372785.06172839506,3497947.345679012
+CMV-0215,CMFTW_002974,Product B,clear_non_rice,60,r02c03,retained_clear,Non-rice,0.77,7700.0,,,,,,,,,,,,,378558.8961038961,3497256.1688311687
+CMV-0216,CMFTW_003183,Product B,clear_non_rice,60,r02c03,retained_clear,Non-rice,0.86,8600.0,,,,,,,,,,,,,381007.32558139536,3495860.465116279
+CMV-0217,CMFTW_003097,Product B,clear_non_rice,60,r02c03,retained_clear,Non-rice,0.42,4200.0,,,,,,,,,,,,,377520.71428571426,3496324.285714286
+CMV-0218,CMFTW_002959,Product B,clear_non_rice,60,r02c03,retained_clear,Non-rice,1.23,12300.0,,,,,,,,,,,,,378275.162601626,3497398.7398373983
+CMV-0219,CMFTW_003291,Product B,clear_non_rice,60,r02c04,retained_clear,Non-rice,6.92,69200.0,,,,,,,,,,,,,384003.4537572254,3498083.3670520233
+CMV-0220,CMFTW_003339,Product B,clear_non_rice,60,r02c04,retained_clear,Non-rice,6.68,66800.0,,,,,,,,,,,,,382674.82035928144,3497176.0928143715
+CMV-0221,CMFTW_003406,Product B,clear_non_rice,60,r02c04,retained_clear,Non-rice,3.99,39900.0,,,,,,,,,,,,,385149.962406015,3496309.135338346
+CMV-0222,CMFTW_003415,Product B,clear_non_rice,60,r02c04,retained_clear,Non-rice,1.29,12900.0,,,,,,,,,,,,,385625.6201550388,3496150.503875969
+CMV-0223,CMFTW_003476,Product B,clear_non_rice,60,r02c05,retained_clear,Non-rice,0.27,2700.0,,,,,,,,,,,,,390229.0740740741,3498205.3703703703
+CMV-0224,CMFTW_003888,Product B,clear_non_rice,60,r03c00,retained_clear,Non-rice,1.13,11300.0,,,,,,,,,,,,,365507.9203539823,3491758.097345133
+CMV-0225,CMFTW_003864,Product B,clear_non_rice,60,r03c00,retained_clear,Non-rice,0.79,7900.0,,,,,,,,,,,,,364193.10126582277,3491943.481012658
+CMV-0226,CMFTW_003919,Product B,clear_non_rice,60,r03c00,retained_clear,Non-rice,0.61,6100.0,,,,,,,,,,,,,366276.1475409836,3491608.770491803
+CMV-0227,CMFTW_004320,Product B,clear_non_rice,60,r03c01,retained_clear,Non-rice,0.99,9900.0,,,,,,,,,,,,,370986.1111111111,3493139.8484848486
+CMV-0228,CMFTW_004193,Product B,clear_non_rice,60,r03c01,retained_clear,Non-rice,0.87,8700.0,,,,,,,,,,,,,370580.2873563218,3494375.2298850575
+CMV-0229,CMFTW_004323,Product B,clear_non_rice,60,r03c01,retained_clear,Non-rice,1.32,13200.0,,,,,,,,,,,,,371059.1666666667,3493138.9393939395
+CMV-0230,CMFTW_005434,Product B,clear_non_rice,60,r03c02,retained_clear,Non-rice,0.28,2800.0,,,,,,,,,,,,,373836.78571428574,3490545.714285714
+CMV-0231,CMFTW_005213,Product B,clear_non_rice,60,r03c02,retained_clear,Non-rice,0.92,9200.0,,,,,,,,,,,,,376403.6956521739,3491960.434782609
+CMV-0232,CMFTW_004877,Product B,clear_non_rice,60,r03c02,retained_clear,Non-rice,0.55,5500.0,,,,,,,,,,,,,374647.9090909091,3494034.6363636362
+CMV-0233,CMFTW_004993,Product B,clear_non_rice,60,r03c02,retained_clear,Non-rice,0.61,6100.0,,,,,,,,,,,,,373266.9672131148,3493202.049180328
+CMV-0234,CMFTW_005809,Product B,clear_non_rice,60,r03c03,retained_clear,Non-rice,0.63,6300.0,,,,,,,,,,,,,380877.38095238095,3493156.746031746
+CMV-0235,CMFTW_005722,Product B,clear_non_rice,60,r03c03,retained_clear,Non-rice,0.41,4100.0,,,,,,,,,,,,,380268.65853658534,3493762.3170731706
+CMV-0236,CMFTW_005939,Product B,clear_non_rice,60,r03c03,retained_clear,Non-rice,0.7,7000.0,,,,,,,,,,,,,381895.5714285714,3491950.4285714286
+CMV-0237,CMFTW_006133,Product B,clear_non_rice,60,r03c03,retained_clear,Non-rice,1.42,14200.0,,,,,,,,,,,,,380893.38028169016,3490546.5492957747
+CMV-0238,CMFTW_006122,Product B,clear_non_rice,60,r03c03,retained_clear,Non-rice,0.76,7600.0,,,,,,,,,,,,,380968.4210526316,3490567.1052631577
+CMV-0239,CMFTW_006321,Product B,clear_non_rice,60,r03c04,retained_clear,Non-rice,0.3,3000.0,,,,,,,,,,,,,386408.0,3494022.3333333335
+CMV-0240,CMFTW_006935,Product B,clear_non_rice,60,r03c04,retained_clear,Non-rice,0.35,3500.0,,,,,,,,,,,,,385170.71428571426,3491227.285714286
+CMV-0241,CMFTW_006709,Product B,clear_non_rice,60,r03c04,retained_clear,Non-rice,0.46,4600.0,,,,,,,,,,,,,382914.5652173913,3492496.5217391304
+CMV-0242,CMFTW_006267,Product B,clear_non_rice,60,r03c04,retained_clear,Non-rice,0.6,6000.0,,,,,,,,,,,,,385091.8333333333,3494326.3333333335
+CMV-0243,CMFTW_006931,Product B,clear_non_rice,60,r03c04,retained_clear,Non-rice,0.4,4000.0,,,,,,,,,,,,,385351.5,3491242.0
+CMV-0244,CMFTW_007011,Product B,clear_non_rice,60,r03c04,retained_clear,Non-rice,0.91,9100.0,,,,,,,,,,,,,385058.8461538461,3490804.89010989
+CMV-0245,CMFTW_006828,Product B,clear_non_rice,60,r03c04,retained_clear,Non-rice,0.99,9900.0,,,,,,,,,,,,,385600.75757575757,3491911.9696969697
+CMV-0246,CMFTW_006419,Product B,clear_non_rice,60,r03c04,retained_clear,Non-rice,0.39,3900.0,,,,,,,,,,,,,385730.641025641,3493667.3076923075
+CMV-0247,CMFTW_006886,Product B,clear_non_rice,60,r03c04,retained_clear,Non-rice,0.67,6700.0,,,,,,,,,,,,,385131.8656716418,3491550.3731343285
+CMV-0248,CMFTW_007190,Product B,clear_non_rice,60,r03c05,retained_clear,Non-rice,0.37,3700.0,,,,,,,,,,,,,389189.5945945946,3493161.2162162163
+CMV-0249,CMFTW_007084,Product B,clear_non_rice,60,r03c05,retained_clear,Non-rice,0.5,5000.0,,,,,,,,,,,,,388275.2,3494826.4
+CMV-0250,CMFTW_007077,Product B,clear_non_rice,60,r03c05,retained_clear,Non-rice,0.45,4500.0,,,,,,,,,,,,,387667.8888888889,3494899.6666666665
+CMV-0251,CMFTW_007504,Product B,clear_non_rice,60,r04c00,retained_clear,Non-rice,0.57,5700.0,,,,,,,,,,,,,365048.8596491228,3490215.0
+CMV-0252,CMFTW_007594,Product B,clear_non_rice,60,r04c01,retained_clear,Non-rice,0.28,2800.0,,,,,,,,,,,,,369782.14285714284,3489622.1428571427
+CMV-0253,CMFTW_007749,Product B,clear_non_rice,60,r04c02,retained_clear,Non-rice,0.62,6200.0,,,,,,,,,,,,,375815.48387096776,3489576.129032258
+CMV-0254,CMFTW_007681,Product B,clear_non_rice,60,r04c02,retained_clear,Non-rice,0.78,7800.0,,,,,,,,,,,,,376197.6923076923,3490133.717948718
+CMV-0255,CMFTW_007861,Product B,clear_non_rice,60,r04c03,retained_clear,Non-rice,0.4,4000.0,,,,,,,,,,,,,380878.0,3489794.0
+CMV-0256,CMFTW_007838,Product B,clear_non_rice,60,r04c03,retained_clear,Non-rice,0.36,3600.0,,,,,,,,,,,,,378825.55555555556,3489981.6666666665
+CMV-0257,CMFTW_007846,Product B,clear_non_rice,60,r04c03,retained_clear,Non-rice,0.84,8400.0,,,,,,,,,,,,,379888.3333333333,3489938.214285714
+CMV-0258,CMFTW_008107,Product B,clear_non_rice,60,r04c04,retained_clear,Non-rice,0.36,3600.0,,,,,,,,,,,,,384891.3888888889,3489088.611111111
+CMV-0259,CMFTW_008002,Product B,clear_non_rice,60,r04c04,retained_clear,Non-rice,0.41,4100.0,,,,,,,,,,,,,384025.9756097561,3490151.5853658537
+CMV-0260,CMFTW_008154,Product B,clear_non_rice,60,r04c05,retained_clear,Non-rice,0.34,3400.0,,,,,,,,,,,,,387398.23529411765,3490142.0588235296
+CMV-0261,CMFTW_000110,Product B,clear_rice,140,r00c00,retained_clear,Rice,2.24,22400.0,,,,,,,,,,,,,366085.7589285714,3506433.973214286
+CMV-0262,CMFTW_000057,Product B,clear_rice,140,r00c00,retained_clear,Rice,2.34,23400.0,,,,,,,,,,,,,366087.4786324786,3508975.512820513
+CMV-0263,CMFTW_000162,Product B,clear_rice,140,r00c01,retained_clear,Rice,0.41,4100.0,,,,,,,,,,,,,370293.7804878049,3508489.3902439023
+CMV-0264,CMFTW_000191,Product B,clear_rice,140,r00c03,retained_clear,Rice,0.45,4500.0,,,,,,,,,,,,,382186.77777777775,3510022.111111111
+CMV-0265,CMFTW_000298,Product B,clear_rice,140,r00c04,retained_clear,Rice,4.39,43900.0,,,,,,,,,,,,,384413.26879271073,3508783.223234624
+CMV-0266,CMFTW_000334,Product B,clear_rice,140,r00c04,retained_clear,Rice,0.76,7600.0,,,,,,,,,,,,,386617.2368421053,3508193.8157894737
+CMV-0267,CMFTW_000386,Product B,clear_rice,140,r00c05,retained_clear,Rice,0.84,8400.0,,,,,,,,,,,,,389303.8095238095,3508803.8095238097
+CMV-0268,CMFTW_000401,Product B,clear_rice,140,r00c05,retained_clear,Rice,0.36,3600.0,,,,,,,,,,,,,388728.8888888889,3508419.722222222
+CMV-0269,CMFTW_000565,Product B,clear_rice,140,r01c00,retained_clear,Rice,6.03,60300.0,,,,,,,,,,,,,363146.19402985077,3501604.154228856
+CMV-0270,CMFTW_000599,Product B,clear_rice,140,r01c00,retained_clear,Rice,1.35,13500.0,,,,,,,,,,,,,363062.6296296296,3501050.925925926
+CMV-0271,CMFTW_000536,Product B,clear_rice,140,r01c00,retained_clear,Rice,6.22,62200.0,,,,,,,,,,,,,367093.90675241157,3504036.3665594854
+CMV-0272,CMFTW_000567,Product B,clear_rice,140,r01c00,retained_clear,Rice,0.79,7900.0,,,,,,,,,,,,,362527.7848101266,3501479.5569620254
+CMV-0273,CMFTW_000794,Product B,clear_rice,140,r01c01,retained_clear,Rice,1.12,11200.0,,,,,,,,,,,,,368436.51785714284,3500768.839285714
+CMV-0274,CMFTW_000773,Product B,clear_rice,140,r01c01,retained_clear,Rice,2.0,20000.0,,,,,,,,,,,,,367644.65,3501043.55
+CMV-0275,CMFTW_000790,Product B,clear_rice,140,r01c01,retained_clear,Rice,0.98,9800.0,,,,,,,,,,,,,368313.97959183675,3500826.1224489794
+CMV-0276,CMFTW_000916,Product B,clear_rice,140,r01c02,retained_clear,Rice,2.84,28400.0,,,,,,,,,,,,,372630.21126760566,3501851.4788732394
+CMV-0277,CMFTW_000954,Product B,clear_rice,140,r01c05,retained_clear,Rice,0.37,3700.0,,,,,,,,,,,,,387620.9459459459,3500682.027027027
+CMV-0278,CMFTW_001305,Product B,clear_rice,140,r02c00,retained_clear,Rice,0.81,8100.0,,,,,,,,,,,,,365538.7037037037,3495517.592592593
+CMV-0279,CMFTW_001096,Product B,clear_rice,140,r02c00,retained_clear,Rice,0.8,8000.0,,,,,,,,,,,,,365659.375,3499380.25
+CMV-0280,CMFTW_000973,Product B,clear_rice,140,r02c00,retained_clear,Rice,0.75,7500.0,,,,,,,,,,,,,365324.6,3500213.2666666666
+CMV-0281,CMFTW_001061,Product B,clear_rice,140,r02c00,retained_clear,Rice,1.26,12600.0,,,,,,,,,,,,,365517.9365079365,3499683.253968254
+CMV-0282,CMFTW_001140,Product B,clear_rice,140,r02c00,retained_clear,Rice,0.85,8500.0,,,,,,,,,,,,,365167.4705882353,3498289.588235294
+CMV-0283,CMFTW_001242,Product B,clear_rice,140,r02c00,retained_clear,Rice,1.15,11500.0,,,,,,,,,,,,,363368.73913043475,3496615.8695652173
+CMV-0284,CMFTW_001161,Product B,clear_rice,140,r02c00,retained_clear,Rice,0.93,9300.0,,,,,,,,,,,,,365482.311827957,3498000.806451613
+CMV-0285,CMFTW_001696,Product B,clear_rice,140,r02c01,retained_clear,Rice,0.44,4400.0,,,,,,,,,,,,,372015.2272727273,3498250.0
+CMV-0286,CMFTW_001667,Product B,clear_rice,140,r02c01,retained_clear,Rice,0.62,6200.0,,,,,,,,,,,,,370508.3870967742,3498383.870967742
+CMV-0287,CMFTW_001962,Product B,clear_rice,140,r02c01,retained_clear,Rice,0.72,7200.0,,,,,,,,,,,,,368321.94444444444,3496892.0833333335
+CMV-0288,CMFTW_002081,Product B,clear_rice,140,r02c01,retained_clear,Rice,0.51,5100.0,,,,,,,,,,,,,371160.6862745098,3496265.588235294
+CMV-0289,CMFTW_002095,Product B,clear_rice,140,r02c01,retained_clear,Rice,0.96,9600.0,,,,,,,,,,,,,371727.6041666667,3496280.2083333335
+CMV-0290,CMFTW_001786,Product B,clear_rice,140,r02c01,retained_clear,Rice,0.29,2900.0,,,,,,,,,,,,,367559.1379310345,3497674.3103448274
+CMV-0291,CMFTW_001951,Product B,clear_rice,140,r02c01,retained_clear,Rice,0.62,6200.0,,,,,,,,,,,,,372025.6451612903,3496931.7741935486
+CMV-0292,CMFTW_001366,Product B,clear_rice,140,r02c01,retained_clear,Rice,0.27,2700.0,,,,,,,,,,,,,369024.6296296296,3499926.111111111
+CMV-0293,CMFTW_002025,Product B,clear_rice,140,r02c01,retained_clear,Rice,0.25,2500.0,,,,,,,,,,,,,369129.4,3496555.4
+CMV-0294,CMFTW_001872,Product B,clear_rice,140,r02c01,retained_clear,Rice,0.62,6200.0,,,,,,,,,,,,,367376.12903225806,3497337.580645161
+CMV-0295,CMFTW_001805,Product B,clear_rice,140,r02c01,retained_clear,Rice,1.34,13400.0,,,,,,,,,,,,,371042.2388059702,3497721.417910448
+CMV-0296,CMFTW_001705,Product B,clear_rice,140,r02c01,retained_clear,Rice,0.66,6600.0,,,,,,,,,,,,,369945.1515151515,3498220.4545454546
+CMV-0297,CMFTW_002128,Product B,clear_rice,140,r02c01,retained_clear,Rice,1.22,12200.0,,,,,,,,,,,,,369920.3278688525,3495951.7213114756
+CMV-0298,CMFTW_001688,Product B,clear_rice,140,r02c01,retained_clear,Rice,0.64,6400.0,,,,,,,,,,,,,370639.0625,3498297.03125
+CMV-0299,CMFTW_001526,Product B,clear_rice,140,r02c01,retained_clear,Rice,0.47,4700.0,,,,,,,,,,,,,370600.74468085106,3499223.936170213
+CMV-0300,CMFTW_001916,Product B,clear_rice,140,r02c01,retained_clear,Rice,0.38,3800.0,,,,,,,,,,,,,370287.36842105264,3497167.8947368423
+CMV-0301,CMFTW_001653,Product B,clear_rice,140,r02c01,retained_clear,Rice,0.49,4900.0,,,,,,,,,,,,,370817.6530612245,3498459.0816326533
+CMV-0302,CMFTW_002205,Product B,clear_rice,140,r02c02,retained_clear,Rice,0.5,5000.0,,,,,,,,,,,,,375155.2,3499909.4
+CMV-0303,CMFTW_002249,Product B,clear_rice,140,r02c02,retained_clear,Rice,0.91,9100.0,,,,,,,,,,,,,372781.7032967033,3499327.5274725277
+CMV-0304,CMFTW_002353,Product B,clear_rice,140,r02c02,retained_clear,Rice,1.06,10600.0,,,,,,,,,,,,,377238.11320754717,3497977.830188679
+CMV-0305,CMFTW_002297,Product B,clear_rice,140,r02c02,retained_clear,Rice,0.56,5600.0,,,,,,,,,,,,,375926.25,3498738.214285714
+CMV-0306,CMFTW_002535,Product B,clear_rice,140,r02c02,retained_clear,Rice,0.28,2800.0,,,,,,,,,,,,,373037.5,3496752.5
+CMV-0307,CMFTW_002647,Product B,clear_rice,140,r02c02,retained_clear,Rice,1.02,10200.0,,,,,,,,,,,,,376066.56862745096,3496331.0784313725
+CMV-0308,CMFTW_002610,Product B,clear_rice,140,r02c02,retained_clear,Rice,0.28,2800.0,,,,,,,,,,,,,376199.28571428574,3496407.5
+CMV-0309,CMFTW_002505,Product B,clear_rice,140,r02c02,retained_clear,Rice,0.34,3400.0,,,,,,,,,,,,,375152.9411764706,3496882.0588235296
+CMV-0310,CMFTW_002605,Product B,clear_rice,140,r02c02,retained_clear,Rice,0.76,7600.0,,,,,,,,,,,,,375506.1842105263,3496492.8947368423
+CMV-0311,CMFTW_002611,Product B,clear_rice,140,r02c02,retained_clear,Rice,0.52,5200.0,,,,,,,,,,,,,373973.8461538461,3496424.8076923075
+CMV-0312,CMFTW_002434,Product B,clear_rice,140,r02c02,retained_clear,Rice,0.46,4600.0,,,,,,,,,,,,,375436.0869565217,3497303.4782608696
+CMV-0313,CMFTW_002275,Product B,clear_rice,140,r02c02,retained_clear,Rice,0.93,9300.0,,,,,,,,,,,,,375110.8064516129,3499070.806451613
+CMV-0314,CMFTW_002875,Product B,clear_rice,140,r02c03,retained_clear,Rice,0.32,3200.0,,,,,,,,,,,,,378356.25,3498620.3125
+CMV-0315,CMFTW_003159,Product B,clear_rice,140,r02c03,retained_clear,Rice,0.72,7200.0,,,,,,,,,,,,,380096.80555555556,3496026.527777778
+CMV-0316,CMFTW_002905,Product B,clear_rice,140,r02c03,retained_clear,Rice,0.57,5700.0,,,,,,,,,,,,,378828.6842105263,3498205.5263157897
+CMV-0317,CMFTW_003241,Product B,clear_rice,140,r02c03,retained_clear,Rice,1.8,18000.0,,,,,,,,,,,,,378252.44444444444,3495522.6666666665
+CMV-0318,CMFTW_003114,Product B,clear_rice,140,r02c03,retained_clear,Rice,0.4,4000.0,,,,,,,,,,,,,379688.25,3496253.5
+CMV-0319,CMFTW_003153,Product B,clear_rice,140,r02c03,retained_clear,Rice,0.82,8200.0,,,,,,,,,,,,,378449.14634146343,3496105.1219512196
+CMV-0320,CMFTW_002991,Product B,clear_rice,140,r02c03,retained_clear,Rice,2.25,22500.0,,,,,,,,,,,,,379953.84444444446,3497071.888888889
+CMV-0321,CMFTW_003299,Product B,clear_rice,140,r02c04,retained_clear,Rice,3.55,35500.0,,,,,,,,,,,,,383731.05633802817,3497978.0422535213
+CMV-0322,CMFTW_003453,Product B,clear_rice,140,r02c04,retained_clear,Rice,0.58,5800.0,,,,,,,,,,,,,385176.0344827586,3495504.4827586208
+CMV-0323,CMFTW_003370,Product B,clear_rice,140,r02c04,retained_clear,Rice,1.45,14500.0,,,,,,,,,,,,,383598.724137931,3496825.4137931033
+CMV-0324,CMFTW_003490,Product B,clear_rice,140,r02c05,retained_clear,Rice,1.93,19300.0,,,,,,,,,,,,,390913.2383419689,3495532.305699482
+CMV-0325,CMFTW_003860,Product B,clear_rice,140,r03c00,retained_clear,Rice,0.71,7100.0,,,,,,,,,,,,,364091.76056338026,3491979.7887323946
+CMV-0326,CMFTW_003609,Product B,clear_rice,140,r03c00,retained_clear,Rice,0.36,3600.0,,,,,,,,,,,,,363456.1111111111,3494039.4444444445
+CMV-0327,CMFTW_004086,Product B,clear_rice,140,r03c00,retained_clear,Rice,0.3,3000.0,,,,,,,,,,,,,366315.0,3490360.0
+CMV-0328,CMFTW_003838,Product B,clear_rice,140,r03c00,retained_clear,Rice,0.53,5300.0,,,,,,,,,,,,,365166.88679245283,3492041.7924528304
+CMV-0329,CMFTW_004068,Product B,clear_rice,140,r03c00,retained_clear,Rice,0.34,3400.0,,,,,,,,,,,,,366297.9411764706,3490502.6470588236
+CMV-0330,CMFTW_003586,Product B,clear_rice,140,r03c00,retained_clear,Rice,0.56,5600.0,,,,,,,,,,,,,362779.46428571426,3494261.4285714286
+CMV-0331,CMFTW_003874,Product B,clear_rice,140,r03c00,retained_clear,Rice,1.46,14600.0,,,,,,,,,,,,,366725.9589041096,3491878.3561643837
+CMV-0332,CMFTW_003732,Product B,clear_rice,140,r03c00,retained_clear,Rice,0.6,6000.0,,,,,,,,,,,,,364037.5,3492813.8333333335
+CMV-0333,CMFTW_003994,Product B,clear_rice,140,r03c00,retained_clear,Rice,0.36,3600.0,,,,,,,,,,,,,364235.27777777775,3491162.5
+CMV-0334,CMFTW_004405,Product B,clear_rice,140,r03c01,retained_clear,Rice,1.55,15500.0,,,,,,,,,,,,,368505.77419354836,3492721.709677419
+CMV-0335,CMFTW_004636,Product B,clear_rice,140,r03c01,retained_clear,Rice,0.75,7500.0,,,,,,,,,,,,,370808.73333333334,3490968.466666667
+CMV-0336,CMFTW_004589,Product B,clear_rice,140,r03c01,retained_clear,Rice,1.59,15900.0,,,,,,,,,,,,,367823.8679245283,3491412.547169811
+CMV-0337,CMFTW_004101,Product B,clear_rice,140,r03c01,retained_clear,Rice,0.38,3800.0,,,,,,,,,,,,,370314.2105263158,3495240.263157895
+CMV-0338,CMFTW_004127,Product B,clear_rice,140,r03c01,retained_clear,Rice,0.36,3600.0,,,,,,,,,,,,,371019.1666666667,3494939.4444444445
+CMV-0339,CMFTW_004117,Product B,clear_rice,140,r03c01,retained_clear,Rice,0.32,3200.0,,,,,,,,,,,,,367782.8125,3495081.875
+CMV-0340,CMFTW_004553,Product B,clear_rice,140,r03c01,retained_clear,Rice,0.54,5400.0,,,,,,,,,,,,,369673.8888888889,3491592.037037037
+CMV-0341,CMFTW_004222,Product B,clear_rice,140,r03c01,retained_clear,Rice,0.75,7500.0,,,,,,,,,,,,,371965.4,3494116.3333333335
+CMV-0342,CMFTW_004580,Product B,clear_rice,140,r03c01,retained_clear,Rice,1.2,12000.0,,,,,,,,,,,,,367734.5833333333,3491476.8333333335
+CMV-0343,CMFTW_004302,Product B,clear_rice,140,r03c01,retained_clear,Rice,0.43,4300.0,,,,,,,,,,,,,372072.67441860464,3493250.3488372094
+CMV-0344,CMFTW_005346,Product B,clear_rice,140,r03c02,retained_clear,Rice,0.43,4300.0,,,,,,,,,,,,,376802.67441860464,3491120.8139534886
+CMV-0345,CMFTW_005018,Product B,clear_rice,140,r03c02,retained_clear,Rice,0.51,5100.0,,,,,,,,,,,,,372385.5882352941,3493050.294117647
+CMV-0346,CMFTW_005432,Product B,clear_rice,140,r03c02,retained_clear,Rice,0.32,3200.0,,,,,,,,,,,,,375770.0,3490561.875
+CMV-0347,CMFTW_005074,Product B,clear_rice,140,r03c02,retained_clear,Rice,0.46,4600.0,,,,,,,,,,,,,376988.04347826086,3492715.434782609
+CMV-0348,CMFTW_004960,Product B,clear_rice,140,r03c02,retained_clear,Rice,0.53,5300.0,,,,,,,,,,,,,373276.69811320753,3493529.3396226414
+CMV-0349,CMFTW_005243,Product B,clear_rice,140,r03c02,retained_clear,Rice,1.18,11800.0,,,,,,,,,,,,,373443.30508474575,3491834.745762712
+CMV-0350,CMFTW_005233,Product B,clear_rice,140,r03c02,retained_clear,Rice,0.26,2600.0,,,,,,,,,,,,,372708.46153846156,3491850.769230769
+CMV-0351,CMFTW_004922,Product B,clear_rice,140,r03c02,retained_clear,Rice,0.62,6200.0,,,,,,,,,,,,,372956.93548387097,3493738.2258064514
+CMV-0352,CMFTW_005381,Product B,clear_rice,140,r03c02,retained_clear,Rice,1.36,13600.0,,,,,,,,,,,,,374318.1617647059,3490927.4264705884
+CMV-0353,CMFTW_004715,Product B,clear_rice,140,r03c02,retained_clear,Rice,1.22,12200.0,,,,,,,,,,,,,375890.40983606555,3495079.180327869
+CMV-0354,CMFTW_005231,Product B,clear_rice,140,r03c02,retained_clear,Rice,0.41,4100.0,,,,,,,,,,,,,373673.53658536583,3491841.0975609757
+CMV-0355,CMFTW_005699,Product B,clear_rice,140,r03c03,retained_clear,Rice,0.28,2800.0,,,,,,,,,,,,,380821.78571428574,3493913.5714285714
+CMV-0356,CMFTW_005642,Product B,clear_rice,140,r03c03,retained_clear,Rice,0.33,3300.0,,,,,,,,,,,,,377755.9090909091,3494227.727272727
+CMV-0357,CMFTW_005834,Product B,clear_rice,140,r03c03,retained_clear,Rice,1.19,11900.0,,,,,,,,,,,,,379992.3109243697,3493014.5798319327
+CMV-0358,CMFTW_005973,Product B,clear_rice,140,r03c03,retained_clear,Rice,0.81,8100.0,,,,,,,,,,,,,379892.5308641975,3491739.5679012346
+CMV-0359,CMFTW_005992,Product B,clear_rice,140,r03c03,retained_clear,Rice,0.72,7200.0,,,,,,,,,,,,,379845.55555555556,3491519.5833333335
+CMV-0360,CMFTW_006026,Product B,clear_rice,140,r03c03,retained_clear,Rice,0.39,3900.0,,,,,,,,,,,,,378554.23076923075,3491326.794871795
+CMV-0361,CMFTW_006003,Product B,clear_rice,140,r03c03,retained_clear,Rice,0.39,3900.0,,,,,,,,,,,,,378280.89743589744,3491423.205128205
+CMV-0362,CMFTW_006095,Product B,clear_rice,140,r03c03,retained_clear,Rice,0.31,3100.0,,,,,,,,,,,,,381155.0,3490763.709677419
+CMV-0363,CMFTW_006086,Product B,clear_rice,140,r03c03,retained_clear,Rice,0.59,5900.0,,,,,,,,,,,,,380942.1186440678,3490876.525423729
+CMV-0364,CMFTW_005486,Product B,clear_rice,140,r03c03,retained_clear,Rice,0.43,4300.0,,,,,,,,,,,,,378339.18604651163,3495192.906976744
+CMV-0365,CMFTW_005959,Product B,clear_rice,140,r03c03,retained_clear,Rice,0.36,3600.0,,,,,,,,,,,,,377936.94444444444,3491826.388888889
+CMV-0366,CMFTW_005495,Product B,clear_rice,140,r03c03,retained_clear,Rice,0.27,2700.0,,,,,,,,,,,,,381011.6666666667,3495115.0
+CMV-0367,CMFTW_006645,Product B,clear_rice,140,r03c04,retained_clear,Rice,0.45,4500.0,,,,,,,,,,,,,386287.44444444444,3492760.111111111
+CMV-0368,CMFTW_006546,Product B,clear_rice,140,r03c04,retained_clear,Rice,0.87,8700.0,,,,,,,,,,,,,383404.5402298851,3493217.7586206896
+CMV-0369,CMFTW_006989,Product B,clear_rice,140,r03c04,retained_clear,Rice,0.48,4800.0,,,,,,,,,,,,,385626.25,3490914.375
+CMV-0370,CMFTW_006813,Product B,clear_rice,140,r03c04,retained_clear,Rice,0.33,3300.0,,,,,,,,,,,,,383921.0606060606,3491945.0
+CMV-0371,CMFTW_006796,Product B,clear_rice,140,r03c04,retained_clear,Rice,0.56,5600.0,,,,,,,,,,,,,385828.39285714284,3492055.0
+CMV-0372,CMFTW_006568,Product B,clear_rice,140,r03c04,retained_clear,Rice,0.88,8800.0,,,,,,,,,,,,,383588.1818181818,3493116.7045454546
+CMV-0373,CMFTW_006491,Product B,clear_rice,140,r03c04,retained_clear,Rice,0.28,2800.0,,,,,,,,,,,,,384994.28571428574,3493380.0
+CMV-0374,CMFTW_006914,Product B,clear_rice,140,r03c04,retained_clear,Rice,0.39,3900.0,,,,,,,,,,,,,384944.4871794872,3491348.5897435895
+CMV-0375,CMFTW_006304,Product B,clear_rice,140,r03c04,retained_clear,Rice,0.35,3500.0,,,,,,,,,,,,,383493.85714285716,3494115.285714286
+CMV-0376,CMFTW_006696,Product B,clear_rice,140,r03c04,retained_clear,Rice,0.41,4100.0,,,,,,,,,,,,,382875.9756097561,3492533.536585366
+CMV-0377,CMFTW_006544,Product B,clear_rice,140,r03c04,retained_clear,Rice,0.26,2600.0,,,,,,,,,,,,,382506.1538461539,3493155.3846153845
+CMV-0378,CMFTW_006990,Product B,clear_rice,140,r03c04,retained_clear,Rice,0.9,9000.0,,,,,,,,,,,,,384789.55555555556,3490977.6666666665
+CMV-0379,CMFTW_006867,Product B,clear_rice,140,r03c04,retained_clear,Rice,0.35,3500.0,,,,,,,,,,,,,386442.71428571426,3491633.285714286
+CMV-0380,CMFTW_006954,Product B,clear_rice,140,r03c04,retained_clear,Rice,0.5,5000.0,,,,,,,,,,,,,383595.4,3491048.8
+CMV-0381,CMFTW_006589,Product B,clear_rice,140,r03c04,retained_clear,Rice,0.5,5000.0,,,,,,,,,,,,,385808.8,3493015.6
+CMV-0382,CMFTW_007303,Product B,clear_rice,140,r03c05,retained_clear,Rice,2.89,28900.0,,,,,,,,,,,,,388076.937716263,3491792.785467128
+CMV-0383,CMFTW_007421,Product B,clear_rice,140,r03c05,retained_clear,Rice,0.43,4300.0,,,,,,,,,,,,,390638.488372093,3490878.2558139535
+CMV-0384,CMFTW_007232,Product B,clear_rice,140,r03c05,retained_clear,Rice,0.58,5800.0,,,,,,,,,,,,,388844.1379310345,3492622.9310344825
+CMV-0385,CMFTW_007334,Product B,clear_rice,140,r03c05,retained_clear,Rice,1.3,13000.0,,,,,,,,,,,,,387933.46153846156,3491512.6153846155
+CMV-0386,CMFTW_007186,Product B,clear_rice,140,r03c05,retained_clear,Rice,0.25,2500.0,,,,,,,,,,,,,387595.0,3493175.0
+CMV-0387,CMFTW_007338,Product B,clear_rice,140,r03c05,retained_clear,Rice,1.15,11500.0,,,,,,,,,,,,,389309.8695652174,3491443.8695652173
+CMV-0388,CMFTW_007273,Product B,clear_rice,140,r03c05,retained_clear,Rice,0.56,5600.0,,,,,,,,,,,,,389033.21428571426,3491949.6428571427
+CMV-0389,CMFTW_007403,Product B,clear_rice,140,r03c05,retained_clear,Rice,0.6,6000.0,,,,,,,,,,,,,387597.6666666667,3490966.8333333335
+CMV-0390,CMFTW_007333,Product B,clear_rice,140,r03c05,retained_clear,Rice,0.99,9900.0,,,,,,,,,,,,,389806.51515151514,3491473.6868686867
+CMV-0391,CMFTW_007523,Product B,clear_rice,140,r04c00,retained_clear,Rice,0.31,3100.0,,,,,,,,,,,,,365492.4193548387,3489787.2580645164
+CMV-0392,CMFTW_007567,Product B,clear_rice,140,r04c01,retained_clear,Rice,1.55,15500.0,,,,,,,,,,,,,371011.3870967742,3490168.1612903224
+CMV-0393,CMFTW_007601,Product B,clear_rice,140,r04c01,retained_clear,Rice,0.71,7100.0,,,,,,,,,,,,,371879.5070422535,3489637.8169014086
+CMV-0394,CMFTW_007778,Product B,clear_rice,140,r04c02,retained_clear,Rice,0.78,7800.0,,,,,,,,,,,,,377004.74358974356,3489142.6923076925
+CMV-0395,CMFTW_007670,Product B,clear_rice,140,r04c02,retained_clear,Rice,0.35,3500.0,,,,,,,,,,,,,376327.28571428574,3490174.4285714286
+CMV-0396,CMFTW_007844,Product B,clear_rice,140,r04c03,retained_clear,Rice,0.91,9100.0,,,,,,,,,,,,,381816.978021978,3489983.3516483516
+CMV-0397,CMFTW_007872,Product B,clear_rice,140,r04c03,retained_clear,Rice,0.64,6400.0,,,,,,,,,,,,,380964.6875,3489739.84375
+CMV-0398,CMFTW_008092,Product B,clear_rice,140,r04c04,retained_clear,Rice,0.29,2900.0,,,,,,,,,,,,,386807.4137931034,3489254.6551724137
+CMV-0399,CMFTW_008209,Product B,clear_rice,140,r04c05,retained_clear,Rice,0.52,5200.0,,,,,,,,,,,,,387418.8461538461,3489527.8846153845
+CMV-0400,CMFTW_008199,Product B,clear_rice,140,r04c05,retained_clear,Rice,1.03,10300.0,,,,,,,,,,,,,389064.32038834953,3489729.854368932

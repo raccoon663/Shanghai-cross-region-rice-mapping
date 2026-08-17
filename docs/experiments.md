@@ -1,0 +1,88 @@
+# Experiments and results
+
+## Overview
+
+| Experiment | Evaluation | Main result | Limitation |
+|---|---|---|---|
+| Source representation | Jiangxi source test | S2 F1 0.930; S1 F1 0.921; S1/S2 fusion F1 0.947; AlphaEarth F1 0.962 | Source-domain performance only |
+| Zero-shot transfer | Shanghai official-product weak reference | Temporal fusion ≈0.813; AlphaEarth ≈0.836 | Not independent Shanghai accuracy; ordering reverses on a stricter subset |
+| Low-label adaptation | Target-label budgets | At 500 labels, temporal target-only ≈0.854 and AlphaEarth ≈0.895 | Labels are weak-reference samples |
+| OOD ranking | Held Shanghai spatial blocks | Distance error AUROC up to 0.800; nearest/farthest 10-NN deciles ≈1.1%/50.2% disagreement | Predicts weak-reference disagreement, not verified field error |
+| Field model comparison | Same label-free 5 × 5 km AOI | FTW 231 objects vs DAv2 116; mean area 5.647 vs 13.990 ha | Workflow comparison, not architecture-only isolation |
+| Parcel mapping | Two AOIs and 30-tile prototype | Strong mean/median consistency and large fragmentation reduction | Spatial coherence is not rice accuracy |
+| Parcel QA | Label-independent rules | 8,227 raw objects → 7,330 parcels retained for mapping | Removed objects/pixels are not automatically classification errors |
+
+Machine-readable selected results are under [`results/`](../results/README.md).
+
+## Representation transfer
+
+On the Jiangxi source test, S1/S2 temporal fusion improves on either sensor alone, while AlphaEarth gives the strongest source-domain result. Transfer to Shanghai is harder. On the full weak-reference validation set, AlphaEarth reaches approximately 0.836 F1 compared with 0.813 for temporal fusion.
+
+That ordering is not universal. On a stricter interior/large-patch subset derived from the same reference product, temporal fusion reaches 0.749 and AlphaEarth 0.735. I therefore treat the AlphaEarth gain as reference-sensitive rather than evidence that one representation is always better.
+
+With 500 distributed Shanghai weak labels, target-only temporal and AlphaEarth models reach approximately 0.854 and 0.895 F1. Across the larger repeated-seed analysis, the corresponding means are approximately 0.856 and 0.898. Spatially clustered supervision is less stable than distributing labels across blocks.
+
+Several adaptation attempts did not improve the result. Three rounds of high-confidence pseudo-labeling reduce temporal agreement from 0.813 to 0.795, suggesting error reinforcement under domain shift. Directly concatenating the 92 temporal features with the 64 AlphaEarth dimensions also overfits at small label budgets. PCA compression reduces the penalty but still does not beat AlphaEarth alone.
+
+## OOD and calibration
+
+A feature-only Jiangxi-versus-Shanghai domain classifier reaches AUROC near 1, while permutation controls return to approximately 0.5. This confirms that the two regions are easily separable in representation space.
+
+However, domain-classifier probability is not a useful score for ranking which Shanghai samples are most likely to fail: its error AUROC is 0.415. Distance from the Jiangxi training distribution performs much better, with error AUROC up to 0.800 and spatial-block Spearman up to 0.843.
+
+The nearest and farthest 10-NN OOD deciles show approximately 1.1% and 50.2% weak-reference disagreement. When a risk threshold selected on tuning blocks is transferred to held spatial blocks, OOD-only rejection retains 49.4% coverage with 5.7% disagreement.
+
+These numbers are useful for target-domain triage, but they are still evaluated against an official-product weak reference rather than independent field truth.
+
+## DAv2 versus FTW
+
+DAv2 completed CUDA inference on the test AOI, but the resulting field objects were too coarse for the parcel-mapping workflow. The 116 cleaned objects had a mean area of 13.99 ha, 11 objects exceeded 50 ha, and the largest object reached 201.96 ha. Several objects also included substantial non-crop context.
+
+FTW produced 231 cleaned objects on the same 5 × 5 km AOI. Median area fell from 2.305 to 1.650 ha, mean area from 13.990 to 5.647 ha, non-crop-dominant objects from 27.59% to 9.52%, and Dynamic World water capture from 41.94% to 0.48%.
+
+FTW is not perfect: some 50–133 ha blocks remain merged and some village/building structures are still detected. The comparison also uses different model inputs—FTW uses two-season RGB+NIR while DAv2 uses RGB—so the difference cannot be attributed to architecture alone.
+
+## Independent AOI check
+
+A second 5 × 5 km AOI, 12.98 km from the first and with a different land-cover mixture, was used to check whether the parcel behavior carried over spatially. It produced 577 accepted parcels, a mean/median probability correlation of 0.99487, 98.61% agreement among the three parcel summaries, and an 87.29% reduction in neighbor disagreement.
+
+Among parcels additionally removed by the Dynamic World M1b gate, 72.38% were built-majority. These results supported moving to a larger Chongming prototype, but not a claim of full-Shanghai deployment accuracy.
+
+## Chongming prototype and parcel QA
+
+Running the workflow over 30 tiles produced 8,227 reconciled raw parcels. At that scale, several failure cases became obvious: very large coastal/water objects, greenhouse and built mosaics, deployment-edge artifacts, six residual overlap pairs, and clusters of tile warnings.
+
+The parcel QA rules reduce these problems without using Shanghai rice labels to tune the classifier. The resulting product retains 7,330 parcels for mapping and keeps excluded or ambiguous objects separately so that the filtering process remains inspectable.
+
+| Metric | Raw objects | After QA |
+|---|---:|---:|
+| Parcel count | 8,227 | 7,330 |
+| Parcel area | 16,020.72 ha | 8,287.04 ha |
+| Water-dominant area | 5,477.04 ha | 56.65 ha |
+| Built-dominant area | 654.99 ha | 305.94 ha |
+| Tree-dominant area | 745.52 ha | 444.23 ha |
+| Objects >20 ha | 69 | 40 |
+| Objects >50 ha | 28 | 0 |
+| Residual overlap pairs | 6 | 0 |
+| Warning tiles | 26/30 | 13/30 |
+
+The large area reduction is mostly caused by enormous coastal and water objects in the raw field output. It should not be interpreted as measured false-positive removal.
+
+## Pixel-to-parcel ablation
+
+M0 predicts 31,079.76 ha above the inherited rice threshold. Before the final QA step, M1 and M1b retain 9,919.00 and 8,399.88 ha; after QA, they retain 7,728.64 and 6,786.84 ha. These values describe how field geometry and land-cover gates change mapped extent.
+
+For parcel aggregation, the raw M2 product has mean/median correlation 0.991681, three-summary agreement 98.50%, and a 92.62% reduction in neighboring prediction disagreement. After QA, these values are 0.991621, 98.65%, and 90.74% respectively.
+
+The final parcel output contains 4,324 Rice, 545 Non-rice, and 2,461 Uncertain/QA-risk parcels. These are model predictions awaiting independent validation.
+
+## What did not work
+
+- DAv2 ran successfully but produced objects that were too coarse for this parcel workflow.
+- A nearly perfect domain classifier did not identify which target samples were risky.
+- Pseudo-labeling reinforced target-domain errors instead of improving transfer.
+- Raw high-dimensional Sentinel + AlphaEarth concatenation overfit when only a few target labels were available.
+- Gating and parcel QA strongly change mapped area, but removed area cannot be counted as labeled error.
+- FTW provides useful agricultural structure, but it is not cadastral field truth.
+
+The project chronology is in [`experiment_history.md`](experiment_history.md), methods are described in [`methodology.md`](methodology.md), and the independent evaluation plan is in [`validation.md`](validation.md).

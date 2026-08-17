@@ -1,0 +1,71 @@
+{
+  "type": "FeatureCollection",
+  "name": "phase3b_aoi_2",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:EPSG::32651"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "aoi_id": "chongming_field_test_5km_phase3b_aoi2_label_free",
+        "selection_method": "frozen_dynamic_world_landcover_mixture_v2_with_nonoverlap",
+        "selection_data": "2022 Dynamic World temporal mode only; no rice probability values or rice labels inspected",
+        "selection_timestamp": "2026-08-14T13:45:00+08:00",
+        "rice_labels_used": false,
+        "rice_prediction_values_used": false,
+        "width_m": 5000,
+        "height_m": 5000,
+        "crs_epsg": 32651,
+        "wgs84_lon_min": 121.7917709569266,
+        "wgs84_lat_min": 31.55116282402845,
+        "wgs84_lon_max": 121.84388336143077,
+        "wgs84_lat_max": 31.596752602948634,
+        "row": 700,
+        "col": 1150,
+        "west": 385320.0,
+        "south": 3491320.0,
+        "east": 390320.0,
+        "north": 3496320.0,
+        "crop_fraction": 0.442176,
+        "water_fraction": 0.159936,
+        "built_fraction": 0.25048,
+        "tree_grass_shrub_fraction": 0.1368,
+        "crop_edge_density": 0.146896,
+        "class_diversity_ge_1pct": 4,
+        "distance_from_aoi1_m": 12980.75498574717,
+        "selection_score": 2.3836032
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              390320.0,
+              3491320.0
+            ],
+            [
+              390320.0,
+              3496320.0
+            ],
+            [
+              385320.0,
+              3496320.0
+            ],
+            [
+              385320.0,
+              3491320.0
+            ],
+            [
+              390320.0,
+              3491320.0
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

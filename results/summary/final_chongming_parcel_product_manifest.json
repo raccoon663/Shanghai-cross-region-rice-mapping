@@ -1,0 +1,412 @@
+{
+  "manifest_version": "1.0",
+  "product_version": "final_chongming_parcel_prototype_v1_20260814",
+  "frozen_at_utc": "2026-08-14T11:10:29.106312+00:00",
+  "scope": "Chongming prototype only; no all-Shanghai extension",
+  "scientific_result_lock": "Artifacts listed below are frozen scientific results. Figures, tables, and reports must reference them without rewriting them.",
+  "provenance": {
+    "phase5_safeguard_contract_sha256": "39c1b1f8b54ad6b85cebcea4b1626ceba7b2dbc5125c03b43adc0a16c17a77ba",
+    "phase4_raw_parcel_sha256": "b41c4fbd825057efe4dca4743f4aca79b524446d7e7b11fc0f3cc9be96dce194",
+    "classifier": "unchanged Jiangxi-trained source-only RF; no Shanghai retraining",
+    "field_model": "frozen FTW PRUE workflow; no Phase-5 or final-phase tuning",
+    "safeguards": "label-independent Phase-5 geometry/land-cover/deployment safeguards"
+  },
+  "claim_limits": [
+    "Deployment and structural QA metrics are not independent Shanghai rice accuracy.",
+    "No Shanghai rice reference labels were used to tune FTW or safeguards.",
+    "Independent parcel validation remains pending."
+  ],
+  "artifacts": {
+    "product_A_raw_ftw_parcels": {
+      "path": "outputs/final_chongming_parcel_product/A_raw_ftw_parcels.gpkg",
+      "sha256": "b41c4fbd825057efe4dca4743f4aca79b524446d7e7b11fc0f3cc9be96dce194",
+      "bytes": 10276864,
+      "metadata": {
+        "feature_count": 8227,
+        "crs": "EPSG:32651",
+        "bounds": [
+          362320.0,
+          3488900.0,
+          391060.0,
+          3510320.0
+        ],
+        "columns": [
+          "id",
+          "metrics:area",
+          "metrics:perimeter",
+          "dw_water_fraction",
+          "dw_trees_fraction",
+          "dw_grass_fraction",
+          "dw_flooded_vegetation_fraction",
+          "dw_crops_fraction",
+          "dw_shrub_and_scrub_fraction",
+          "dw_built_fraction",
+          "dw_bare_fraction",
+          "dw_snow_and_ice_fraction",
+          "dw_dominant",
+          "source_tile_id",
+          "owner_core_flag",
+          "core_crossing_flag",
+          "source_halo_edge_flag",
+          "area_m2",
+          "source_local_index",
+          "temp_id",
+          "rep_distance_to_halo_edge_m",
+          "cross_tile_reconciliation_flag",
+          "duplicate_versions_removed",
+          "field_id",
+          "area_ha",
+          "deployment_edge_flag",
+          "n_valid_pixels",
+          "rice_prob_mean",
+          "rice_prob_median",
+          "rice_prob_std",
+          "rice_positive_fraction",
+          "tile_disagreement_fraction",
+          "large_parcel_flag",
+          "very_large_parcel_flag",
+          "low_pixel_count_flag",
+          "built_dominant_flag",
+          "tree_dominant_flag",
+          "water_dominant_flag",
+          "tile_disagreement_flag",
+          "class_by_mean",
+          "class_by_median",
+          "class_by_positive_fraction",
+          "summary_disagreement_flag",
+          "qa_flag_count",
+          "parcel_class",
+          "geometry"
+        ]
+      }
+    },
+    "product_B_deployment_safe_parcels": {
+      "path": "outputs/final_chongming_parcel_product/B_deployment_safe_parcels.gpkg",
+      "sha256": "a2b808d72d2b387c17b76f9ec6f6b7f19f37fb4f96d7fef29cb751f7595fdee4",
+      "bytes": 17145856,
+      "metadata": {
+        "feature_count": 7330,
+        "crs": "EPSG:32651",
+        "bounds": [
+          362320.0,
+          3488900.0,
+          391060.0,
+          3510310.0
+        ],
+        "columns": [
+          "id",
+          "metrics:area",
+          "metrics:perimeter",
+          "dw_water_fraction",
+          "dw_trees_fraction",
+          "dw_grass_fraction",
+          "dw_flooded_vegetation_fraction",
+          "dw_crops_fraction",
+          "dw_shrub_and_scrub_fraction",
+          "dw_built_fraction",
+          "dw_bare_fraction",
+          "dw_snow_and_ice_fraction",
+          "dw_dominant",
+          "source_tile_id",
+          "owner_core_flag",
+          "core_crossing_flag",
+          "source_halo_edge_flag",
+          "area_m2",
+          "source_local_index",
+          "temp_id",
+          "rep_distance_to_halo_edge_m",
+          "cross_tile_reconciliation_flag",
+          "duplicate_versions_removed",
+          "field_id",
+          "area_ha",
+          "deployment_edge_flag",
+          "n_valid_pixels",
+          "rice_prob_mean",
+          "rice_prob_median",
+          "rice_prob_std",
+          "rice_positive_fraction",
+          "tile_disagreement_fraction",
+          "large_parcel_flag",
+          "very_large_parcel_flag",
+          "low_pixel_count_flag",
+          "built_dominant_flag",
+          "tree_dominant_flag",
+          "water_dominant_flag",
+          "tile_disagreement_flag",
+          "class_by_mean",
+          "class_by_median",
+          "class_by_positive_fraction",
+          "summary_disagreement_flag",
+          "qa_flag_count",
+          "parcel_class",
+          "phase4_area_m2",
+          "phase4_geometry_wkt",
+          "geometry_repaired_flag",
+          "repaired_area_m2",
+          "parcel_exclusion_reason",
+          "parcel_geometry_risk",
+          "parcel_landcover_risk",
+          "parcel_valid_for_mapping",
+          "safeguard_QA_flag",
+          "mapping_status",
+          "geometry"
+        ]
+      }
+    },
+    "product_C_QA_risk_excluded_parcels": {
+      "path": "outputs/final_chongming_parcel_product/C_QA_risk_only.gpkg",
+      "sha256": "a49ccfac40c5aea76376df6ef52f64112411d4b016daf8eaadae2ad269b86c61",
+      "bytes": 5398528,
+      "metadata": {
+        "feature_count": 2090,
+        "crs": "EPSG:32651",
+        "bounds": [
+          362320.0,
+          3488900.0,
+          391060.0,
+          3510320.0
+        ],
+        "columns": [
+          "id",
+          "metrics:area",
+          "metrics:perimeter",
+          "dw_water_fraction",
+          "dw_trees_fraction",
+          "dw_grass_fraction",
+          "dw_flooded_vegetation_fraction",
+          "dw_crops_fraction",
+          "dw_shrub_and_scrub_fraction",
+          "dw_built_fraction",
+          "dw_bare_fraction",
+          "dw_snow_and_ice_fraction",
+          "dw_dominant",
+          "source_tile_id",
+          "owner_core_flag",
+          "core_crossing_flag",
+          "source_halo_edge_flag",
+          "area_m2",
+          "source_local_index",
+          "temp_id",
+          "rep_distance_to_halo_edge_m",
+          "cross_tile_reconciliation_flag",
+          "duplicate_versions_removed",
+          "field_id",
+          "area_ha",
+          "deployment_edge_flag",
+          "n_valid_pixels",
+          "rice_prob_mean",
+          "rice_prob_median",
+          "rice_prob_std",
+          "rice_positive_fraction",
+          "tile_disagreement_fraction",
+          "large_parcel_flag",
+          "very_large_parcel_flag",
+          "low_pixel_count_flag",
+          "built_dominant_flag",
+          "tree_dominant_flag",
+          "water_dominant_flag",
+          "tile_disagreement_flag",
+          "class_by_mean",
+          "class_by_median",
+          "class_by_positive_fraction",
+          "summary_disagreement_flag",
+          "qa_flag_count",
+          "parcel_class",
+          "phase4_area_m2",
+          "phase4_geometry_wkt",
+          "geometry_repaired_flag",
+          "repaired_area_m2",
+          "parcel_exclusion_reason",
+          "parcel_geometry_risk",
+          "parcel_landcover_risk",
+          "parcel_valid_for_mapping",
+          "safeguard_QA_flag",
+          "mapping_status",
+          "geometry"
+        ]
+      }
+    },
+    "final_M0_raw_probability": {
+      "path": "outputs/final_chongming_parcel_product/M0_raw_probability.tif",
+      "sha256": "5c51f10da4ec7138fdcc63541c407c49655d5d38a58f8bafb5667299b7d51301",
+      "bytes": 5261948,
+      "metadata": {
+        "crs": "EPSG:32651",
+        "bounds": [
+          362320.0,
+          3488900.0,
+          391060.0,
+          3510320.0
+        ],
+        "shape": [
+          1071,
+          1437
+        ],
+        "count": 1,
+        "dtype": [
+          "float32"
+        ],
+        "nodata": -9999.0,
+        "transform": [
+          20.0,
+          0.0,
+          362320.0,
+          0.0,
+          -20.0,
+          3510320.0
+        ]
+      }
+    },
+    "final_safe_M1_probability": {
+      "path": "outputs/final_chongming_parcel_product/M1_deployment_safe_probability.tif",
+      "sha256": "e557b536659407fe449ccba080eb49efec4336f5b116a1436ae54f33b4232f34",
+      "bytes": 921047,
+      "metadata": {
+        "crs": "EPSG:32651",
+        "bounds": [
+          362320.0,
+          3488900.0,
+          391060.0,
+          3510320.0
+        ],
+        "shape": [
+          1071,
+          1437
+        ],
+        "count": 1,
+        "dtype": [
+          "float32"
+        ],
+        "nodata": -9999.0,
+        "transform": [
+          20.0,
+          0.0,
+          362320.0,
+          0.0,
+          -20.0,
+          3510320.0
+        ]
+      }
+    },
+    "final_safe_M1b_probability": {
+      "path": "outputs/final_chongming_parcel_product/M1b_deployment_safe_probability.tif",
+      "sha256": "aedc4e4054c37de3ff6bca1bb1981071987d0e4d68b43bad251297df5ca19cc2",
+      "bytes": 784166,
+      "metadata": {
+        "crs": "EPSG:32651",
+        "bounds": [
+          362320.0,
+          3488900.0,
+          391060.0,
+          3510320.0
+        ],
+        "shape": [
+          1071,
+          1437
+        ],
+        "count": 1,
+        "dtype": [
+          "float32"
+        ],
+        "nodata": -9999.0,
+        "transform": [
+          20.0,
+          0.0,
+          362320.0,
+          0.0,
+          -20.0,
+          3510320.0
+        ]
+      }
+    },
+    "final_parcel_probability": {
+      "path": "outputs/final_chongming_parcel_product/final_parcel_probability.gpkg",
+      "sha256": "0066ce40e24a53b9a2ea2094f53ae8aa640734ec8a2c346ea47fafd3342ed32d",
+      "bytes": 8384512,
+      "metadata": {
+        "feature_count": 7330,
+        "crs": "EPSG:32651",
+        "bounds": [
+          362320.0,
+          3488900.0,
+          391060.0,
+          3510310.0
+        ],
+        "columns": [
+          "field_id",
+          "source_tile_id",
+          "area_ha",
+          "repaired_area_m2",
+          "mapping_status",
+          "n_valid_pixels_phase5",
+          "rice_prob_mean_phase5",
+          "rice_prob_median_phase5",
+          "rice_prob_std_phase5",
+          "rice_positive_fraction_phase5",
+          "geometry"
+        ]
+      }
+    },
+    "final_parcel_class": {
+      "path": "outputs/final_chongming_parcel_product/final_parcel_class.gpkg",
+      "sha256": "2543b731a5a771188f78c16744fdceb0fb085d95f0d5cae37f180acee8a89d81",
+      "bytes": 8347648,
+      "metadata": {
+        "feature_count": 7330,
+        "crs": "EPSG:32651",
+        "bounds": [
+          362320.0,
+          3488900.0,
+          391060.0,
+          3510310.0
+        ],
+        "columns": [
+          "field_id",
+          "source_tile_id",
+          "area_ha",
+          "repaired_area_m2",
+          "mapping_status",
+          "class_by_mean_phase5",
+          "class_by_median_phase5",
+          "class_by_positive_fraction_phase5",
+          "summary_disagreement_phase5",
+          "parcel_class_phase5",
+          "geometry"
+        ]
+      }
+    },
+    "final_parcel_QA": {
+      "path": "outputs/final_chongming_parcel_product/final_parcel_QA.gpkg",
+      "sha256": "6a0d1df300849569f8fdfd5bdd190ff9e65ae78785af2471376c68f05c46b2dc",
+      "bytes": 8216576,
+      "metadata": {
+        "feature_count": 7330,
+        "crs": "EPSG:32651",
+        "bounds": [
+          362320.0,
+          3488900.0,
+          391060.0,
+          3510310.0
+        ],
+        "columns": [
+          "field_id",
+          "source_tile_id",
+          "area_ha",
+          "repaired_area_m2",
+          "mapping_status",
+          "parcel_valid_for_mapping",
+          "parcel_exclusion_reason",
+          "parcel_geometry_risk",
+          "parcel_landcover_risk",
+          "safeguard_QA_flag",
+          "phase5_qa_flag_count",
+          "geometry_repaired_flag",
+          "deployment_edge_flag",
+          "cross_tile_reconciliation_flag",
+          "tile_disagreement_fraction",
+          "geometry"
+        ]
+      }
+    }
+  }
+}

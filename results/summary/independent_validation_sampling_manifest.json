@@ -1,0 +1,27 @@
+{
+  "design_version": "chongming_parcel_validation_v1",
+  "frozen_before_labels": true,
+  "random_seed": 20260814,
+  "sample_n": 400,
+  "crs": "EPSG:32651",
+  "stratum_counts": {
+    "clear_rice": 140,
+    "retained_QA_risk": 80,
+    "clear_non_rice": 60,
+    "excluded_built_greenhouse": 50,
+    "excluded_water_coastal": 30,
+    "large_or_extreme": 20,
+    "cross_tile_or_edge": 20
+  },
+  "files": {
+    "gpkg": {
+      "path": "outputs/final_chongming_parcel_product/independent_validation_sample_400.gpkg",
+      "sha256": "a351535eb1af0914e7819d4cf6a6fd77875a4ee95d090d73f921b9cafcc4e3b2"
+    },
+    "csv": {
+      "path": "outputs/final_chongming_parcel_product/tables/independent_validation_sample_400.csv",
+      "sha256": "a2072fd18b7c2be77d5f7cca3e0ee7da903c52192801b1155f29aba8d7ac47ae"
+    }
+  },
+  "label_fields_initially_blank": true
+}

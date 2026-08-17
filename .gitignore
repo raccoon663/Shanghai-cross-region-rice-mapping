@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Local environments and scratch products
+work/
+tmp/
+deliverables/
+
+# Runtime products and internal execution documentation
+outputs/
+reports/
+inputs/
+PROJECT_STATUS.md
+
+# Publish only the curated lightweight result layer
+results/*
+!results/README.md
+!results/summary/
+!results/summary/**
+!results/tables/
+!results/tables/**
+!results/selected_outputs/
+!results/selected_outputs/**
+
+# Reconstructed/public-data exports (obtain through GEE; never commit large data)
+data/raw/*
+!data/raw/.gitkeep
+data/field_delineation_test_aoi_label_aided_invalidated_20260814.geojson
+
+# Large binary experiment artifacts
+*.tif
+*.tiff
+*.joblib
+*.pt
+*.zip
+*.docx
+*.pdf
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

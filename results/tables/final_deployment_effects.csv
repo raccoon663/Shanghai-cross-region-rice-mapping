@@ -1,0 +1,17 @@
+metric,raw_phase4,deployment_safe_phase5,unit
+parcel_count,8227.0,7330.0,count
+retained_parcel_fraction,1.0,0.8909687613954054,fraction
+parcel_area,16020.72,8287.04,ha
+M1_predicted_rice_area,9919.0,7728.64,ha
+M1b_predicted_rice_area,8399.88,6786.84,ha
+water_leakage,5477.04,56.65,ha
+built_leakage,654.99,305.94,ha
+tree_leakage,745.52,444.23,ha
+parcels_over_20ha,69.0,40.0,count
+parcels_over_50ha,28.0,0.0,count
+tile_warning_count,26.0,13.0,count
+unresolved_positive_overlap_pairs,6.0,0.0,count
+mean_median_correlation,0.991681,0.991621,correlation
+three_summary_agreement,0.985049,0.986494,fraction
+fragmentation_reduction,0.926204,0.907436,fraction
+qa_risk_fraction,0.408168,0.33574351978171896,fraction

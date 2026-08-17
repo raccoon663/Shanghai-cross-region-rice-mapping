@@ -1,0 +1,70 @@
+{
+  "type": "FeatureCollection",
+  "name": "field_delineation_test_aoi",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:EPSG::32651"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "aoi_id": "chongming_field_test_5km_v2_label_free",
+        "selection_method": "dynamic_world_landcover_mixture_v2",
+        "selection_data": "2022 Dynamic World temporal mode only; retained probability raster metadata supplied study extent/grid",
+        "rice_labels_used": false,
+        "rice_prediction_values_used": false,
+        "width_m": 5000,
+        "height_m": 5000,
+        "crs_epsg": 32651,
+        "wgs84_lon_min": 121.6062993518044,
+        "wgs84_lat_min": 31.625955539776733,
+        "wgs84_lon_max": 121.65835887329061,
+        "wgs84_lat_max": 31.67161917389644,
+        "row": 275,
+        "col": 275,
+        "west": 367820.0,
+        "south": 3499820.0,
+        "east": 372820.0,
+        "north": 3504820.0,
+        "valid_fraction": 1.0,
+        "crop_fraction": 0.678944,
+        "water_fraction": 0.091648,
+        "built_fraction": 0.11776,
+        "tree_grass_shrub_fraction": 0.11137599999999999,
+        "crop_edge_density": 0.107968,
+        "class_diversity_ge_1pct": 5,
+        "selection_score": 2.6680575999999996
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              372820.0,
+              3499820.0
+            ],
+            [
+              372820.0,
+              3504820.0
+            ],
+            [
+              367820.0,
+              3504820.0
+            ],
+            [
+              367820.0,
+              3499820.0
+            ],
+            [
+              372820.0,
+              3499820.0
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

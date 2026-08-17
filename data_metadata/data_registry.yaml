@@ -1,0 +1,31 @@
+version: 1
+data_root_env: RICE_FUSION_DATA_ROOT
+assets:
+  source_features:
+    path: data/raw/jiangxi_official_2022_binary_features_gee_s1_s2.csv
+    status: reconstructable_from_public_gee_data
+    expected_sha256_original: 042425e9a1d754191c6626379d43b5ee812656ea5b5b937ca1c8c9c1dc0b00dc
+    expected_rows_original: 1429
+    expected_features: 92
+    recovery: gee/01_rebuild_public_s1_s2_exports.js
+  source_ancillary:
+    path: data/raw/jiangxi_official_2022_ancillary_features.csv
+    status: recovered_locally_ignored_by_git
+    sha256: 89ebb117e0b787355f42099f1a784b964bb7b05bd83eafdfdd098073fb51ae06
+  target_features:
+    path: data/raw/shanghai_light_2022_fusion_92_20m.tif
+    status: reconstructable_from_public_gee_data
+    expected_sha256_original: 16efb56adf0853bdd49fa0ed1e623ae8650ad32c92292d5c7521a3456ff7cd19
+    expected_shape_original: [92, 1071, 1437]
+    expected_crs: EPSG:32651
+    expected_resolution_m: 20
+    recovery: gee/01_rebuild_public_s1_s2_exports.js
+  target_reference:
+    path: inputs/official_reference/shanghai_2022_rice_aligned_20m.tif
+    status: present_locally_ignored_by_git
+    note: Official-product weak reference; not independent ground truth.
+  alphaearth_samples:
+    path: outputs/alphaearth/alphaearth_samples_2022.csv
+    status: present_and_reconstructable
+    recovery: scripts/extract_alphaearth_gee.py
+

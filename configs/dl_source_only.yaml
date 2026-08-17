@@ -1,0 +1,15 @@
+data_config: configs/data.yaml
+output_dir: outputs/experiments/dl_source_only_m3_v1
+seeds: [42, 43, 44]
+models: [mlp, temporal_cnn]
+features: [s2_only, s1_only, s1_s2_fusion]
+training:
+  batch_size: 64
+  max_epochs: 120
+  patience: 15
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  gradient_clip: 1.0
+  hidden_size: 96
+  dropout: 0.20
+
