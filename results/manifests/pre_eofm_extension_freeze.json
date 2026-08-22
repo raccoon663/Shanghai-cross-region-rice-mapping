@@ -1,0 +1,124 @@
+{
+  "manifest_version": "1.0",
+  "purpose": "Record the available frozen legacy state before the EO foundation-model extension.",
+  "created_on": "2026-08-23",
+  "repository_commit": "5da2001755066fbb5d4937bae8613af6e63c646f",
+  "branch_at_creation": "feature/eo-foundation-model-benchmark",
+  "legacy_results_are_immutable": true,
+  "notes": [
+    "Missing runtime artifacts are recorded explicitly rather than reconstructed or silently replaced.",
+    "The committed headline values remain frozen even where their detailed ignored runtime tables are unavailable.",
+    "A reconstructed Sentinel export is a new data version unless it reproduces the historical hashes in data_metadata/data_registry.yaml."
+  ],
+  "available_frozen_files": [
+    {
+      "role": "readme_headlines",
+      "path": "README.md",
+      "bytes": 10611,
+      "sha256": "c2b680dcc8593f03eaaaa107ec937e92f6472e0ba7f5e8520e328ca6a5ead316"
+    },
+    {
+      "role": "methodology",
+      "path": "docs/methodology.md",
+      "bytes": 7278,
+      "sha256": "e06b2af6342c8db0435cbd000f39d86b67ab54ac072a9e2d134e00276e498093"
+    },
+    {
+      "role": "experiment_results_narrative",
+      "path": "docs/experiments.md",
+      "bytes": 11781,
+      "sha256": "8af332a8992a3963949b825c5bf03d4e475fa959d048b33c9313c047b726f2ee"
+    },
+    {
+      "role": "validation_protocol",
+      "path": "docs/validation.md",
+      "bytes": 7243,
+      "sha256": "44ac6557bed322a211c1acc7b15d7957beb8ed316be201a9c12d04d2904099b3"
+    },
+    {
+      "role": "experiment_history",
+      "path": "docs/experiment_history.md",
+      "bytes": 6880,
+      "sha256": "d3a50f6396a424e0c093223659de53948e00a8cdbc27fe70b2a40d4a2b47ccc9"
+    },
+    {
+      "role": "data_availability",
+      "path": "DATA_AVAILABILITY.md",
+      "bytes": 6163,
+      "sha256": "7fc73f1d3a224d04a7bddb86561aa8c222164b6164696bb67a96751656404a4f"
+    },
+    {
+      "role": "headline_source_zero_shot_and_ood_results",
+      "path": "results/summary/headline_metrics.csv",
+      "bytes": 934,
+      "sha256": "e9dbd137415fcf3055f5f4e866d1317aa0eff48406fb73fc876619761b07e67e"
+    },
+    {
+      "role": "authoritative_source_target_split_manifest",
+      "path": "data_metadata/alphaearth_sample_manifest.csv",
+      "bytes": 1451310,
+      "sha256": "04c4e7454ead6cd415f5d761593d9e88b8041dd6611f630064fca798ccf6421b",
+      "rows": 13429
+    },
+    {
+      "role": "data_registry_and_historical_input_hashes",
+      "path": "data_metadata/data_registry.yaml",
+      "bytes": 3751,
+      "sha256": "57076cd6ac4b944166102f4bc2cc52d6ce5e67e530408b68ce9e3d9ba4d3662c"
+    }
+  ],
+  "missing_legacy_runtime_files": [
+    {
+      "role": "temporal_source_results",
+      "path": "outputs/experiments/rf_baseline_m2_v1/rf_metrics.csv"
+    },
+    {
+      "role": "temporal_few_shot_results",
+      "path": "outputs/experiments/weak_label_budget_m4_v1/rf_budget_summary.csv"
+    },
+    {
+      "role": "temporal_alphaearth_master_comparison",
+      "path": "results/alphaearth_minimal/master_representation_comparison.csv"
+    },
+    {
+      "role": "alphaearth_source_zero_shot_and_few_shot_runs",
+      "path": "results/alphaearth_minimal/alphaearth_summary.csv"
+    },
+    {
+      "role": "alphaearth_ood_results",
+      "path": "results/phase2/ood_analysis.csv"
+    },
+    {
+      "role": "robust_few_shot_results",
+      "path": "results/phase3/label_efficiency_robust.csv"
+    },
+    {
+      "role": "alphaearth_embeddings",
+      "path": "outputs/alphaearth/alphaearth_samples_2022.csv"
+    }
+  ],
+  "historical_external_input_hashes": {
+    "temporal_source_csv": {
+      "path": "data/raw/jiangxi_official_2022_binary_features_gee_s1_s2.csv",
+      "present": false,
+      "expected_sha256_original": "042425e9a1d754191c6626379d43b5ee812656ea5b5b937ca1c8c9c1dc0b00dc"
+    },
+    "temporal_target_raster": {
+      "path": "data/raw/shanghai_light_2022_fusion_92_20m.tif",
+      "present": false,
+      "expected_sha256_original": "16efb56adf0853bdd49fa0ed1e623ae8650ad32c92292d5c7521a3456ff7cd19"
+    },
+    "alphaearth_embeddings": {
+      "path": "outputs/alphaearth/alphaearth_samples_2022.csv",
+      "present": false,
+      "expected_sha256_original": null
+    }
+  },
+  "frozen_headline_values": {
+    "temporal_source_test_f1": 0.947,
+    "alphaearth_source_test_f1": 0.962,
+    "temporal_shanghai_zero_shot_weak_reference_f1": 0.813,
+    "alphaearth_shanghai_zero_shot_weak_reference_f1": 0.836,
+    "best_retained_distance_error_auroc": 0.800
+  }
+}
