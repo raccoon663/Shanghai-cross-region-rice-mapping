@@ -3,7 +3,7 @@ sample_manifest: data_metadata/alphaearth_sample_manifest.csv
 temporal_grid_manifest: results/manifests/eofm_temporal_grid_freeze.json
 
 earth_engine:
-  project: null  # Required at submission time; never guess or hard-code a user's billing project.
+  project: eng-artifact-503507-k7  # Recovered from the authorized GEE Code Editor session.
   drive_folder: rice_eofm_reconstruction_2022
   chunk_size: 500
   sample_scale_m: 20

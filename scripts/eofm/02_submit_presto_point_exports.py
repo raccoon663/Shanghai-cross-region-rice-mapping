@@ -203,12 +203,13 @@ def main() -> None:
     if args.dry_run:
         print(json.dumps({**summary, "plan": plan}, indent=2))
         return
-    if not args.project:
+    project = args.project or config["earth_engine"].get("project")
+    if not project:
         raise SystemExit("--project is required for Earth Engine task submission")
 
     import ee
 
-    ee.Initialize(project=args.project)
+    ee.Initialize(project=project)
     status = _load_status(args.status)
     existing = {int(task["chunk_index"]): task for task in status.get("tasks", [])}
     if args.refresh_status:
@@ -256,7 +257,7 @@ def main() -> None:
         record = {**item, "task_id": task.id, "state": task.status().get("state", "SUBMITTED")}
         existing[chunk_index] = record
         status.update(summary)
-        status["project"] = args.project
+        status["project"] = project
         status["tasks"] = [existing[index] for index in sorted(existing)]
         _write_status(args.status, status)
         print(json.dumps(record))

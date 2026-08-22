@@ -1,9 +1,10 @@
 {
   "manifest_version": "1.0",
   "status": "planned_not_submitted",
+  "earth_engine_project": "eng-artifact-503507-k7",
   "sample_manifest": {"path": "data_metadata/alphaearth_sample_manifest.csv", "rows": 13429, "sha256": "04c4e7454ead6cd415f5d761593d9e88b8041dd6611f630064fca798ccf6421b"},
   "temporal_grid": {"path": "results/manifests/eofm_temporal_grid_freeze.json", "windows": 23, "sha256": "133591caab146edd844a6f395828b9eda153fe810173fe7c44d569e92c68497a"},
-  "submitter": {"path": "scripts/eofm/02_submit_presto_point_exports.py", "sha256": "028abdd322e3bfbe1901341a1781733740a7ab45bac966710dfeb16d98a3c286"},
+  "submitter": {"path": "scripts/eofm/02_submit_presto_point_exports.py", "sha256": "554a968123ddd89a914aa20f7b19a7b49e48907013e5325261c54139e5950de6"},
   "collections": {"sentinel_1": "COPERNICUS/S1_GRD", "sentinel_2": "COPERNICUS/S2_SR_HARMONIZED"},
   "filters": {"sentinel_1": "IW and contains VV and VH; no orbit-direction, relative-orbit, or resolution filter", "sentinel_2": "CLOUDY_PIXEL_PERCENTAGE <= 80; SCL not in [3,8,9,10,11]"},
   "reducer": "per-window median",

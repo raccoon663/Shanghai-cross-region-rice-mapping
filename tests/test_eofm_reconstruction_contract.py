@@ -56,6 +56,7 @@ def test_export_metadata_excludes_raw_coordinates_from_output():
 
 def test_sampling_grid_matches_frozen_target_grid():
     config = yaml.safe_load(CONFIG.read_text(encoding="utf-8"))["earth_engine"]
+    assert config["project"] == "eng-artifact-503507-k7"
     assert config["sample_scale_m"] == 20
     assert config["sample_crs"] == "EPSG:32651"
     assert config["sample_crs_transform"] == [20, 0, 362320, 0, -20, 3510320]

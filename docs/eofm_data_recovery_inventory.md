@@ -120,16 +120,19 @@ reproduction checks. Sampling is explicitly locked to the historical target
 EPSG:32651 20 m transform rather than relying on an image collection's implicit
 first-band projection.
 
-Earth Engine credentials exist locally, but no billing/project identifier is
-stored in them. Export submission therefore requires an explicit authorized
-Google Cloud project via `--project`. The script records task IDs and is
-restartable once that identifier and network access are available.
+Earth Engine credentials exist locally. A later review of the historical Codex
+task and the still-authorized Code Editor session recovered the selected Google
+Cloud project as `eng-artifact-503507-k7`. The earlier conclusion that no
+authorized project could be found was therefore incorrect. Python API access
+still requires a working TLS connection to `earthengine.googleapis.com`; the
+Code Editor session itself remains authenticated. The script records task IDs
+and is restartable when that API connection is available.
 
 From the repository root, the submission and resume procedure is:
 
 ```powershell
-.\.venv\Scripts\python.exe scripts\eofm\02_submit_presto_point_exports.py --project <AUTHORIZED_EE_PROJECT>
-.\.venv\Scripts\python.exe scripts\eofm\02_submit_presto_point_exports.py --project <AUTHORIZED_EE_PROJECT> --refresh-status
+.\.venv\Scripts\python.exe scripts\eofm\02_submit_presto_point_exports.py --project eng-artifact-503507-k7
+.\.venv\Scripts\python.exe scripts\eofm\02_submit_presto_point_exports.py --project eng-artifact-503507-k7 --refresh-status
 ```
 
 The first command skips active and completed chunks recorded in the local,
