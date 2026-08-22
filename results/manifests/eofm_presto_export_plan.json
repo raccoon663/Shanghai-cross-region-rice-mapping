@@ -1,6 +1,6 @@
 {
   "manifest_version": "1.0",
-  "status": "planned_not_submitted",
+  "status": "blocked_google_drive_quota",
   "earth_engine_project": "eng-artifact-503507-k7",
   "sample_manifest": {"path": "data_metadata/alphaearth_sample_manifest.csv", "rows": 13429, "sha256": "04c4e7454ead6cd415f5d761593d9e88b8041dd6611f630064fca798ccf6421b"},
   "temporal_grid": {"path": "results/manifests/eofm_temporal_grid_freeze.json", "windows": 23, "sha256": "133591caab146edd844a6f395828b9eda153fe810173fe7c44d569e92c68497a"},
@@ -10,8 +10,8 @@
   "reducer": "per-window median",
   "sampling": {"crs": "EPSG:32651", "crs_transform": [20, 0, 362320, 0, -20, 3510320], "nominal_scale_m": 20, "geometries_exported": false},
   "export": {"destination": "Google Drive", "folder": "rice_eofm_reconstruction_2022", "format": "CSV", "feature_columns": 414, "missing_value": -9999},
-  "task_ids": null,
-  "task_id_note": "Earth Engine task IDs are written to the local resumable status manifest after submission.",
+  "task_ids": "results/manifests/eofm_ee_submission_freeze.json",
+  "task_id_note": "All 27 Code Editor tasks were submitted on 2026-08-23. Chunk c000 completed; c001-c026 failed after Google Drive reported insufficient free space.",
   "chunks": [
     {"chunk_id": 0, "start": 0, "stop": 500, "rows": 500, "output_prefix": "eofm_presto_points_2022_c000_00000_00500"},
     {"chunk_id": 1, "start": 500, "stop": 1000, "rows": 500, "output_prefix": "eofm_presto_points_2022_c001_00500_01000"},

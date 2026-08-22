@@ -1,0 +1,60 @@
+{
+  "manifest_version": "1.0",
+  "recorded_at": "2026-08-23T05:37:37+08:00",
+  "earth_engine_project": "eng-artifact-503507-k7",
+  "submission_surface": "Google Earth Engine Code Editor",
+  "destination": {
+    "type": "Google Drive",
+    "folder": "rice_eofm_reconstruction_2022",
+    "format": "CSV"
+  },
+  "summary": {
+    "submitted": 27,
+    "completed": 1,
+    "failed": 26,
+    "active": 0,
+    "completed_rows": 500,
+    "planned_rows": 13429,
+    "status": "blocked_google_drive_quota"
+  },
+  "confirmed_error": {
+    "task": "eofm_presto_points_2022_c026_13000_13429",
+    "message": "Not enough space in Google Drive (need 1.4MB for this export). (Error code: 3)",
+    "interpretation": "The export computation ran, but Drive could not accept the output. Free Drive space before resubmitting failed chunks."
+  },
+  "tasks": [
+    {"chunk_id": 0, "description": "eofm_presto_points_2022_c000_00000_00500", "task_id": "BK66T42VJRVUAKTTLOJYETAE", "state": "COMPLETED"},
+    {"chunk_id": 1, "description": "eofm_presto_points_2022_c001_00500_01000", "task_id": "F2LUUTRQXPDEF76ZKT6QMMDC", "state": "FAILED"},
+    {"chunk_id": 2, "description": "eofm_presto_points_2022_c002_01000_01500", "task_id": "FWOOXM7WRHUJ7MKE6QDTQC5Z", "state": "FAILED"},
+    {"chunk_id": 3, "description": "eofm_presto_points_2022_c003_01500_02000", "task_id": "DMKXTPL6OSVEXIHPTJE5TGYP", "state": "FAILED"},
+    {"chunk_id": 4, "description": "eofm_presto_points_2022_c004_02000_02500", "task_id": "GPZIKONUKKLYFQTAVX4VMDQB", "state": "FAILED"},
+    {"chunk_id": 5, "description": "eofm_presto_points_2022_c005_02500_03000", "task_id": "E3ALKBZNS3VNCJL7RNW2AJFK", "state": "FAILED"},
+    {"chunk_id": 6, "description": "eofm_presto_points_2022_c006_03000_03500", "task_id": "APGD4AWK4Y74K72AYRZ23CR2", "state": "FAILED"},
+    {"chunk_id": 7, "description": "eofm_presto_points_2022_c007_03500_04000", "task_id": "UKBBMCNOASFAF2EJ3SS5UWHW", "state": "FAILED"},
+    {"chunk_id": 8, "description": "eofm_presto_points_2022_c008_04000_04500", "task_id": "RO3PYCUJU4PNK3UQIIYCSVZK", "state": "FAILED"},
+    {"chunk_id": 9, "description": "eofm_presto_points_2022_c009_04500_05000", "task_id": "75Q7GQEOGEDXELXSB3TYQ54F", "state": "FAILED"},
+    {"chunk_id": 10, "description": "eofm_presto_points_2022_c010_05000_05500", "task_id": "3RDIPDUPWNQZUVZDAGNVQR5R", "state": "FAILED"},
+    {"chunk_id": 11, "description": "eofm_presto_points_2022_c011_05500_06000", "task_id": "R3YRJ54HTMHI5HJB4B25GYUJ", "state": "FAILED"},
+    {"chunk_id": 12, "description": "eofm_presto_points_2022_c012_06000_06500", "task_id": "DXS7OGX66FZSBS4MJGABZI47", "state": "FAILED"},
+    {"chunk_id": 13, "description": "eofm_presto_points_2022_c013_06500_07000", "task_id": "HPBI2DE6QWXOI3Y76GP4A2DL", "state": "FAILED"},
+    {"chunk_id": 14, "description": "eofm_presto_points_2022_c014_07000_07500", "task_id": "RN3J36LZIOXAJU3PRQ4LAYRM", "state": "FAILED"},
+    {"chunk_id": 15, "description": "eofm_presto_points_2022_c015_07500_08000", "task_id": "PSXESQZN7BLNTEYQRFQ4A5GH", "state": "FAILED"},
+    {"chunk_id": 16, "description": "eofm_presto_points_2022_c016_08000_08500", "task_id": "VQDDYY675BJ2IXDWNVXQB7FJ", "state": "FAILED"},
+    {"chunk_id": 17, "description": "eofm_presto_points_2022_c017_08500_09000", "task_id": "WIN7OQJVAIXL3YEI6L3GTJQX", "state": "FAILED"},
+    {"chunk_id": 18, "description": "eofm_presto_points_2022_c018_09000_09500", "task_id": "RTDOC7TKSGMLAOGLO6CBBCIC", "state": "FAILED"},
+    {"chunk_id": 19, "description": "eofm_presto_points_2022_c019_09500_10000", "task_id": "VXGFJBOTOQKDTMHUV5OQWYDI", "state": "FAILED"},
+    {"chunk_id": 20, "description": "eofm_presto_points_2022_c020_10000_10500", "task_id": "5C7SREG4GOWAFBGWRRX4FC7J", "state": "FAILED"},
+    {"chunk_id": 21, "description": "eofm_presto_points_2022_c021_10500_11000", "task_id": "BXHLN24UGMU5ZIUE65JPYTJL", "state": "FAILED"},
+    {"chunk_id": 22, "description": "eofm_presto_points_2022_c022_11000_11500", "task_id": "RKUNTQVBOENUD656VVN6GDDT", "state": "FAILED"},
+    {"chunk_id": 23, "description": "eofm_presto_points_2022_c023_11500_12000", "task_id": "6BXUYETHOLUZ7E3SOU7T2MHL", "state": "FAILED"},
+    {"chunk_id": 24, "description": "eofm_presto_points_2022_c024_12000_12500", "task_id": "2HUIFTCPBHFDZDUJ7SINJ3WW", "state": "FAILED"},
+    {"chunk_id": 25, "description": "eofm_presto_points_2022_c025_12500_13000", "task_id": "37OSWY5UGFXRZY54CRQPHR3F", "state": "FAILED"},
+    {"chunk_id": 26, "description": "eofm_presto_points_2022_c026_13000_13429", "task_id": "5FLMKB6CFRY5DQK2NWAUEC4K", "state": "FAILED"}
+  ],
+  "resume": {
+    "prerequisite": "Free sufficient Google Drive space; allow at least 40 MB for the remaining CSV chunks and safety margin.",
+    "completed_chunk_to_skip": 0,
+    "code_editor": "Rerun the frozen script, submit chunks c001-c026, and verify every task in the Cloud Console.",
+    "python_api": ".\\.venv\\Scripts\\python.exe scripts\\eofm\\02_submit_presto_point_exports.py --project eng-artifact-503507-k7 --start-chunk 1"
+  }
+}

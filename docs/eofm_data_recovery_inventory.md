@@ -141,3 +141,22 @@ their Earth Engine states before applying the same skip rules. Use
 `--start-chunk` and `--max-chunks` for a bounded restart. The manifest records
 task IDs, descriptions, expected row ranges, output prefixes, and the Drive
 folder; it should be retained locally until all 27 chunks have completed.
+
+## Earth Engine submission result (2026-08-23)
+
+All 27 deterministic chunks were submitted through the authenticated Earth
+Engine Code Editor under project `eng-artifact-503507-k7`. Task IDs and states
+are frozen in `results/manifests/eofm_ee_submission_freeze.json`.
+
+- c000 completed and wrote the first 500 rows to Google Drive;
+- c001-c026 failed after computation because the destination Drive had
+  insufficient free space;
+- the inspected c026 error was: `Not enough space in Google Drive (need 1.4MB
+  for this export). (Error code: 3)`;
+- no task remains active, so the point-time-series reconstruction is not yet
+  complete and Presto tensor construction must not start.
+
+Free at least 40 MB plus a safety margin in the signed-in Google Drive, then
+resubmit c001-c026. Chunk c000 must be retained and skipped. This storage-quota
+failure does not change the frozen sample, temporal, band, projection, or
+missingness contracts.

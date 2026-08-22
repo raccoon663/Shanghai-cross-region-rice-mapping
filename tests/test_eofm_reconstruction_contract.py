@@ -11,6 +11,7 @@ GRID = ROOT / "results/manifests/eofm_temporal_grid_freeze.json"
 CONFIG = ROOT / "configs/eofm_input_reconstruction.yaml"
 SCRIPT = ROOT / "scripts/eofm/02_submit_presto_point_exports.py"
 PLAN = ROOT / "results/manifests/eofm_presto_export_plan.json"
+SUBMISSION = ROOT / "results/manifests/eofm_ee_submission_freeze.json"
 
 
 def load_submitter():
@@ -72,7 +73,21 @@ def test_chunk_plan_is_deterministic_and_complete():
     assert first[-1]["start"] == 13000 and first[-1]["stop"] == 13429
     assert sum(item["rows"] for item in first) == 13429
     frozen = json.loads(PLAN.read_text(encoding="utf-8"))
-    assert frozen["status"] == "planned_not_submitted"
-    assert frozen["task_ids"] is None
+    assert frozen["status"] == "blocked_google_drive_quota"
+    assert frozen["task_ids"] == "results/manifests/eofm_ee_submission_freeze.json"
     assert [item["rows"] for item in frozen["chunks"]] == [item["rows"] for item in first]
     assert [item["output_prefix"] for item in frozen["chunks"]] == [item["description"] for item in first]
+    submission = json.loads(SUBMISSION.read_text(encoding="utf-8"))
+    assert submission["summary"] == {
+        "submitted": 27,
+        "completed": 1,
+        "failed": 26,
+        "active": 0,
+        "completed_rows": 500,
+        "planned_rows": 13429,
+        "status": "blocked_google_drive_quota",
+    }
+    assert len(submission["tasks"]) == 27
+    assert len({item["task_id"] for item in submission["tasks"]}) == 27
+    assert submission["tasks"][0]["state"] == "COMPLETED"
+    assert all(item["state"] == "FAILED" for item in submission["tasks"][1:])
