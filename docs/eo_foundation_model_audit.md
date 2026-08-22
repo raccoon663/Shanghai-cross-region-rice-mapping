@@ -1,5 +1,11 @@
 # EO foundation-model extension audit
 
+> Recovery continuation (2026-08-23): the later local/historical search found
+> legacy runtime artifacts in a sibling workspace. See
+> `docs/eofm_data_recovery_inventory.md`. Statements below about what was
+> absent describe the audited public checkout before that recovery search; they
+> are not a claim that the artifacts are absent from the entire machine.
+
 ## Status
 
 This audit was completed before any Presto or Galileo adapter, embedding, or

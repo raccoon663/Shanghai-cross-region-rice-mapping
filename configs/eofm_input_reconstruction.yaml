@@ -1,0 +1,41 @@
+version: 1
+sample_manifest: data_metadata/alphaearth_sample_manifest.csv
+temporal_grid_manifest: results/manifests/eofm_temporal_grid_freeze.json
+
+earth_engine:
+  project: null  # Required at submission time; never guess or hard-code a user's billing project.
+  drive_folder: rice_eofm_reconstruction_2022
+  chunk_size: 500
+  sample_scale_m: 20
+  sample_crs: EPSG:32651
+  sample_crs_transform: [20, 0, 362320, 0, -20, 3510320]
+  sentinel_1_collection: COPERNICUS/S1_GRD
+  sentinel_1_instrument_mode: IW
+  sentinel_1_bands: [VV, VH]
+  sentinel_2_collection: COPERNICUS/S2_SR_HARMONIZED
+  sentinel_2_scene_cloud_max_percent: 80
+  sentinel_2_scl_excluded: [3, 8, 9, 10, 11]
+  sentinel_2_bands: [B2, B3, B4, B5, B6, B7, B8, B8A, B11, B12]
+  reducer: median
+  missing_value: -9999
+
+presto_input:
+  timestep_count: 23
+  tensor_order: [sample, timestep, band]
+  s1_band_order: [VV, VH]
+  s2_band_order: [B2, B3, B4, B5, B6, B7, B8, B8A, B11, B12]
+  use_official_constructor: true
+  use_official_normalization: true
+  dynamic_world_policy: official_ignored_value_if_unavailable
+  coordinate_policy: declare_encoder_use_before_smoke_test_never_downstream
+
+validation:
+  historical_target_temporal_table_env: RICE_FUSION_LEGACY_ROOT
+  historical_target_temporal_relative_path: outputs/experiments/weak_label_budget_m4_v1/target_weak_samples.csv
+  require_all_manifest_rows_after_chunk_merge: true
+  compare_legacy_columns: true
+  legacy_columns:
+    - s2_ndvi_t01_to_t23
+    - s1_vv_t01_to_t23
+    - s1_vh_t01_to_t23
+    - s1_rvi_t01_to_t23

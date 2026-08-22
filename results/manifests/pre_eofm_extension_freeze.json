@@ -67,7 +67,7 @@
       "sha256": "57076cd6ac4b944166102f4bc2cc52d6ce5e67e530408b68ce9e3d9ba4d3662c"
     }
   ],
-  "missing_legacy_runtime_files": [
+  "not_present_in_public_checkout_at_creation": [
     {
       "role": "temporal_source_results",
       "path": "outputs/experiments/rf_baseline_m2_v1/rf_metrics.csv"
@@ -97,6 +97,20 @@
       "path": "outputs/alphaearth/alphaearth_samples_2022.csv"
     }
   ],
+  "recovered_in_sibling_workspace_on_2026_08_23": {
+    "workspace": "C:/Users/ASUS/Documents/Codex/2026-07-26/sentinel-fusion-transfer-rice",
+    "note": "Local recovery paths are machine-specific and the large files remain untracked.",
+    "files": [
+      {"role": "source_split_geometries", "relative_path": "outputs/experiments/rf_baseline_m2_v1/source_splits.csv", "rows": 1429, "sha256": "75bfc6d5d2fbfb294866dc2e087b40f0ecce4e9e33dfacb1e4769d2cb80d03b4"},
+      {"role": "target_temporal_92d_and_split_geometries", "relative_path": "outputs/experiments/weak_label_budget_m4_v1/target_weak_samples.csv", "rows": 12000, "sha256": "6e20ce81e37f199bcd261a9a9e2ce894d8843c94422089d8e702581e757ce558"},
+      {"role": "alphaearth_embeddings", "relative_path": "outputs/alphaearth/alphaearth_samples_2022.csv", "rows": 13429, "sha256": "e84a4c433867c8c854032162772ef059091a2e628a4edcb65f5dd29195ef8ef0"},
+      {"role": "temporal_source_results", "relative_path": "outputs/experiments/rf_baseline_m2_v1/rf_metrics.csv", "sha256": "1da489e6dd0b92989c1d00b5b667ae3aa48ef3c106140422c2ac7d5d989e42e4"},
+      {"role": "temporal_source_model", "relative_path": "outputs/experiments/rf_baseline_m2_v1/rf_s1_s2_fusion.joblib", "sha256": "93e296a290c86f466fa351c5a0ef6c207624e59ed4c8a1f4411b13181e51bd24"},
+      {"role": "temporal_few_shot_runs", "relative_path": "outputs/experiments/weak_label_budget_m4_v1/rf_budget_runs.csv", "sha256": "4b20ca96d0795114a1548aa17f3291e49959f4ea9c40ac6e4185a27c073c53e4"},
+      {"role": "alphaearth_ood_results", "relative_path": "results/phase2/ood_analysis.csv", "sha256": "b59be2933bb29513fe416bc196368af814cf6922cb4b855163508fc1e16ab87c"},
+      {"role": "robust_label_efficiency", "relative_path": "results/phase3/label_efficiency_robust.csv", "sha256": "e62e4e1fe706e2e0039b88f489cd93e77c2bb291837404d825f81f400af85566"}
+    ]
+  },
   "historical_external_input_hashes": {
     "temporal_source_csv": {
       "path": "data/raw/jiangxi_official_2022_binary_features_gee_s1_s2.csv",

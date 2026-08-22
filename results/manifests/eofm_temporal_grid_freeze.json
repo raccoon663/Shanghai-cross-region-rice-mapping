@@ -1,0 +1,86 @@
+{
+  "manifest_version": "1.0",
+  "status": "frozen_before_eofm_extraction",
+  "year": 2022,
+  "timestep_count": 23,
+  "window_definition": {
+    "start": "anchor minus 8 days, inclusive",
+    "end": "anchor plus 9 days, exclusive",
+    "calendar_days_represented": 17,
+    "cadence": "irregular frozen anchors; overlapping windows are intentional"
+  },
+  "authoritative_source": {
+    "path": "gee/01_rebuild_public_s1_s2_exports.js",
+    "sha256": "1f54ab3bcd992041c5676dc77781d7c8b6cd57825ac2d091373d27e1ea48fbec"
+  },
+  "sample_manifest": {
+    "path": "data_metadata/alphaearth_sample_manifest.csv",
+    "sha256": "04c4e7454ead6cd415f5d761593d9e88b8041dd6611f630064fca798ccf6421b",
+    "rows": 13429,
+    "jiangxi_rows": 1429,
+    "shanghai_rows": 12000
+  },
+  "sentinel_1": {
+    "collection": "COPERNICUS/S1_GRD",
+    "instrument_mode": "IW",
+    "required_polarizations": ["VV", "VH"],
+    "orbit_direction_filter": null,
+    "relative_orbit_filter": null,
+    "resolution_filter": null,
+    "reducer": "per-window median",
+    "vv_vh_units": "Earth Engine S1_GRD calibrated backscatter in dB",
+    "rvi_formula": "4 * VH_linear / (VV_linear + VH_linear), where linear = 10^(dB/10)",
+    "additional_preprocessing": "Earth Engine S1_GRD standard preprocessing only; no repository speckle filter or terrain-normalization stage"
+  },
+  "sentinel_2": {
+    "collection": "COPERNICUS/S2_SR_HARMONIZED",
+    "product": "Level-2A surface reflectance",
+    "scene_filter": "CLOUDY_PIXEL_PERCENTAGE <= 80",
+    "scl_excluded_classes": [3, 8, 9, 10, 11],
+    "scl_excluded_meanings": ["cloud_shadow", "cloud_medium_probability", "cloud_high_probability", "thin_cirrus", "snow_or_ice"],
+    "legacy_ndvi_formula": "normalizedDifference(B8, B4) per clear image",
+    "legacy_reducer": "median of per-image NDVI",
+    "native_eofm_bands": ["B2", "B3", "B4", "B5", "B6", "B7", "B8", "B8A", "B11", "B12"],
+    "native_eofm_reducer": "per-band median over the identical window and clear-pixel mask",
+    "native_values": "unscaled S2_SR_HARMONIZED digital values; scaling/normalization deferred to official model preprocessing"
+  },
+  "sampling": {
+    "point_scale_m": 20,
+    "source_geometry": "frozen manifest points",
+    "target_crs": "EPSG:32651",
+    "target_crs_transform": [20, 0, 362320, 0, -20, 3510320],
+    "target_shape_bands_rows_cols": [92, 1071, 1437],
+    "missing_value": -9999
+  },
+  "windows": [
+    {"index": 1, "tag": "t01", "anchor": "2022-03-02", "start_inclusive": "2022-02-22", "end_exclusive": "2022-03-11", "month": 3},
+    {"index": 2, "tag": "t02", "anchor": "2022-03-12", "start_inclusive": "2022-03-04", "end_exclusive": "2022-03-21", "month": 3},
+    {"index": 3, "tag": "t03", "anchor": "2022-04-06", "start_inclusive": "2022-03-29", "end_exclusive": "2022-04-15", "month": 4},
+    {"index": 4, "tag": "t04", "anchor": "2022-04-11", "start_inclusive": "2022-04-03", "end_exclusive": "2022-04-20", "month": 4},
+    {"index": 5, "tag": "t05", "anchor": "2022-04-21", "start_inclusive": "2022-04-13", "end_exclusive": "2022-04-30", "month": 4},
+    {"index": 6, "tag": "t06", "anchor": "2022-05-06", "start_inclusive": "2022-04-28", "end_exclusive": "2022-05-15", "month": 5},
+    {"index": 7, "tag": "t07", "anchor": "2022-05-16", "start_inclusive": "2022-05-08", "end_exclusive": "2022-05-25", "month": 5},
+    {"index": 8, "tag": "t08", "anchor": "2022-06-25", "start_inclusive": "2022-06-17", "end_exclusive": "2022-07-04", "month": 6},
+    {"index": 9, "tag": "t09", "anchor": "2022-07-10", "start_inclusive": "2022-07-02", "end_exclusive": "2022-07-19", "month": 7},
+    {"index": 10, "tag": "t10", "anchor": "2022-08-04", "start_inclusive": "2022-07-27", "end_exclusive": "2022-08-13", "month": 8},
+    {"index": 11, "tag": "t11", "anchor": "2022-08-09", "start_inclusive": "2022-08-01", "end_exclusive": "2022-08-18", "month": 8},
+    {"index": 12, "tag": "t12", "anchor": "2022-08-19", "start_inclusive": "2022-08-11", "end_exclusive": "2022-08-28", "month": 8},
+    {"index": 13, "tag": "t13", "anchor": "2022-08-24", "start_inclusive": "2022-08-16", "end_exclusive": "2022-09-02", "month": 8},
+    {"index": 14, "tag": "t14", "anchor": "2022-09-13", "start_inclusive": "2022-09-05", "end_exclusive": "2022-09-22", "month": 9},
+    {"index": 15, "tag": "t15", "anchor": "2022-09-18", "start_inclusive": "2022-09-10", "end_exclusive": "2022-09-27", "month": 9},
+    {"index": 16, "tag": "t16", "anchor": "2022-09-28", "start_inclusive": "2022-09-20", "end_exclusive": "2022-10-07", "month": 9},
+    {"index": 17, "tag": "t17", "anchor": "2022-10-03", "start_inclusive": "2022-09-25", "end_exclusive": "2022-10-12", "month": 10},
+    {"index": 18, "tag": "t18", "anchor": "2022-10-13", "start_inclusive": "2022-10-05", "end_exclusive": "2022-10-22", "month": 10},
+    {"index": 19, "tag": "t19", "anchor": "2022-10-18", "start_inclusive": "2022-10-10", "end_exclusive": "2022-10-27", "month": 10},
+    {"index": 20, "tag": "t20", "anchor": "2022-10-23", "start_inclusive": "2022-10-15", "end_exclusive": "2022-11-01", "month": 10},
+    {"index": 21, "tag": "t21", "anchor": "2022-11-02", "start_inclusive": "2022-10-25", "end_exclusive": "2022-11-11", "month": 11},
+    {"index": 22, "tag": "t22", "anchor": "2022-11-07", "start_inclusive": "2022-10-30", "end_exclusive": "2022-11-16", "month": 11},
+    {"index": 23, "tag": "t23", "anchor": "2022-11-12", "start_inclusive": "2022-11-04", "end_exclusive": "2022-11-21", "month": 11}
+  ],
+  "integrity_rules": [
+    "Do not alter anchors or windows after extraction begins.",
+    "Do not choose temporal processing from Shanghai weak-reference metrics.",
+    "Native EOFM bands and legacy derived features must be emitted separately.",
+    "A reconstructed Temporal-92D input is a new data version unless historical file hashes match."
+  ]
+}
