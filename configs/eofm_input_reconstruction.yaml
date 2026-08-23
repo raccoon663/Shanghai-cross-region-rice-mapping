@@ -33,6 +33,20 @@ presto_input:
   month_policy: zero_based_first_month_2_for_march_official_consecutive_month_compatibility
   month_policy_limitation: frozen 23 observations have irregular anchors and are not truly consecutive months
 
+galileo_input:
+  official_repository: nasaharvest/galileo
+  official_commit: 0f0b5b95ac81acef4b74cf4686dc877202f4541b
+  model_size: nano
+  patch_pixels: 3
+  sample_resolution_m: 10
+  physical_footprint_m: [30, 30]
+  timestep_count: 23
+  tensor_order: [sample, height, width, timestep, band]
+  space_time_band_order: [VV, VH, B2, B3, B4, B5, B6, B7, B8, B8A, B11, B12, NDVI]
+  month_policy: actual_zero_based_anchor_month_per_timestep
+  pooling: official_mask_aware_average_tokens
+  selection_policy: smallest spatial-context candidate chosen before target evaluation
+
 validation:
   historical_target_temporal_table_env: RICE_FUSION_LEGACY_ROOT
   historical_target_temporal_relative_path: outputs/experiments/weak_label_budget_m4_v1/target_weak_samples.csv

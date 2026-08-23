@@ -192,3 +192,30 @@ frozen Shanghai rows. The unmodified official checkpoint produced finite
 `(100, 128)` embeddings on CUDA, and two repeated inference calls were bitwise
 equal. This is an interface/representation check only; no classifier, transfer
 metric, few-shot run, OOD run, or benchmark result was produced.
+
+The subsequent full extraction produced a complete `(13429, 128)` float32
+matrix in frozen manifest order. All values are finite, and two complete
+batch-256 GPU extractions were bitwise identical. The logical SHA-256 over
+manifest rows and embeddings is
+`a0d32b7f972cc25dbf9679092ff936768e91e54b6339ae6df3939440dc35a9c1`.
+The per-sample artifact remains gitignored; only its aggregate freeze is
+committed in `results/manifests/presto_embedding_freeze.json`. Coordinates
+entered the frozen encoder as required by Presto but are absent from the saved
+embedding artifact and remain forbidden downstream.
+
+## Galileo primary input freeze
+
+Official Galileo source and nano weights are pinned to commit
+`0f0b5b95ac81acef4b74cf4686dc877202f4541b`. Before any Shanghai evaluation,
+the primary design is frozen as a 3-by-3 patch at 10 m (30 m by 30 m), the same
+23 temporal windows, native VV/VH plus ten S2 bands and NDVI, actual zero-based
+anchor months, official normalization/masks, and official mask-aware token
+averaging. Nano is the smallest official model and emits 128 dimensions.
+
+Point exports cannot supply spatial context, so a separate deterministic GEE
+patch-point generator expands each frozen center into nine ordered offsets.
+The first smoke export is limited to chunks c000 and c003: 1,000 centers and
+9,000 patch-pixel rows, covering both Jiangxi and Shanghai without running a
+benchmark. Full 27-chunk extraction is deferred until these two files pass
+patch-shape, ordering, normalization, mask, month, and encoder determinism
+checks.

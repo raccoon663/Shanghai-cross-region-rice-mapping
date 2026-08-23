@@ -15,6 +15,9 @@ SUBMISSION = ROOT / "results/manifests/eofm_ee_submission_freeze.json"
 INPUT_VALIDATION = ROOT / "results/manifests/eofm_presto_input_validation.json"
 SMOKE = ROOT / "results/manifests/eofm_presto_smoke_test.json"
 PREPARE = ROOT / "scripts/eofm/03_prepare_presto_inputs.py"
+PRESTO_FREEZE = ROOT / "results/manifests/presto_embedding_freeze.json"
+GALILEO_PLAN = ROOT / "results/manifests/galileo_patch_export_plan.json"
+GALILEO_GENERATOR = ROOT / "scripts/eofm/06_generate_galileo_patch_code_editor_script.py"
 
 
 def load_submitter():
@@ -27,6 +30,14 @@ def load_submitter():
 
 def load_prepare():
     spec = importlib.util.spec_from_file_location("eofm_prepare", PREPARE)
+    module = importlib.util.module_from_spec(spec)
+    assert spec.loader is not None
+    spec.loader.exec_module(module)
+    return module
+
+
+def load_module(path, name):
+    spec = importlib.util.spec_from_file_location(name, path)
     module = importlib.util.module_from_spec(spec)
     assert spec.loader is not None
     spec.loader.exec_module(module)
@@ -120,3 +131,28 @@ def test_presto_preparation_and_smoke_are_frozen():
     assert smoke["presto"]["commit"] == "11e207a668a34336ced1d8e492a1bd5849b96c4a"
     assert smoke["result"]["embedding_shape"] == [100, 128]
     assert smoke["result"]["repeat_bitwise_equal"] is True
+
+
+def test_complete_presto_embedding_freeze():
+    freeze = json.loads(PRESTO_FREEZE.read_text(encoding="utf-8"))
+    assert freeze["status"] == "complete_and_frozen"
+    assert freeze["extraction"]["output_shape"] == [13429, 128]
+    assert freeze["extraction"]["all_finite"] is True
+    assert freeze["extraction"]["repeat_bitwise_equal"] is True
+    assert freeze["population"] == {
+        "jiangxi_rows": 1429, "shanghai_rows": 12000, "missing_embeddings": 0
+    }
+    assert "longitude and latitude are not stored in the embedding artifact" in freeze["leakage_contract"]
+
+
+def test_galileo_primary_patch_design_is_frozen_before_export():
+    plan = json.loads(GALILEO_PLAN.read_text(encoding="utf-8"))
+    assert plan["status"] == "ready_for_sensitive_data_confirmation"
+    assert plan["primary_design"]["patch_shape_pixels"] == [3, 3]
+    assert plan["primary_design"]["physical_footprint_m"] == [30, 30]
+    assert plan["primary_design"]["timesteps"] == 23
+    assert plan["smoke_export"]["center_chunks"] == [0, 3]
+    assert plan["smoke_export"]["patch_pixel_rows"] == 9000
+    generator = load_module(GALILEO_GENERATOR, "galileo_generator")
+    assert generator.parse_chunks("3,0,3") == [0, 3]
+    assert generator.parse_chunks("all") == list(range(27))

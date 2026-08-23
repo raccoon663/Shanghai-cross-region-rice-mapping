@@ -1,0 +1,49 @@
+{
+  "manifest_version": "1.0",
+  "status": "complete_and_frozen",
+  "representation": "Presto official pretrained encoder, globally pooled tokens",
+  "presto": {
+    "repository": "nasaharvest/presto",
+    "commit": "11e207a668a34336ced1d8e492a1bd5849b96c4a",
+    "checkpoint_sha256": "559c9d76f525bdf2dd3774da8b1e7f1510769b73baacac12e9e4d8d5c67fbe65",
+    "embedding_dimensions": 128
+  },
+  "input": {
+    "canonical_npz_sha256": "2401a76afc0f7390ec26f050e1bcd95d990a910668feb83c49e9a73f0a686261",
+    "rows": 13429,
+    "timesteps": 23,
+    "month_zero_based": 2,
+    "month_limitation": "official model treats the frozen irregular observations as 23 consecutive months",
+    "latlon_use": "encoder only; excluded from all downstream feature tables"
+  },
+  "extraction": {
+    "batch_size": 256,
+    "device": "cuda:0",
+    "output_shape": [
+      13429,
+      128
+    ],
+    "all_finite": true,
+    "logical_sha256_manifest_rows_plus_float32_embeddings": "a0d32b7f972cc25dbf9679092ff936768e91e54b6339ae6df3939440dc35a9c1",
+    "repeat_logical_sha256": "a0d32b7f972cc25dbf9679092ff936768e91e54b6339ae6df3939440dc35a9c1",
+    "repeat_bitwise_equal": true,
+    "runtime_output": "gitignored outputs/eofm/presto_embeddings_2022.npz",
+    "runtime_file_sha256": "8857ad29dac9a9bb384be3e771589f4e39b5b8feb3dd102c7d53f14aac16d670"
+  },
+  "population": {
+    "jiangxi_rows": 1429,
+    "shanghai_rows": 12000,
+    "missing_embeddings": 0
+  },
+  "embedding_norm": {
+    "minimum": 11.501981735229492,
+    "mean": 12.577960014343262,
+    "maximum": 13.15194320678711
+  },
+  "leakage_contract": [
+    "sample_id, region, class_id, split, and manifest_row are join metadata only",
+    "downstream predictors receive only P000-P127",
+    "longitude and latitude are not stored in the embedding artifact",
+    "no Shanghai labels or weak-reference metrics were used during extraction"
+  ]
+}
