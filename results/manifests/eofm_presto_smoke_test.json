@@ -1,0 +1,53 @@
+{
+  "manifest_version": "1.0",
+  "status": "passed",
+  "presto": {
+    "repository": "nasaharvest/presto",
+    "commit": "11e207a668a34336ced1d8e492a1bd5849b96c4a",
+    "official_constructor": "construct_batch_presto_input",
+    "checkpoint_sha256": "559c9d76f525bdf2dd3774da8b1e7f1510769b73baacac12e9e4d8d5c67fbe65"
+  },
+  "input": {
+    "canonical_npz_sha256": "2401a76afc0f7390ec26f050e1bcd95d990a910668feb83c49e9a73f0a686261",
+    "rows": 100,
+    "jiangxi_rows": 50,
+    "shanghai_rows": 50,
+    "selection": "first 50 frozen manifest rows within each region",
+    "selected_manifest_rows_sha256": "5bf3d9d9ca16c4ce5962339f9e911e0453b031a37af28c60f805753fbca9873c"
+  },
+  "contract": {
+    "x_shape": [
+      100,
+      23,
+      17
+    ],
+    "mask_shape": [
+      100,
+      23,
+      17
+    ],
+    "dynamic_world_shape": [
+      100,
+      23
+    ],
+    "latlons_shape": [
+      100,
+      2
+    ],
+    "missing_mask_value": 1,
+    "dynamic_world_ignored_value": 9,
+    "month_zero_based": 2,
+    "month_limitation": "official model internally assumes 23 consecutive months; frozen observations use irregular anchors"
+  },
+  "result": {
+    "embedding_shape": [
+      100,
+      128
+    ],
+    "all_finite": true,
+    "device": "cuda:0",
+    "repeat_bitwise_equal": true,
+    "embedding_sha256": "e55b82dd9e344fb39b42483b508532050e3f470ee0038f32d979d2d1a50e543e"
+  },
+  "environment_note": "Optional Earth Engine/data-export imports were stubbed; official constructor, normalization, model, and checkpoint were unmodified."
+}

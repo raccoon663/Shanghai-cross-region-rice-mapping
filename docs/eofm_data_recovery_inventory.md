@@ -79,7 +79,7 @@ recorded SHA-256 values:
 
 - `jiangxi_official_2022_binary_features_gee_s1_s2.csv`, expected SHA-256
   `042425e9a1d754191c6626379d43b5ee812656ea5b5b937ca1c8c9c1dc0b00dc`;
-- `shanghai_light_2022_fusion_92_20m.tif`, expected SHA-256
+- a local copy of `shanghai_light_2022_fusion_92_20m.tif`, expected SHA-256
   `16efb56adf0853bdd49fa0ed1e623ae8650ad32c92292d5c7521a3456ff7cd19`;
 - any 2022 multispectral S2 point time series for the frozen 13,429 samples;
 - any 2022 native S1/S2 spatial patches centered on those samples;
@@ -142,21 +142,53 @@ their Earth Engine states before applying the same skip rules. Use
 task IDs, descriptions, expected row ranges, output prefixes, and the Drive
 folder; it should be retained locally until all 27 chunks have completed.
 
-## Earth Engine submission result (2026-08-23)
+## Earth Engine submission and reconstruction result (2026-08-23)
 
 All 27 deterministic chunks were submitted through the authenticated Earth
 Engine Code Editor under project `eng-artifact-503507-k7`. Task IDs and states
 are frozen in `results/manifests/eofm_ee_submission_freeze.json`.
 
-- c000 completed and wrote the first 500 rows to Google Drive;
-- c001-c026 failed after computation because the destination Drive had
-  insufficient free space;
-- the inspected c026 error was: `Not enough space in Google Drive (need 1.4MB
-  for this export). (Error code: 3)`;
-- no task remains active, so the point-time-series reconstruction is not yet
-  complete and Presto tensor construction must not start.
+- the initial c000 task completed, while c001-c026 first failed because Drive
+  lacked space;
+- after explicit user authorization, Drive trash was permanently emptied; this
+  cleanup is not recoverable;
+- c001-c026 were resubmitted, and all completed; a duplicate c000 also
+  completed, but only one c000 file entered the validated merge;
+- the 27 retained CSVs contain exactly 13,429 ordered rows, 414 features, and
+  no duplicate `manifest_row`; Jiangxi contributes 1,429 rows and Shanghai
+  12,000 rows;
+- canonical native arrays have shapes S1 `(13429, 23, 2)` and S2
+  `(13429, 23, 10)`. Conservative mask reconciliation leaves 1,629 missing S1
+  and 5,513 missing S2 sample-timesteps. The S1 exported mask and numeric
+  sentinel differed at 186 boundary sample-timesteps; both must indicate valid
+  before a value is exposed to Presto.
 
-Free at least 40 MB plus a safety margin in the signed-in Google Drive, then
-resubmit c001-c026. Chunk c000 must be retained and skipped. This storage-quota
-failure does not change the frozen sample, temporal, band, projection, or
-missingness contracts.
+The reconstructed Shanghai legacy features were compared with the recovered
+12,000-row historical Temporal-92D table. Both-valid MAE is 0.01975 for NDVI,
+0.47208 dB for VV, 0.47953 dB for VH, and 0.07848 for RVI. The reconstruction
+is therefore a new, documented data version, as required by the temporal-grid
+freeze; it must not overwrite or relabel the historical frozen Temporal-92D
+results. A historical 756.4 MB target raster with the expected filename was
+also located in Drive, but was not downloaded or substituted for the new
+native-band extraction.
+
+## Presto input and smoke-test result
+
+The official `nasaharvest/presto` source is pinned at commit
+`11e207a668a34336ced1d8e492a1bd5849b96c4a`. Its official batch constructor and
+normalization produce 17-band tensors from VV/VH and the ten available S2
+bands; unavailable ERA5/SRTM channels remain masked, Dynamic World uses the
+official ignored class 9, and per-window S1/S2 missingness is added to the
+official mask.
+
+Presto accepts only a zero-based first month and internally advances every
+timestep as a consecutive month. The benchmark has 23 irregular overlapping
+windows, so `month=2` (March) is frozen as a compatibility adaptation while
+the actual anchor dates/months remain in the canonical input. This limitation
+must accompany every future Presto result.
+
+A deterministic smoke test selected the first 50 frozen Jiangxi and first 50
+frozen Shanghai rows. The unmodified official checkpoint produced finite
+`(100, 128)` embeddings on CUDA, and two repeated inference calls were bitwise
+equal. This is an interface/representation check only; no classifier, transfer
+metric, few-shot run, OOD run, or benchmark result was produced.

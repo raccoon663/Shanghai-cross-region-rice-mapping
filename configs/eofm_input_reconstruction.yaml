@@ -20,6 +20,8 @@ earth_engine:
   missing_value: -9999
 
 presto_input:
+  official_repository: nasaharvest/presto
+  official_commit: 11e207a668a34336ced1d8e492a1bd5849b96c4a
   timestep_count: 23
   tensor_order: [sample, timestep, band]
   s1_band_order: [VV, VH]
@@ -28,6 +30,8 @@ presto_input:
   use_official_normalization: true
   dynamic_world_policy: official_ignored_value_if_unavailable
   coordinate_policy: declare_encoder_use_before_smoke_test_never_downstream
+  month_policy: zero_based_first_month_2_for_march_official_consecutive_month_compatibility
+  month_policy_limitation: frozen 23 observations have irregular anchors and are not truly consecutive months
 
 validation:
   historical_target_temporal_table_env: RICE_FUSION_LEGACY_ROOT

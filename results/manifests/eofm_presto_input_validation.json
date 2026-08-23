@@ -1,0 +1,207 @@
+{
+  "manifest_version": "1.0",
+  "status": "validated_ready_for_presto_constructor",
+  "source": {
+    "directory": "gitignored runtime output",
+    "chunks": [
+      {
+        "chunk_id": 0,
+        "file": "eofm_presto_points_2022_c000_00000_00500.csv",
+        "rows": 500,
+        "sha256": "f33a2e6ad67aadfdd53631efac66dfb69a23a86a362f5e878abea9384c070125"
+      },
+      {
+        "chunk_id": 1,
+        "file": "eofm_presto_points_2022_c001_00500_01000.csv",
+        "rows": 500,
+        "sha256": "d445aae783b87a93aa6a5fce123073aa7bb162a1ccccc219f8c166885b289209"
+      },
+      {
+        "chunk_id": 2,
+        "file": "eofm_presto_points_2022_c002_01000_01500.csv",
+        "rows": 500,
+        "sha256": "6f229093e157d4a77a7898dc2ffa0c63087cd2a715ea84b0c91c94c607280763"
+      },
+      {
+        "chunk_id": 3,
+        "file": "eofm_presto_points_2022_c003_01500_02000.csv",
+        "rows": 500,
+        "sha256": "f2f88243759533a11b15318fe407411e51b4a95082a3d778ec6e1e5073484f45"
+      },
+      {
+        "chunk_id": 4,
+        "file": "eofm_presto_points_2022_c004_02000_02500.csv",
+        "rows": 500,
+        "sha256": "bc8feec550290fb0dd83901306a8ccf4af512731953add0a5bc113317a83d330"
+      },
+      {
+        "chunk_id": 5,
+        "file": "eofm_presto_points_2022_c005_02500_03000.csv",
+        "rows": 500,
+        "sha256": "453c6f07561348549c62fb1778f90751812ca4118f004600c06a30cc9fc02bf9"
+      },
+      {
+        "chunk_id": 6,
+        "file": "eofm_presto_points_2022_c006_03000_03500.csv",
+        "rows": 500,
+        "sha256": "7475da3c3d3c21351920e1518651bc00e532c2f960c553101d48d08402ece695"
+      },
+      {
+        "chunk_id": 7,
+        "file": "eofm_presto_points_2022_c007_03500_04000.csv",
+        "rows": 500,
+        "sha256": "a7165f66991d062d55a27fa9e1ef3b6a79bb191c74263eeb1363e07f7aac6046"
+      },
+      {
+        "chunk_id": 8,
+        "file": "eofm_presto_points_2022_c008_04000_04500.csv",
+        "rows": 500,
+        "sha256": "8f0334037e9032273854cb325033d56115a0a90e34aaa1a5aeda48a0e4606472"
+      },
+      {
+        "chunk_id": 9,
+        "file": "eofm_presto_points_2022_c009_04500_05000.csv",
+        "rows": 500,
+        "sha256": "efd529fae769b33a5d00376e2f3b44e2e5da42c6005a29f85b56ca13cf1567fe"
+      },
+      {
+        "chunk_id": 10,
+        "file": "eofm_presto_points_2022_c010_05000_05500.csv",
+        "rows": 500,
+        "sha256": "2732b05a053434623556f067cccdc777bf912ca3a77b4bd5d5af6fb82000086a"
+      },
+      {
+        "chunk_id": 11,
+        "file": "eofm_presto_points_2022_c011_05500_06000.csv",
+        "rows": 500,
+        "sha256": "71a74bb926db26d9e4e404866d68ec638d4d102c03f18f3c5ef9633ad4e2171e"
+      },
+      {
+        "chunk_id": 12,
+        "file": "eofm_presto_points_2022_c012_06000_06500.csv",
+        "rows": 500,
+        "sha256": "02abf79578ce0edf100101aa904b264092fc0cb25feb3c511fd8fd1c0b86084c"
+      },
+      {
+        "chunk_id": 13,
+        "file": "eofm_presto_points_2022_c013_06500_07000.csv",
+        "rows": 500,
+        "sha256": "3bb774f465709891c83b90d9144e7a3696bcd254c4ec3b9d5320d076043860cd"
+      },
+      {
+        "chunk_id": 14,
+        "file": "eofm_presto_points_2022_c014_07000_07500.csv",
+        "rows": 500,
+        "sha256": "82185c1b80f5bfb3eb20c5a62c121b6d08159e0b20366afc9815e62654aff2fe"
+      },
+      {
+        "chunk_id": 15,
+        "file": "eofm_presto_points_2022_c015_07500_08000.csv",
+        "rows": 500,
+        "sha256": "e7f5bc07c44e6e287990110991c5c9dab738608e8a79faec141be56f1b071dcd"
+      },
+      {
+        "chunk_id": 16,
+        "file": "eofm_presto_points_2022_c016_08000_08500.csv",
+        "rows": 500,
+        "sha256": "0ec29c5ef4d8cec7953f847f1fc079eb5cd2587aa6703d16dd2c88f68e9bc9c4"
+      },
+      {
+        "chunk_id": 17,
+        "file": "eofm_presto_points_2022_c017_08500_09000.csv",
+        "rows": 500,
+        "sha256": "22720b6a62f320a47216a2cbbf486be1425843223a9d50eb909b38d23242db39"
+      },
+      {
+        "chunk_id": 18,
+        "file": "eofm_presto_points_2022_c018_09000_09500.csv",
+        "rows": 500,
+        "sha256": "f6f781836c81c2346a759d6ac8e37bfe458757834c19cad5ddbe582ef602144a"
+      },
+      {
+        "chunk_id": 19,
+        "file": "eofm_presto_points_2022_c019_09500_10000.csv",
+        "rows": 500,
+        "sha256": "9ff0cac73cc454e2f86450d1eaca4860cbd6133a07ccb84c706b55ecf53c156c"
+      },
+      {
+        "chunk_id": 20,
+        "file": "eofm_presto_points_2022_c020_10000_10500.csv",
+        "rows": 500,
+        "sha256": "6cf73970510cfb1aa20007cf1201f3b30b82a35358ad7a0ae4761c00a27c39cd"
+      },
+      {
+        "chunk_id": 21,
+        "file": "eofm_presto_points_2022_c021_10500_11000.csv",
+        "rows": 500,
+        "sha256": "19a48ede4cb0382e8ab307978c138f056191a69558aee70329c9ecb9fa279328"
+      },
+      {
+        "chunk_id": 22,
+        "file": "eofm_presto_points_2022_c022_11000_11500.csv",
+        "rows": 500,
+        "sha256": "81b342d4404dea5169fb808b3cad0db41ae3b99b140b30f09aac0f0180333173"
+      },
+      {
+        "chunk_id": 23,
+        "file": "eofm_presto_points_2022_c023_11500_12000.csv",
+        "rows": 500,
+        "sha256": "4a21c5503678833eae3b9db8c4960531cda2bcb8d8acf97a619bd9638ad8c897"
+      },
+      {
+        "chunk_id": 24,
+        "file": "eofm_presto_points_2022_c024_12000_12500.csv",
+        "rows": 500,
+        "sha256": "50258c5a1e5420833b545b36a7915d4b751f37954f14f4dfd023177c6fc37d01"
+      },
+      {
+        "chunk_id": 25,
+        "file": "eofm_presto_points_2022_c025_12500_13000.csv",
+        "rows": 500,
+        "sha256": "24c6b261bdcece8f550f5843677f978ea136790eadca3283554c758ce3937e09"
+      },
+      {
+        "chunk_id": 26,
+        "file": "eofm_presto_points_2022_c026_13000_13429.csv",
+        "rows": 429,
+        "sha256": "1a7ab30e99b99b8fa9ffce3dc7ebb5b22ca015f4a01c1a0e8f28daf61f102e06"
+      }
+    ]
+  },
+  "frozen_contract": {
+    "sample_manifest": "data_metadata/alphaearth_sample_manifest.csv",
+    "sample_manifest_sha256": "04c4e7454ead6cd415f5d761593d9e88b8041dd6611f630064fca798ccf6421b",
+    "temporal_grid": "results/manifests/eofm_temporal_grid_freeze.json",
+    "temporal_grid_sha256": "133591caab146edd844a6f395828b9eda153fe810173fe7c44d569e92c68497a"
+  },
+  "arrays": {
+    "rows": 13429,
+    "timesteps": 23,
+    "s1_shape": [
+      13429,
+      23,
+      2
+    ],
+    "s2_shape": [
+      13429,
+      23,
+      10
+    ],
+    "s1_missing_timesteps": 1629,
+    "s2_missing_timesteps": 5513,
+    "s1_exported_mask_sentinel_disagreements": 186,
+    "s2_exported_mask_sentinel_disagreements": 0,
+    "jiangxi_rows": 1429,
+    "shanghai_rows": 12000
+  },
+  "canonical_npz": {
+    "path": "gitignored runtime output",
+    "sha256": "2401a76afc0f7390ec26f050e1bcd95d990a910668feb83c49e9a73f0a686261"
+  },
+  "presto_month_adaptation": {
+    "official_input": "zero-based first month followed by internally generated consecutive months",
+    "value": 2,
+    "meaning": "March; preserves the frozen 23 observations but not their irregular anchor-month spacing",
+    "actual_anchor_months_retained_in_npz": true
+  }
+}

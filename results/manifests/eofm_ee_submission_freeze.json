@@ -1,5 +1,5 @@
 {
-  "manifest_version": "1.0",
+  "manifest_version": "1.1",
   "recorded_at": "2026-08-23T05:37:37+08:00",
   "earth_engine_project": "eng-artifact-503507-k7",
   "submission_surface": "Google Earth Engine Code Editor",
@@ -9,20 +9,21 @@
     "format": "CSV"
   },
   "summary": {
-    "submitted": 27,
-    "completed": 1,
-    "failed": 26,
+    "effective_chunks": 27,
+    "completed": 27,
+    "failed": 0,
     "active": 0,
-    "completed_rows": 500,
+    "completed_rows": 13429,
     "planned_rows": 13429,
-    "status": "blocked_google_drive_quota"
+    "status": "completed_and_downloaded"
   },
+  "initial_attempt_summary": {"submitted": 27, "completed": 1, "failed": 26, "active": 0, "completed_rows": 500, "status": "blocked_google_drive_quota"},
   "confirmed_error": {
     "task": "eofm_presto_points_2022_c026_13000_13429",
     "message": "Not enough space in Google Drive (need 1.4MB for this export). (Error code: 3)",
     "interpretation": "The export computation ran, but Drive could not accept the output. Free Drive space before resubmitting failed chunks."
   },
-  "tasks": [
+  "initial_tasks": [
     {"chunk_id": 0, "description": "eofm_presto_points_2022_c000_00000_00500", "task_id": "BK66T42VJRVUAKTTLOJYETAE", "state": "COMPLETED"},
     {"chunk_id": 1, "description": "eofm_presto_points_2022_c001_00500_01000", "task_id": "F2LUUTRQXPDEF76ZKT6QMMDC", "state": "FAILED"},
     {"chunk_id": 2, "description": "eofm_presto_points_2022_c002_01000_01500", "task_id": "FWOOXM7WRHUJ7MKE6QDTQC5Z", "state": "FAILED"},
@@ -51,10 +52,39 @@
     {"chunk_id": 25, "description": "eofm_presto_points_2022_c025_12500_13000", "task_id": "37OSWY5UGFXRZY54CRQPHR3F", "state": "FAILED"},
     {"chunk_id": 26, "description": "eofm_presto_points_2022_c026_13000_13429", "task_id": "5FLMKB6CFRY5DQK2NWAUEC4K", "state": "FAILED"}
   ],
-  "resume": {
-    "prerequisite": "Free sufficient Google Drive space; allow at least 40 MB for the remaining CSV chunks and safety margin.",
-    "completed_chunk_to_skip": 0,
-    "code_editor": "Rerun the frozen script, submit chunks c001-c026, and verify every task in the Cloud Console.",
-    "python_api": ".\\.venv\\Scripts\\python.exe scripts\\eofm\\02_submit_presto_point_exports.py --project eng-artifact-503507-k7 --start-chunk 1"
+  "retry_tasks": [
+    {"chunk_id": 0, "task_id": "D3V4KAFZXL3FNZ2CQT2UBIX3", "state": "COMPLETED", "note": "duplicate completed export; one c000 file was retained for validation"},
+    {"chunk_id": 1, "task_id": "CJCSNURRWLADCBXME7T5K6AG", "state": "COMPLETED"},
+    {"chunk_id": 2, "task_id": "6STLGUPVJHONVK72UJOPJVIB", "state": "COMPLETED"},
+    {"chunk_id": 3, "task_id": "EYE4OBY2Y2CGXZKB4ZY2APXB", "state": "COMPLETED"},
+    {"chunk_id": 4, "task_id": "P4Z2KOBTKJJASMOFTXEADN37", "state": "COMPLETED"},
+    {"chunk_id": 5, "task_id": "UV6Q33YBUOV3YJK4ZJI5NRUW", "state": "COMPLETED"},
+    {"chunk_id": 6, "task_id": "MDONOOM3V442WTDXJGH6JGRY", "state": "COMPLETED"},
+    {"chunk_id": 7, "task_id": "Y4EGUZAIYVCJQGRMOLOQGUKY", "state": "COMPLETED"},
+    {"chunk_id": 8, "task_id": "AM2YGQ6XW2PUMYK2AYUAF22N", "state": "COMPLETED"},
+    {"chunk_id": 9, "task_id": "CWQPMRKFSBRAPT7AGECCUPOD", "state": "COMPLETED"},
+    {"chunk_id": 10, "task_id": "UFS6DDUSTI7KNZJJHSM2R433", "state": "COMPLETED"},
+    {"chunk_id": 11, "task_id": "OWPTKLUHV6ZP3PA33RRCPOPY", "state": "COMPLETED"},
+    {"chunk_id": 12, "task_id": "36SWILL5HBITBJJHWBYR5YJW", "state": "COMPLETED"},
+    {"chunk_id": 13, "task_id": "FA46OWXSOW3D4KOY252KHV6H", "state": "COMPLETED"},
+    {"chunk_id": 14, "task_id": "UTMH6NZDEI4QDHOECTB5RX7J", "state": "COMPLETED"},
+    {"chunk_id": 15, "task_id": "CPQJWYOQDI2BWYZVYVL6DOXT", "state": "COMPLETED"},
+    {"chunk_id": 16, "task_id": "IJBATST2XDOU5LZVZ2YCTRLB", "state": "COMPLETED"},
+    {"chunk_id": 17, "task_id": "KDZJ3GDFBE72SMVTQ66CPLTZ", "state": "COMPLETED"},
+    {"chunk_id": 18, "task_id": "FNLDQJDW7L4LCJ7JGYOQC5B6", "state": "COMPLETED"},
+    {"chunk_id": 19, "task_id": "CV6XQXIKITK64KLZMRSRABSF", "state": "COMPLETED"},
+    {"chunk_id": 20, "task_id": "XUWHD4BPV5BCKREM4EFFDN7P", "state": "COMPLETED"},
+    {"chunk_id": 21, "task_id": "X5ZLD3CWQJGYC36BQCNAWJBH", "state": "COMPLETED"},
+    {"chunk_id": 22, "task_id": "MBDKPAJUZTOR4YA2I7K65Y3Y", "state": "COMPLETED"},
+    {"chunk_id": 23, "task_id": "RBPATUW57AXRT5AVUWO6ORHX", "state": "COMPLETED"},
+    {"chunk_id": 24, "task_id": "3MSQMREECYRK2H734RGPLVKS", "state": "COMPLETED"},
+    {"chunk_id": 25, "task_id": "F6ZQ75OHDZBZIZHOMU4OSY73", "state": "COMPLETED"},
+    {"chunk_id": 26, "task_id": "X4M2EXDH3OCJHFWWBXLQHUIC", "state": "COMPLETED"}
+  ],
+  "resolution": {
+    "drive_cleanup": "User explicitly authorized permanent emptying of Google Drive trash; operation is not recoverable.",
+    "downloaded_files": 27,
+    "validation_manifest": "results/manifests/eofm_presto_input_validation.json",
+    "resume": "No Earth Engine export remains pending."
   }
 }
