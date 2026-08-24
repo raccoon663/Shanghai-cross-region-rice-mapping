@@ -211,6 +211,8 @@ the primary design is frozen as a 3-by-3 patch at 10 m (30 m by 30 m), the same
 23 temporal windows, native VV/VH plus ten S2 bands and NDVI, actual zero-based
 anchor months, official normalization/masks, and official mask-aware token
 averaging. Nano is the smallest official model and emits 128 dimensions.
+The encoder patch size is frozen to 1, preserving all nine spatial positions as
+separate tokens through attention before mask-aware averaging.
 
 Point exports cannot supply spatial context, so a separate deterministic GEE
 patch-point generator expands each frozen center into nine ordered offsets.

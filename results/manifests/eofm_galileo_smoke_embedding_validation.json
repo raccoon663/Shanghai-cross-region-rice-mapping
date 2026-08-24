@@ -1,0 +1,89 @@
+{
+  "manifest_version": "1.0",
+  "status": "passed",
+  "upstream": {
+    "repository": "nasaharvest/galileo",
+    "commit": "0f0b5b95ac81acef4b74cf4686dc877202f4541b",
+    "model": "nano",
+    "encoder_checkpoint_sha256": "eab6acacf527886a508a555bc24efe4b4a2cf91b162e84cd1c4a1807e942180c",
+    "model_config_sha256": "8ec17cb83cb78d987b4b920b9c1c35aa245ec0f80e1abf0c22d6f77d828f431c",
+    "normalization_json_sha256": "baea3828a8750e0b570cb2fad5cd30bb249f1f001988d842cc4246860e799ff3",
+    "normalizer": "official src.data.dataset.Normalizer(std=True)"
+  },
+  "input": {
+    "samples": 1000,
+    "jiangxi": 500,
+    "shanghai": 500,
+    "shape": [
+      1000,
+      3,
+      3,
+      23,
+      13
+    ],
+    "encoder_patch_size": 1,
+    "input_resolution_m": 10,
+    "months_zero_based": [
+      2,
+      2,
+      3,
+      3,
+      3,
+      4,
+      4,
+      5,
+      6,
+      7,
+      7,
+      7,
+      7,
+      8,
+      8,
+      8,
+      9,
+      9,
+      9,
+      9,
+      10,
+      10,
+      10
+    ],
+    "space_time_band_order": [
+      "VV",
+      "VH",
+      "B2",
+      "B3",
+      "B4",
+      "B5",
+      "B6",
+      "B7",
+      "B8",
+      "B8A",
+      "B11",
+      "B12",
+      "NDVI"
+    ],
+    "missing_modalities": [
+      "space_x",
+      "time_x",
+      "static_x"
+    ],
+    "missing_modality_policy": "zero tensors with official masks set to 1; no fabricated values",
+    "normalized_finite": true
+  },
+  "embedding": {
+    "shape": [
+      1000,
+      128
+    ],
+    "dtype": "float32",
+    "finite": true,
+    "pooling": "official Encoder.average_tokens after Transformer attention",
+    "repeated_runs_bitwise_equal": true,
+    "logical_sha256": "043a8c24ad2458f28755206068e2f8ff09ddb64a84752243df9f3dd7573e2bf5",
+    "runtime_npz_sha256": "7ac2b28f8db30656dd5d69e5a21114912209190a297ca834175f80d68417b2c1",
+    "first_run_seconds": 14.907282400003169,
+    "second_run_seconds": 14.456856499949936,
+    "device": "cuda"
+  }
+}

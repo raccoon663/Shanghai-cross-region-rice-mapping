@@ -38,6 +38,7 @@ galileo_input:
   official_commit: 0f0b5b95ac81acef4b74cf4686dc877202f4541b
   model_size: nano
   patch_pixels: 3
+  encoder_patch_size: 1
   sample_resolution_m: 10
   physical_footprint_m: [30, 30]
   timestep_count: 23
