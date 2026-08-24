@@ -77,6 +77,8 @@ def main() -> None:
     parser.add_argument("--presto-source", type=Path, required=True)
     parser.add_argument("--extra-site-packages", type=Path)
     parser.add_argument("--report", type=Path, default=DEFAULT_REPORT)
+    parser.add_argument("--month", type=int, default=2,
+                        help="Zero-based first month; use 0 for the monthly primary input")
     args = parser.parse_args()
 
     source = args.presto_source.resolve()
@@ -108,9 +110,14 @@ def main() -> None:
         mask[:, :, idx].masked_fill_(~s2_valid, 1)
         x[:, :, idx].masked_fill_(~s2_valid, 0)
 
-    assert tuple(x.shape) == (100, 23, 17)
+    timesteps = int(data["s1"].shape[1])
+    if not 0 <= args.month < 12:
+        raise ValueError("month must be a zero-based value in [0, 11]")
+    if timesteps != 23 and args.report.resolve() == DEFAULT_REPORT.resolve():
+        raise ValueError("Non-legacy inputs require an explicit, non-legacy --report")
+    assert tuple(x.shape) == (100, timesteps, 17)
     assert tuple(mask.shape) == tuple(x.shape)
-    assert tuple(dynamic_world.shape) == (100, 23)
+    assert tuple(dynamic_world.shape) == (100, timesteps)
     assert torch.isfinite(x).all()
     assert torch.equal(dynamic_world, torch.full_like(dynamic_world, 9))
     dynamic_world = dynamic_world.long()
@@ -120,8 +127,8 @@ def main() -> None:
     dynamic_world, latlons = dynamic_world.to(device), latlons.to(device)
     model = model_module.Presto.load_pretrained().to(device).eval()
     with torch.inference_mode():
-        first = model.encoder(x, dynamic_world, latlons, mask, month=2, eval_task=True)
-        second = model.encoder(x, dynamic_world, latlons, mask, month=2, eval_task=True)
+        first = model.encoder(x, dynamic_world, latlons, mask, month=args.month, eval_task=True)
+        second = model.encoder(x, dynamic_world, latlons, mask, month=args.month, eval_task=True)
     if not torch.equal(first, second):
         raise ValueError("Repeated encoder inference was not bitwise deterministic")
     if first.shape[0] != 100 or not torch.isfinite(first).all():
@@ -140,8 +147,9 @@ def main() -> None:
         "contract": {"x_shape": list(x.shape), "mask_shape": list(mask.shape),
                      "dynamic_world_shape": list(dynamic_world.shape),
                      "latlons_shape": list(latlons.shape), "missing_mask_value": 1,
-                     "dynamic_world_ignored_value": 9, "month_zero_based": 2,
-                     "month_limitation": "official model internally assumes 23 consecutive months; frozen observations use irregular anchors"},
+                     "dynamic_world_ignored_value": 9, "month_zero_based": args.month,
+                     "timesteps": timesteps,
+                     "temporal_semantics": "official consecutive months from supplied zero-based first month"},
         "result": {"embedding_shape": list(first.shape), "all_finite": True,
                    "device": str(device), "repeat_bitwise_equal": True,
                    "embedding_sha256": hashlib.sha256(first.cpu().numpy().tobytes()).hexdigest()},

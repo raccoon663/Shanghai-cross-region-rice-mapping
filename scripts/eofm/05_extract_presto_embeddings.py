@@ -61,7 +61,7 @@ def construct_batch(data, indices: np.ndarray, constructor, pipeline, torch):
     return x, mask, dynamic_world.long()
 
 
-def encode_all(data, batch_size: int, constructor, pipeline, model_module, torch) -> np.ndarray:
+def encode_all(data, batch_size: int, month: int, constructor, pipeline, model_module, torch) -> np.ndarray:
     device = model_module.device
     model = model_module.Presto.load_pretrained().to(device).eval()
     outputs: list[np.ndarray] = []
@@ -74,7 +74,7 @@ def encode_all(data, batch_size: int, constructor, pipeline, model_module, torch
             latlons = torch.from_numpy(data["latlons"][indices].copy())
             encoded = model.encoder(
                 x.to(device), dynamic_world.to(device), latlons.to(device),
-                mask.to(device), month=2, eval_task=True,
+                mask.to(device), month=month, eval_task=True,
             )
             outputs.append(encoded.cpu().numpy().astype(np.float32, copy=False))
     return np.concatenate(outputs, axis=0)
@@ -95,6 +95,9 @@ def main() -> None:
     parser.add_argument("--presto-source", type=Path, required=True)
     parser.add_argument("--extra-site-packages", type=Path)
     parser.add_argument("--batch-size", type=int, default=256)
+    parser.add_argument("--month", type=int, default=2,
+                        help="Zero-based first month; use 0 for the monthly primary input")
+    parser.add_argument("--representation", default="presto_legacy_cadence_sensitivity")
     parser.add_argument("--verify-repeat", action="store_true")
     args = parser.parse_args()
     if args.batch_size <= 0:
@@ -112,10 +115,16 @@ def main() -> None:
     input_path = args.input.resolve()
     data = np.load(input_path)
     manifest_row = data["manifest_row"]
+    timesteps = int(data["s1"].shape[1])
+    if not 0 <= args.month < 12:
+        raise ValueError("month must be a zero-based value in [0, 11]")
+    if timesteps != 23 and (args.output.resolve() == DEFAULT_OUTPUT.resolve()
+                            or args.report.resolve() == DEFAULT_REPORT.resolve()):
+        raise ValueError("Non-legacy inputs require explicit non-legacy --output and --report")
     if not np.array_equal(manifest_row, np.arange(13429, dtype=np.int32)):
         raise ValueError("Canonical input is not the exact frozen 13,429-row order")
     embeddings = encode_all(
-        data, args.batch_size, constructor, pipeline, model_module, torch
+        data, args.batch_size, args.month, constructor, pipeline, model_module, torch
     )
     if embeddings.shape != (13429, 128) or not np.isfinite(embeddings).all():
         raise ValueError("Invalid complete Presto embedding matrix")
@@ -124,7 +133,7 @@ def main() -> None:
     repeat_hash = None
     if args.verify_repeat:
         repeated = encode_all(
-            data, args.batch_size, constructor, pipeline, model_module, torch
+            data, args.batch_size, args.month, constructor, pipeline, model_module, torch
         )
         repeat_hash = logical_hash(repeated, manifest_row)
         if not np.array_equal(embeddings, repeated):
@@ -147,7 +156,7 @@ def main() -> None:
     report = {
         "manifest_version": "1.0",
         "status": "complete_and_frozen",
-        "representation": "Presto official pretrained encoder, globally pooled tokens",
+        "representation": args.representation,
         "presto": {
             "repository": "nasaharvest/presto",
             "commit": PINNED_COMMIT,
@@ -157,9 +166,9 @@ def main() -> None:
         "input": {
             "canonical_npz_sha256": sha256(input_path),
             "rows": 13429,
-            "timesteps": 23,
-            "month_zero_based": 2,
-            "month_limitation": "official model treats the frozen irregular observations as 23 consecutive months",
+            "timesteps": timesteps,
+            "month_zero_based": args.month,
+            "temporal_semantics": "official consecutive months from supplied zero-based first month",
             "latlon_use": "encoder only; excluded from all downstream feature tables",
         },
         "extraction": {

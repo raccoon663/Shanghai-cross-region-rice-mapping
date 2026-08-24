@@ -1,0 +1,34 @@
+version: 1
+representation: presto_primary
+sample_manifest: data_metadata/alphaearth_sample_manifest.csv
+temporal_grid_manifest: results/manifests/eofm_presto_monthly_grid_freeze.json
+earth_engine:
+  project: eng-artifact-503507-k7
+  drive_folder: rice_eofm_presto_monthly_2022
+  chunk_size: 500
+  sample_scale_m: 20
+  sample_crs: EPSG:32651
+  sample_crs_transform: [20, 0, 362320, 0, -20, 3510320]
+  sentinel_1_collection: COPERNICUS/S1_GRD
+  sentinel_1_instrument_mode: IW
+  sentinel_1_bands: [VV, VH]
+  sentinel_2_collection: COPERNICUS/S2_SR_HARMONIZED
+  sentinel_2_scene_cloud_max_percent: 80
+  sentinel_2_scl_excluded: [3, 8, 9, 10, 11]
+  sentinel_2_bands: [B2, B3, B4, B5, B6, B7, B8, B8A, B11, B12]
+  reducer: median
+  missing_value: -9999
+presto_input:
+  official_repository: nasaharvest/presto
+  official_commit: 11e207a668a34336ced1d8e492a1bd5849b96c4a
+  timestep_count: 12
+  tensor_order: [sample, timestep, band]
+  s1_band_order: [VV, VH]
+  s2_band_order: [B2, B3, B4, B5, B6, B7, B8, B8A, B11, B12]
+  use_official_constructor: true
+  use_official_normalization: true
+  dynamic_world_policy: official_ignored_value_if_unavailable
+  era5_policy: absent_not_fabricated
+  srtm_policy: absent_not_fabricated
+  coordinate_policy: encoder_only_never_downstream
+  month_policy: scalar_zero_based_january_0_then_official_consecutive_months
