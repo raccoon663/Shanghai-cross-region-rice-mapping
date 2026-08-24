@@ -147,8 +147,12 @@ def test_complete_presto_embedding_freeze():
 
 def test_galileo_primary_patch_design_is_frozen_before_export():
     plan = json.loads(GALILEO_PLAN.read_text(encoding="utf-8"))
-    assert plan["status"] == "ready_for_sensitive_data_confirmation"
+    assert plan["status"] in {
+        "ready_for_sensitive_data_confirmation",
+        "smoke_passed_full_export_prepared",
+    }
     assert plan["primary_design"]["patch_shape_pixels"] == [3, 3]
+    assert plan["primary_design"]["encoder_patch_size"] == 1
     assert plan["primary_design"]["physical_footprint_m"] == [30, 30]
     assert plan["primary_design"]["timesteps"] == 23
     assert plan["smoke_export"]["center_chunks"] == [0, 3]
