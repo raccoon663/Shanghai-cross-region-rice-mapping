@@ -10,7 +10,7 @@ sample outputs. Full retraining requires the exact frozen runtime inputs below.
 ```bash
 python -m venv .venv
 # Activate .venv using the command for your shell.
-pip install -e ".[dev]"
+pip install -e ".[dev,earthengine]"
 python -c "import pandas as pd; x=pd.read_csv('results/eofm_benchmark_v1/fewshot_summary.csv'); print(x[x.budget.eq(500)].to_string(index=False))"
 ```
 
@@ -88,6 +88,16 @@ The reported environment versions and source/config hashes are retained in
 [`execution_environment.json`](../results/eofm_benchmark_v1/execution_environment.json).
 The package dependency ranges are broader than that recorded environment;
 installing the latest compatible dependencies is not a bitwise-reproduction claim.
+
+Release cleanup removed the non-scientific `publication` field from the config.
+The protocol manifest retains the execution-time `config_sha256` and records
+the cleaned file separately as `release_config_sha256`. The execution environment
+also retains the original runner and config hashes. Resume validation accepts
+this metadata-only difference but still rejects changed scientific settings.
+No sample, prediction, result CSV or experimental setting changed in this cleanup.
+Git attributes preserve the historical CRLF checkout bytes for the sample and
+grid manifests, while the release config uses LF. This makes the recorded
+checksums portable without changing the sample manifest's Git blob or its rows.
 
 ## Validation and interpretation
 

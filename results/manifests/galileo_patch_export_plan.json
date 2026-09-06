@@ -44,7 +44,7 @@
     "patch_validation_manifest": "results/manifests/eofm_galileo_smoke_patch_validation.json",
     "embedding_validation_manifest": "results/manifests/eofm_galileo_smoke_embedding_validation.json"
   },
-  "privacy_gate": "Submitting the generated script transmits frozen sample coordinates to the authorized Earth Engine account and requires action-time user confirmation.",
+  "privacy_gate": "Exports transmit the public frozen sample coordinates to the configured Earth Engine project.",
   "full_export": {
     "center_chunks": 27,
     "center_rows": 13429,

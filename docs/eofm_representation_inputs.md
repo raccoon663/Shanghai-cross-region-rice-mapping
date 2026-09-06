@@ -74,3 +74,27 @@ why the primary Presto input uses 12 calendar months. The earlier 23-step
 cadence is retained as a sensitivity representation and is not one of the
 four primary benchmark rows. See the [reproduction guide](eofm_benchmark_reproduction.md)
 for the required downstream runtime paths and exact-input constraints.
+
+## Portable serial recovery
+
+Install the transport dependencies with `pip install -e ".[earthengine]"`.
+The serial recovery command requires an explicit execution project, supplied
+through `--project` or `EARTH_ENGINE_PROJECT`. The project identifiers in the
+input configs document historical exports; they are not an implicit destination
+for this command. Existing recovery ledgers must match the selected project.
+
+```bash
+python scripts/eofm/12_recover_exports_serial.py --representation galileo --start 0 --stop 1 --backup-dir /data/rice-backups --project YOUR_EE_PROJECT
+```
+
+Direct access is the default (`--proxy-port 0`). Supply a nonzero local proxy
+port only when needed. Normal recovery exports, downloads, validates and retains
+the cloud CSV. Low quota stops the command without deleting cloud data.
+
+`--cleanup-cloud` opts into moving validated temporary export CSVs to Trash.
+`--cleanup-previous` additionally processes the preceding chunk and requires
+that opt-in. Permanent quota recovery separately requires both
+`--cleanup-cloud --purge-cloud-for-quota`. Every cleanup rechecks an independent
+retained backup, hashes, sample schema, exact temporary filename and cloud ID.
+Original imagery and source files are outside this cleanup scope. No blanket
+Trash emptying is performed.

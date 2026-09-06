@@ -1,0 +1,2 @@
+# Keep the release configuration checksum portable across checkout platforms.
+eofm_benchmark.yaml text eol=lf

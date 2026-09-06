@@ -41,6 +41,11 @@ def log(event, **values):
     print(json.dumps({'event': event, **values}), flush=True)
 
 
+def scientific_config(config):
+    """Ignore the retired publication-status field, never experimental settings."""
+    return {key: value for key, value in config.items() if key != 'publication'}
+
+
 def fit_medians(x):
     with warnings.catch_warnings():
         warnings.simplefilter('ignore', RuntimeWarning)
@@ -127,7 +132,8 @@ class Benchmark:
         frozen_path = self.out / 'protocol_freeze.json'
         if frozen_path.exists():
             frozen = json.loads(frozen_path.read_text())
-            if frozen['config_sha256'] != sha256(self.config_path):
+            if (frozen['config_sha256'] != sha256(self.config_path)
+                    and scientific_config(frozen['config']) != scientific_config(self.cfg)):
                 raise ValueError('Do not change the frozen protocol after results exist')
             if sha256(self.private / 'canonical.npz') != frozen['canonical_sha256']:
                 raise ValueError('Canonical data changed')

@@ -82,7 +82,7 @@
     {"chunk_id": 26, "task_id": "X4M2EXDH3OCJHFWWBXLQHUIC", "state": "COMPLETED"}
   ],
   "resolution": {
-    "drive_cleanup": "User explicitly authorized permanent emptying of Google Drive trash; operation is not recoverable.",
+    "drive_cleanup": "Historical execution included permanent Drive Trash cleanup before export retries; this records past operations, not a default recovery behavior.",
     "downloaded_files": 27,
     "validation_manifest": "results/manifests/eofm_presto_input_validation.json",
     "resume": "No Earth Engine export remains pending."

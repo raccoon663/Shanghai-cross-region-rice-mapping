@@ -1,0 +1,2 @@
+# Frozen grid-file checksums were recorded from CRLF checkouts.
+*.json text eol=crlf

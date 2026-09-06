@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "cross-region-rice-mapping"
 version = "0.1.0"
-description = "Sentinel fusion and AlphaEarth for cross-region rice mapping"
+description = "Cross-region rice mapping with temporal remote sensing and EO foundation representations"
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "MIT"}
@@ -23,7 +23,13 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest>=8,<9"]
-earthengine = ["earthengine-api>=1.7,<2", "requests>=2.31,<3"]
+earthengine = [
+  "earthengine-api>=1.7,<2",
+  "requests>=2.31,<3",
+  "httplib2>=0.22,<1",
+  "google-auth>=2.29,<3",
+  "PySocks>=1.7,<2",
+]
 
 [tool.setuptools.packages.find]
 include = ["src*"]

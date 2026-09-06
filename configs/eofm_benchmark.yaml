@@ -33,4 +33,3 @@ ood:
   bootstrap_seed: 20260905
 paired_bootstrap_reps: 1000
 paired_bootstrap_seed: 20260905
-publication: local_only_until_user_reviews_portfolio_version

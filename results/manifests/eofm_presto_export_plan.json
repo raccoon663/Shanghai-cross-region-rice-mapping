@@ -11,7 +11,7 @@
   "sampling": {"crs": "EPSG:32651", "crs_transform": [20, 0, 362320, 0, -20, 3510320], "nominal_scale_m": 20, "geometries_exported": false},
   "export": {"destination": "Google Drive", "folder": "rice_eofm_reconstruction_2022", "format": "CSV", "feature_columns": 414, "missing_value": -9999},
   "task_ids": "results/manifests/eofm_ee_submission_freeze.json",
-  "task_id_note": "The initial c001-c026 failures were retried after the user-authorized permanent Drive-trash cleanup. All 27 effective chunks completed and were downloaded and validated; task history is frozen in the linked manifest.",
+  "task_id_note": "The initial c001-c026 failures were retried after the historical permanent Drive-trash cleanup. All 27 effective chunks completed and were downloaded and validated; task history is frozen in the linked manifest.",
   "chunks": [
     {"chunk_id": 0, "start": 0, "stop": 500, "rows": 500, "output_prefix": "eofm_presto_points_2022_c000_00000_00500"},
     {"chunk_id": 1, "start": 500, "stop": 1000, "rows": 500, "output_prefix": "eofm_presto_points_2022_c001_00500_01000"},

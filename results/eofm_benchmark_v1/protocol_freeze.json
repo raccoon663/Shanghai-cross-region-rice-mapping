@@ -100,8 +100,7 @@
       "bootstrap_seed": 20260905
     },
     "paired_bootstrap_reps": 1000,
-    "paired_bootstrap_seed": 20260905,
-    "publication": "local_only_until_user_reviews_portfolio_version"
+    "paired_bootstrap_seed": 20260905
   },
   "config_sha256": "df04e392a97d00485ef6ba08bf226bf13a9f482e58f3c969bfd41b35c7c957e2",
   "created_before_target_evaluation": true,
@@ -265,5 +264,7 @@
   "threshold": 0.5,
   "hyperparameter_search": false,
   "legacy_results_preserved": true,
-  "comparison_scope": "representation systems with different upstream inputs, not architecture-only isolation"
+  "comparison_scope": "representation systems with different upstream inputs, not architecture-only isolation",
+  "release_config_sha256": "989ab71e65f11f67614a4c45e6b10e6b8c7a594ff92df2afcd5148ea340d86f0",
+  "release_metadata_note": "The execution config_sha256 is retained as historical provenance. The release config removes only the non-scientific publication field; all experimental settings are unchanged."
 }

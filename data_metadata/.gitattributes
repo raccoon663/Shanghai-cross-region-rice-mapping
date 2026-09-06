@@ -1,0 +1,2 @@
+# Historical sample checksum uses CRLF; preserve that checkout byte identity.
+alphaearth_sample_manifest.csv text eol=crlf

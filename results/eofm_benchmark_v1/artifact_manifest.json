@@ -15,7 +15,7 @@
     "assets/figures/eofm_benchmark_v1/fewshot_comparison.png": "444cfd44c9301c855e7422597d3f687f66df1a552c3f3a8270aa3174789c5f0a",
     "assets/figures/eofm_benchmark_v1/ood_comparison.png": "f70b3db3b8fbf0f1b3b4ec3a6427421c91035589f10226e6a0246a275329c3c1",
     "assets/figures/eofm_benchmark_v1/transfer_comparison.png": "bdddfab2f18b5444c0fcaae52e998fbea33b24bbda453d8b3aef3d9d2924b025",
-    "results/eofm_benchmark_v1/protocol_freeze.json": "dcb9584aa87be2efb724d40a362c3f25fedd1e7187bfce8c2aed164e114b4745",
+    "results/eofm_benchmark_v1/protocol_freeze.json": "8e6095d770c0724810d35933fcdc8c721db6bfc73378f03a1d6bc7f7e4978189",
     "results/eofm_benchmark_v1/source_prediction_freeze.json": "ed5a39b0a1e5b91433fbe32d66f1d7e26ca7d010772be1f7b2a5bd0a1c04aa69",
     "results/eofm_benchmark_v1/execution_environment.json": "5cddb1e94fc87e3dff480eb7ff307d9b5043d40a6f46f4edc0a3a8afdca26668"
   }

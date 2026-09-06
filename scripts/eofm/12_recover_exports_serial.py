@@ -25,7 +25,6 @@ import yaml
 from google.auth.transport.requests import AuthorizedSession, Request
 
 ROOT = Path(__file__).resolve().parents[2]
-PROJECT = "eng-artifact-503507-k7"
 SAMPLE_HASH = "04c4e7454ead6cd415f5d761593d9e88b8041dd6611f630064fca798ccf6421b"
 GRID_HASH = "133591caab146edd844a6f395828b9eda153fe810173fe7c44d569e92c68497a"
 DRIVE = "https://www.googleapis.com/drive/v3"
@@ -115,8 +114,9 @@ class Recovery:
             raise ValueError("Frozen sample checksum changed")
         self.manifest = BASE.validate_manifest(self.manifest_path)
         self.grid = json.loads(self.grid_path.read_text())
-        if self.config["earth_engine"]["project"] != PROJECT:
-            raise ValueError("Unauthorized project")
+        if not args.project or not args.project.strip():
+            raise ValueError("An explicit Earth Engine project is required")
+        self.project = args.project.strip()
         if self.patch:
             if BASE.sha256(self.grid_path) != GRID_HASH:
                 raise ValueError("Frozen Galileo grid checksum changed")
@@ -136,6 +136,12 @@ class Recovery:
         self.report_path = ROOT / f"results/manifests/eofm_{args.representation}_recovery_validation.json"
         self.state_path = ROOT / f"outputs/eofm/ee/{args.representation}_serial_recovery.json"
         self.state = json.loads(self.state_path.read_text()) if self.state_path.exists() else {"chunks": {}, "attempts": []}
+        previous_project = self.state.get("project")
+        if previous_project is None and self.state["attempts"]:
+            previous_project = self.config["earth_engine"]["project"]
+        if previous_project and previous_project != self.project:
+            raise ValueError("Recovery ledger belongs to a different Earth Engine project")
+        self.state["project"] = self.project
         self.local_dir.mkdir(parents=True, exist_ok=True)
         args.backup_dir.mkdir(parents=True, exist_ok=True)
         self.ee = None
@@ -155,7 +161,7 @@ class Recovery:
         self.drive = AuthorizedSession(ee.data.get_persistent_credentials(), auth_request=Request(session=transport))
         self.drive.trust_env = False
         self.drive.proxies.update(transport.proxies)
-        ee.Initialize(project=PROJECT, http_transport=httplib2.Http(timeout=60,
+        ee.Initialize(project=self.project, http_transport=httplib2.Http(timeout=60,
                       proxy_info=proxy_info))
 
     def name(self, chunk):
@@ -235,7 +241,7 @@ class Recovery:
 
     def verify_cleanup(self, record):
         chunk = record["chunk"]
-        if record["file"] != self.name(chunk):
+        if not 0 <= chunk < 27 or record["file"] != self.name(chunk):
             raise ValueError("Cleanup target is outside the frozen temporary CSV scope")
         path, backup = Path(record["local_path"]), Path(record["backup_path"])
         if path.resolve() == backup.resolve():
@@ -246,11 +252,13 @@ class Recovery:
         self.validate(chunk, path)
         current = self.api("GET", "/files/" + record["cloud"]["id"],
                            params={"fields": "id,name,size,md5Checksum,trashed"}).json()
-        if (current["name"], int(current["size"]), current["md5Checksum"]) != (record["file"], record["bytes"], record["md5"]):
+        if (current.get("id"), current["name"], int(current["size"]), current["md5Checksum"]) != (record["cloud"]["id"], record["file"], record["bytes"], record["md5"]):
             raise ValueError("Cloud deletion identity changed")
         return current
 
     def trash(self, record):
+        if not self.args.cleanup_cloud:
+            return
         if not record["cloud"]:
             return
         current = self.verify_cleanup(record)
@@ -266,6 +274,8 @@ class Recovery:
         # A conservative operational margin; does not alter sample/chunk design.
         if free >= 25_000_000:
             return
+        if not (self.args.cleanup_cloud and self.args.purge_cloud_for_quota):
+            raise RuntimeError("Insufficient quota; cloud files retained. Permanent cleanup requires --cleanup-cloud --purge-cloud-for-quota")
         for record in self.state["chunks"].values():
             if record["cloud_state"] != "recoverable_trash":
                 continue
@@ -377,19 +387,34 @@ class Recovery:
         log("requested_range_complete", representation=self.args.representation, start=self.args.start, stop=self.args.stop)
 
 
-def main():
+def parse_args(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--representation", choices=["galileo", "presto_primary"], required=True)
     parser.add_argument("--start", type=int, required=True)
     parser.add_argument("--stop", type=int, required=True)
     parser.add_argument("--backup-dir", type=Path, required=True)
-    parser.add_argument("--proxy-port", type=int, default=7899, help="Existing local proxy port; 0 for direct access")
+    parser.add_argument("--project", default=os.environ.get("EARTH_ENGINE_PROJECT"),
+                        help="Explicit execution project, or EARTH_ENGINE_PROJECT; must match an existing recovery ledger")
+    parser.add_argument("--proxy-port", type=int, default=0, help="Optional local HTTP proxy port; default 0 uses direct access")
+    parser.add_argument("--cleanup-cloud", action="store_true", help="Trash only validated temporary CSV exports with retained independent backups")
+    parser.add_argument("--purge-cloud-for-quota", action="store_true", help="Allow permanent deletion of verified trashed CSV exports when quota is low; requires --cleanup-cloud")
     parser.add_argument("--cleanup-previous", action="store_true")
     parser.add_argument("--check-plan", action="store_true")
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
+    if not args.project or not args.project.strip():
+        parser.error("Supply --project or EARTH_ENGINE_PROJECT explicitly")
+    if (args.cleanup_previous or args.purge_cloud_for_quota) and not args.cleanup_cloud:
+        parser.error("--cleanup-previous and --purge-cloud-for-quota require --cleanup-cloud")
+    if not 0 <= args.proxy_port <= 65535:
+        parser.error("--proxy-port must be 0 or a valid TCP port")
     if not 0 <= args.start < args.stop <= 27:
         raise ValueError("Chunk range must remain within frozen 0..26")
     args.backup_dir = args.backup_dir.resolve()
+    return args
+
+
+def main():
+    args = parse_args()
     recovery = Recovery(args)
     lock = ROOT / "outputs/eofm/ee/serial_export.lock"
     lock.parent.mkdir(parents=True, exist_ok=True)

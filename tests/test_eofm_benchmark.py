@@ -2,7 +2,15 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from src.experiments.run_eofm_benchmark import balanced_draw, fit_medians, impute, paired_interval
+from src.experiments.run_eofm_benchmark import balanced_draw, fit_medians, impute, paired_interval, scientific_config
+
+
+def test_retired_publication_metadata_does_not_relax_scientific_freeze():
+    old = {'threshold': .5, 'rf': {'source_trees': 500}, 'publication': 'retired'}
+    release = {'threshold': .5, 'rf': {'source_trees': 500}}
+    assert scientific_config(old) == scientific_config(release)
+    assert scientific_config(old) != scientific_config(dict(release, threshold=.6))
+    assert scientific_config(old) != scientific_config(dict(release, rf={'source_trees': 300}))
 
 
 def test_imputation_is_fit_on_training_rows_only():
