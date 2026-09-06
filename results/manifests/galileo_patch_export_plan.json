@@ -1,0 +1,54 @@
+{
+  "manifest_version": "1.0",
+  "status": "smoke_passed_full_export_prepared",
+  "representation": "Galileo nano frozen encoder with spatial-temporal Sentinel patches",
+  "upstream": {
+    "repository": "nasaharvest/galileo",
+    "commit": "0f0b5b95ac81acef4b74cf4686dc877202f4541b",
+    "model_size": "nano",
+    "encoder_checkpoint_sha256": "eab6acacf527886a508a555bc24efe4b4a2cf91b162e84cd1c4a1807e942180c",
+    "model_config_sha256": "8ec17cb83cb78d987b4b920b9c1c35aa245ec0f80e1abf0c22d6f77d828f431c",
+    "embedding_dimensions": 128
+  },
+  "primary_design": {
+    "patch_shape_pixels": [3, 3],
+    "encoder_patch_size": 1,
+    "sample_resolution_m": 10,
+    "physical_footprint_m": [30, 30],
+    "timesteps": 23,
+    "tensor_order": ["sample", "height", "width", "timestep", "band"],
+    "space_time_bands": ["VV", "VH", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B8A", "B11", "B12", "NDVI"],
+    "months": "actual zero-based month for each frozen anchor",
+    "pooling": "official mask-aware Encoder.average_tokens",
+    "selection_basis": "smallest candidate with spatial context; fixed before any target evaluation"
+  },
+  "earth_engine": {
+    "project": "eng-artifact-503507-k7",
+    "collections": ["COPERNICUS/S1_GRD", "COPERNICUS/S2_SR_HARMONIZED"],
+    "script": "scripts/eofm/06_generate_galileo_patch_code_editor_script.py",
+    "drive_folder": "rice_eofm_galileo_patch3_2022",
+    "feature_columns_per_patch_pixel": 414,
+    "private_generated_script": "gitignored outputs/eofm/ee/galileo_patch_code_editor_private.js"
+  },
+  "smoke_export": {
+    "center_chunks": [0, 3],
+    "center_rows": 1000,
+    "patch_pixel_rows": 9000,
+    "expected_tasks": 2,
+    "coverage": "c000 supplies Jiangxi; c003 supplies Shanghai",
+    "state": "completed_and_validated",
+    "tasks": [
+      "eofm_galileo_patch3_2022_c000_00000_00500",
+      "eofm_galileo_patch3_2022_c003_01500_02000"
+    ],
+    "patch_validation_manifest": "results/manifests/eofm_galileo_smoke_patch_validation.json",
+    "embedding_validation_manifest": "results/manifests/eofm_galileo_smoke_embedding_validation.json"
+  },
+  "privacy_gate": "Exports transmit the public frozen sample coordinates to the configured Earth Engine project.",
+  "full_export": {
+    "center_chunks": 27,
+    "center_rows": 13429,
+    "patch_pixel_rows": 120861,
+    "state": "remaining_25_chunks_prepared_not_submitted"
+  }
+}

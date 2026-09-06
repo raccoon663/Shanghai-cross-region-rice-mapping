@@ -1,0 +1,99 @@
+{
+  "manifest_version": "1.0",
+  "status": "validated_ready_for_official_galileo_encoder",
+  "frozen_primary": {
+    "input_patch_pixels": [
+      3,
+      3
+    ],
+    "encoder_patch_size": 1,
+    "resolution_m": 10,
+    "footprint_m": [
+      30,
+      30
+    ],
+    "timesteps": 23,
+    "tensor_order": [
+      "sample",
+      "height",
+      "width",
+      "timestep",
+      "band"
+    ],
+    "band_order": [
+      "VV",
+      "VH",
+      "B2",
+      "B3",
+      "B4",
+      "B5",
+      "B6",
+      "B7",
+      "B8",
+      "B8A",
+      "B11",
+      "B12",
+      "NDVI"
+    ],
+    "months_zero_based": [
+      2,
+      2,
+      3,
+      3,
+      3,
+      4,
+      4,
+      5,
+      6,
+      7,
+      7,
+      7,
+      7,
+      8,
+      8,
+      8,
+      9,
+      9,
+      9,
+      9,
+      10,
+      10,
+      10
+    ]
+  },
+  "source": {
+    "chunks": [
+      {
+        "file": "eofm_galileo_patch3_2022_c000_00000_00500.csv",
+        "rows": 4500,
+        "sha256": "331868731b3e60eafba0dead49a5ffa5cbb7e89bff6a71bb278020261b1768d4"
+      },
+      {
+        "file": "eofm_galileo_patch3_2022_c003_01500_02000.csv",
+        "rows": 4500,
+        "sha256": "0741763a3fb526106cad01b14d4406042b14c80960c8d51c6a065f2fab910431"
+      }
+    ],
+    "center_rows": 1000,
+    "patch_pixel_rows": 9000
+  },
+  "validation": {
+    "center_membership_exact": true,
+    "row_major_patch_order_exact": true,
+    "schema_and_band_order_exact": true,
+    "region_membership_exact": true,
+    "duplicate_patch_keys": 0,
+    "s1_mask_sentinel_disagreements": 0,
+    "s2_mask_sentinel_disagreements": 1,
+    "masked_s1_tokens": 4538,
+    "masked_s2_group_tokens": 16068
+  },
+  "frozen_inputs": {
+    "sample_manifest_sha256": "04c4e7454ead6cd415f5d761593d9e88b8041dd6611f630064fca798ccf6421b",
+    "temporal_grid_sha256": "133591caab146edd844a6f395828b9eda153fe810173fe7c44d569e92c68497a"
+  },
+  "canonical_npz": {
+    "path": "gitignored runtime output",
+    "sha256": "f034b4140000036a58393218e8a51265a583782c2196a96cda3bc55a0cc94bc6"
+  }
+}

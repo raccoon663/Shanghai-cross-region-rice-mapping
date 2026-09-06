@@ -14,6 +14,15 @@ product used as a weak reference**, not independent field ground truth.
 - SHA-256 values and schemas for the deleted historical Sentinel exports;
 - a deterministic public-data reconstruction entry point.
 
+The public `data_metadata/alphaearth_sample_manifest.csv` includes exact
+longitude/latitude, sample identifiers, product-derived labels and spatial
+splits. It was included in the initial release, before the foundation-model
+benchmark PR, and is intentionally retained for Earth Engine reconstruction.
+These are EO/reference-product sampling locations, not confidential field-survey
+or personal-location records. The manifest and its SHA-256 are unchanged.
+The repository therefore does contain public coordinates; exclusion of private
+runtime arrays must not be interpreted as a claim that all coordinates are absent.
+
 Complete extracted embeddings, feature tables, model binaries, rasters,
 GeoPackages, per-tile outputs, and logs are runtime artifacts. They are not
 tracked in the public repository.
@@ -97,6 +106,14 @@ python scripts/validate_alphaearth_export.py
 The Code Editor fallback is `gee/03_export_alphaearth_samples.js`.
 
 ## Shanghai labels
+
+The four-representation extension has a separate
+[reproduction guide](docs/eofm_benchmark_reproduction.md), including exact
+Temporal, AlphaEarth, Presto and Galileo runtime paths and hash requirements.
+Its [curated aggregate evidence](results/eofm_benchmark_v1/README.md) is available
+without these runtime inputs. Per-sample arrays, predictions, draws and model
+weights are excluded. Missing frozen inputs prevent full numerical reproduction;
+the public aggregate tables alone cannot regenerate per-sample statistics.
 
 The official Shanghai product can reproduce the weak-reference experiments,
 but it cannot establish field accuracy. The raster itself is not redistributed:

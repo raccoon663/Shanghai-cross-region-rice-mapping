@@ -1,0 +1,10 @@
+{
+  "python": "3.12.4",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "numpy": "2.5.2",
+  "pandas": "2.3.3",
+  "scipy": "1.18.1",
+  "sklearn": "1.9.0",
+  "experiment_source_sha256": "63bfbf667e04b24a6beb1bcb74cd977b60a38895891f22bab18c0c9eb255cb9f",
+  "config_sha256": "df04e392a97d00485ef6ba08bf226bf13a9f482e58f3c969bfd41b35c7c957e2"
+}

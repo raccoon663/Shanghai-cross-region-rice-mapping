@@ -1,0 +1,28 @@
+{
+  "manifest_version": "1.0",
+  "status": "frozen_before_export_or_target_performance_inspection",
+  "representation": "presto_primary",
+  "year": 2022,
+  "timestep_count": 12,
+  "month_argument_zero_based": 0,
+  "window_definition": "natural calendar months; start inclusive and end exclusive",
+  "sample_manifest": {"path": "data_metadata/alphaearth_sample_manifest.csv", "sha256": "04c4e7454ead6cd415f5d761593d9e88b8041dd6611f630064fca798ccf6421b", "rows": 13429, "jiangxi_rows": 1429, "shanghai_rows": 12000},
+  "sentinel_1": {"collection": "COPERNICUS/S1_GRD", "bands": ["VV", "VH"], "instrument_mode": "IW", "reducer": "monthly median", "values": "calibrated backscatter in dB"},
+  "sentinel_2": {"collection": "COPERNICUS/S2_SR_HARMONIZED", "bands": ["B2", "B3", "B4", "B5", "B6", "B7", "B8", "B8A", "B11", "B12"], "scene_cloud_filter_percent_lte": 80, "scl_excluded_classes": [3, 8, 9, 10, 11], "reducer": "monthly per-band median", "values": "unscaled surface-reflectance digital values; official normalization deferred to construction"},
+  "missing_data": {"explicit_sensor_masks": true, "dynamic_world": "official ignored value 9 when unavailable", "era5": "not fabricated", "srtm": "not fabricated"},
+  "windows": [
+    {"index": 1, "tag": "m01", "start_inclusive": "2022-01-01", "end_exclusive": "2022-02-01", "month_zero_based": 0},
+    {"index": 2, "tag": "m02", "start_inclusive": "2022-02-01", "end_exclusive": "2022-03-01", "month_zero_based": 1},
+    {"index": 3, "tag": "m03", "start_inclusive": "2022-03-01", "end_exclusive": "2022-04-01", "month_zero_based": 2},
+    {"index": 4, "tag": "m04", "start_inclusive": "2022-04-01", "end_exclusive": "2022-05-01", "month_zero_based": 3},
+    {"index": 5, "tag": "m05", "start_inclusive": "2022-05-01", "end_exclusive": "2022-06-01", "month_zero_based": 4},
+    {"index": 6, "tag": "m06", "start_inclusive": "2022-06-01", "end_exclusive": "2022-07-01", "month_zero_based": 5},
+    {"index": 7, "tag": "m07", "start_inclusive": "2022-07-01", "end_exclusive": "2022-08-01", "month_zero_based": 6},
+    {"index": 8, "tag": "m08", "start_inclusive": "2022-08-01", "end_exclusive": "2022-09-01", "month_zero_based": 7},
+    {"index": 9, "tag": "m09", "start_inclusive": "2022-09-01", "end_exclusive": "2022-10-01", "month_zero_based": 8},
+    {"index": 10, "tag": "m10", "start_inclusive": "2022-10-01", "end_exclusive": "2022-11-01", "month_zero_based": 9},
+    {"index": 11, "tag": "m11", "start_inclusive": "2022-11-01", "end_exclusive": "2022-12-01", "month_zero_based": 10},
+    {"index": 12, "tag": "m12", "start_inclusive": "2022-12-01", "end_exclusive": "2023-01-01", "month_zero_based": 11}
+  ],
+  "integrity_rules": ["Do not alter the grid after export begins.", "Do not choose preprocessing from Shanghai performance.", "Use the exact frozen 13,429 centers and order.", "Do not overwrite the frozen 23-window representation."]
+}
