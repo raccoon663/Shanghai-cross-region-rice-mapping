@@ -166,13 +166,27 @@ F1 versus M0 in roughly 63–66% of blocks, while M2/M2 QA are neutral.
 
 ```bash
 python -m venv .venv
-# activate the environment, then:
+# Activate the environment, then choose one installation:
+
+# Core development without Earth Engine recovery utilities
 pip install -e ".[dev]"
-python scripts/check_data.py
-python -m pytest -q
+
+# Full repository test suite, matching GitHub Actions
+pip install -e ".[dev,earthengine]"
 ```
 
-Large imagery, external model checkpoints, the official Shanghai reference raster, and generated GeoTIFF/GPKG products are not stored in Git. Public collection IDs, reconstruction scripts, file manifests, and expected missing-data behavior are documented in [DATA_AVAILABILITY.md](DATA_AVAILABILITY.md).
+Use `.[dev]` for core/local development that does not exercise Earth Engine
+recovery utilities. The full test suite requires `.[dev,earthengine]`; install
+it directly without first installing `.[dev]`. Then run:
+
+```bash
+python scripts/check_data.py
+python -m pytest -q
+python scripts/validate_release.py
+python -m compileall -q src scripts
+```
+
+Missing large raster/runtime files reported by `scripts/check_data.py` are expected in a clean Git clone. Large imagery, external model checkpoints, the official Shanghai reference raster, and generated GeoTIFF/GPKG products are not stored in Git. Public collection IDs, reconstruction scripts, file manifests, and expected missing-data behavior are documented in [DATA_AVAILABILITY.md](DATA_AVAILABILITY.md).
 
 ## Repository structure
 
