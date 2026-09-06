@@ -66,6 +66,8 @@ def load_normalizing_dict(path: Path) -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--galileo-root", type=Path, required=True)
+    parser.add_argument("--extra-site-packages", type=Path,
+                        help="Optional runtime dependencies, overriding the legacy runtime directory")
     parser.add_argument("--scope", choices=["smoke", "full"], default="smoke")
     parser.add_argument("--input", type=Path)
     parser.add_argument("--output", type=Path)
@@ -83,7 +85,7 @@ def main() -> None:
     if sha256(config_path) != EXPECTED_CONFIG_SHA256:
         raise ValueError("Galileo nano model config hash mismatch")
 
-    runtime_deps = ROOT / "outputs/eofm/galileo_runtime_deps_clean"
+    runtime_deps = args.extra_site_packages or ROOT / "outputs/eofm/galileo_runtime_deps_clean"
     if runtime_deps.exists():
         sys.path.insert(0, str(runtime_deps))
     sys.path.insert(0, str(source_root))

@@ -1,0 +1,49 @@
+{
+  "manifest_version": "1.0",
+  "status": "complete_and_frozen",
+  "representation": "presto_primary",
+  "presto": {
+    "repository": "nasaharvest/presto",
+    "commit": "11e207a668a34336ced1d8e492a1bd5849b96c4a",
+    "checkpoint_sha256": "559c9d76f525bdf2dd3774da8b1e7f1510769b73baacac12e9e4d8d5c67fbe65",
+    "embedding_dimensions": 128
+  },
+  "input": {
+    "canonical_npz_sha256": "cfe1ab4c724493557b4f9c4022609281abb65b1092cd49c9f1535ca7e869340e",
+    "rows": 13429,
+    "timesteps": 12,
+    "month_zero_based": 0,
+    "temporal_semantics": "official consecutive months from supplied zero-based first month",
+    "latlon_use": "encoder only; excluded from all downstream feature tables"
+  },
+  "extraction": {
+    "batch_size": 256,
+    "device": "cuda:0",
+    "output_shape": [
+      13429,
+      128
+    ],
+    "all_finite": true,
+    "logical_sha256_manifest_rows_plus_float32_embeddings": "5242245319350c184898071f33664e28c2b8e1ca212c8dd43317f2b039e42a30",
+    "repeat_logical_sha256": "5242245319350c184898071f33664e28c2b8e1ca212c8dd43317f2b039e42a30",
+    "repeat_bitwise_equal": true,
+    "runtime_output": "gitignored runtime output: presto_primary_embeddings_2022_monthly.npz",
+    "runtime_file_sha256": "87bd5642ffe3766b24e598dbaad6b712f8ae15a0a70cf9a651819e073c9e4059"
+  },
+  "population": {
+    "jiangxi_rows": 1429,
+    "shanghai_rows": 12000,
+    "missing_embeddings": 0
+  },
+  "embedding_norm": {
+    "minimum": 11.523907661437988,
+    "mean": 12.515751838684082,
+    "maximum": 13.144282341003418
+  },
+  "leakage_contract": [
+    "sample_id, region, class_id, split, and manifest_row are join metadata only",
+    "downstream predictors receive only P000-P127",
+    "longitude and latitude are not stored in the embedding artifact",
+    "no Shanghai labels or weak-reference metrics were used during extraction"
+  ]
+}

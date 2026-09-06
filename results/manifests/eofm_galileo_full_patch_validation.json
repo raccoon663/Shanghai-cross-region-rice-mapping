@@ -1,0 +1,224 @@
+{
+  "manifest_version": "1.0",
+  "status": "validated_ready_for_official_galileo_encoder",
+  "frozen_primary": {
+    "input_patch_pixels": [
+      3,
+      3
+    ],
+    "encoder_patch_size": 1,
+    "resolution_m": 10,
+    "footprint_m": [
+      30,
+      30
+    ],
+    "timesteps": 23,
+    "tensor_order": [
+      "sample",
+      "height",
+      "width",
+      "timestep",
+      "band"
+    ],
+    "band_order": [
+      "VV",
+      "VH",
+      "B2",
+      "B3",
+      "B4",
+      "B5",
+      "B6",
+      "B7",
+      "B8",
+      "B8A",
+      "B11",
+      "B12",
+      "NDVI"
+    ],
+    "months_zero_based": [
+      2,
+      2,
+      3,
+      3,
+      3,
+      4,
+      4,
+      5,
+      6,
+      7,
+      7,
+      7,
+      7,
+      8,
+      8,
+      8,
+      9,
+      9,
+      9,
+      9,
+      10,
+      10,
+      10
+    ]
+  },
+  "source": {
+    "chunks": [
+      {
+        "file": "eofm_galileo_patch3_2022_c000_00000_00500.csv",
+        "rows": 4500,
+        "sha256": "331868731b3e60eafba0dead49a5ffa5cbb7e89bff6a71bb278020261b1768d4"
+      },
+      {
+        "file": "eofm_galileo_patch3_2022_c001_00500_01000.csv",
+        "rows": 4500,
+        "sha256": "09136779dffa4e9a32adb8c9741d5995289277cd6747f0e8097058342631d9cf"
+      },
+      {
+        "file": "eofm_galileo_patch3_2022_c002_01000_01500.csv",
+        "rows": 4500,
+        "sha256": "3602a21deb71078a972a959e15b89ac29d2ff41754dec8e2837e2ebffd518838"
+      },
+      {
+        "file": "eofm_galileo_patch3_2022_c003_01500_02000.csv",
+        "rows": 4500,
+        "sha256": "0741763a3fb526106cad01b14d4406042b14c80960c8d51c6a065f2fab910431"
+      },
+      {
+        "file": "eofm_galileo_patch3_2022_c004_02000_02500.csv",
+        "rows": 4500,
+        "sha256": "05fd7914bd3786629405ad383f3442d4ce25b6a74806b3e977ca81e161f1c133"
+      },
+      {
+        "file": "eofm_galileo_patch3_2022_c005_02500_03000.csv",
+        "rows": 4500,
+        "sha256": "a50f2debc129612a776aa6d9010ed6a6f40d8b66fdcc5c58a773ee99be95713f"
+      },
+      {
+        "file": "eofm_galileo_patch3_2022_c006_03000_03500.csv",
+        "rows": 4500,
+        "sha256": "07503608249898d0aecd0e2b71abb758fc5ea94d62420f68a85d9d5f17e21f41"
+      },
+      {
+        "file": "eofm_galileo_patch3_2022_c007_03500_04000.csv",
+        "rows": 4500,
+        "sha256": "25702efc36e8042b61fc3984f8acadf4a087f9cc1070a3af32c4a62ea3832c43"
+      },
+      {
+        "file": "eofm_galileo_patch3_2022_c008_04000_04500.csv",
+        "rows": 4500,
+        "sha256": "cf54adcd82952c6488129017ddb02b232782744192c3cd49041fbb478427c0a5"
+      },
+      {
+        "file": "eofm_galileo_patch3_2022_c009_04500_05000.csv",
+        "rows": 4500,
+        "sha256": "b7207b69f4cc01632c3f12746bbad782d2081a1c1b803e728daea26348a553e5"
+      },
+      {
+        "file": "eofm_galileo_patch3_2022_c010_05000_05500.csv",
+        "rows": 4500,
+        "sha256": "309b78e7afa437ff711431037a65771f31ed91d17fcf0a31d1ac19a81aab275c"
+      },
+      {
+        "file": "eofm_galileo_patch3_2022_c011_05500_06000.csv",
+        "rows": 4500,
+        "sha256": "c95de71d23607333f713e6ab887626e10074ce6b5763b3bef928d4b62ef0aa6b"
+      },
+      {
+        "file": "eofm_galileo_patch3_2022_c012_06000_06500.csv",
+        "rows": 4500,
+        "sha256": "b28d7ab462e61c1d0cb8f6a2d5254d0aec1603c0ee586946d0bf02ec04b8cf95"
+      },
+      {
+        "file": "eofm_galileo_patch3_2022_c013_06500_07000.csv",
+        "rows": 4500,
+        "sha256": "4f417db13a4e88f0111d9518439cd2fa79f3f4399d1ff29724645e5d0fb615f8"
+      },
+      {
+        "file": "eofm_galileo_patch3_2022_c014_07000_07500.csv",
+        "rows": 4500,
+        "sha256": "596db377fc633d6a0685688f756b82036a749dd9a8dab9920604e226c63733e1"
+      },
+      {
+        "file": "eofm_galileo_patch3_2022_c015_07500_08000.csv",
+        "rows": 4500,
+        "sha256": "454bfc776608876a8d2c1f671a4e9fe79dbae5a683547e535dc49f8ca8077efc"
+      },
+      {
+        "file": "eofm_galileo_patch3_2022_c016_08000_08500.csv",
+        "rows": 4500,
+        "sha256": "1b079947c257f6137f640ef7eadcbcc879f6173b215a6f6882c19a2c2f3b97b0"
+      },
+      {
+        "file": "eofm_galileo_patch3_2022_c017_08500_09000.csv",
+        "rows": 4500,
+        "sha256": "4f07327851311df23778d91b3fac55cbf1620e8d50a2e24423cfaad625761edd"
+      },
+      {
+        "file": "eofm_galileo_patch3_2022_c018_09000_09500.csv",
+        "rows": 4500,
+        "sha256": "05d8a6292c9e6cf27d72d7f807d1887f69476f5dd883dc64cc57cd6e38d1c833"
+      },
+      {
+        "file": "eofm_galileo_patch3_2022_c019_09500_10000.csv",
+        "rows": 4500,
+        "sha256": "7d6faa87654ec0a04b5424cc679fc70939643a7e5f15539075903d8ca1ff7608"
+      },
+      {
+        "file": "eofm_galileo_patch3_2022_c020_10000_10500.csv",
+        "rows": 4500,
+        "sha256": "22ee1ef82d2129560ef6b2c29a4d5fa4bc9f6162fbc5122c549dc378cf4d1399"
+      },
+      {
+        "file": "eofm_galileo_patch3_2022_c021_10500_11000.csv",
+        "rows": 4500,
+        "sha256": "ecf2a82cfccc496f1f834fa14480aa905c9fea2125ce0829c303b3d3ec5341e9"
+      },
+      {
+        "file": "eofm_galileo_patch3_2022_c022_11000_11500.csv",
+        "rows": 4500,
+        "sha256": "9649dece8f7d4d24b5845d71456cc18f01788e5a9c2f2212d8617f8627170d34"
+      },
+      {
+        "file": "eofm_galileo_patch3_2022_c023_11500_12000.csv",
+        "rows": 4500,
+        "sha256": "1f5f991fe8042ba308adf40f3b78ea92f36c57f832d7f3416f1a7a2dd94fbf77"
+      },
+      {
+        "file": "eofm_galileo_patch3_2022_c024_12000_12500.csv",
+        "rows": 4500,
+        "sha256": "c49cfd8c13fea9de5b7521f9ba15759da315ef58cf2562674cb3dd98a8d453f1"
+      },
+      {
+        "file": "eofm_galileo_patch3_2022_c025_12500_13000.csv",
+        "rows": 4500,
+        "sha256": "8de4c036f9d6719afdd9e4913439b0800544b1160ce364ceaaed78200a932e1a"
+      },
+      {
+        "file": "eofm_galileo_patch3_2022_c026_13000_13429.csv",
+        "rows": 3861,
+        "sha256": "a4957ac7f0e1f60d6458287d64a57dc0353dfbebefa586d21fb5c8e753c99281"
+      }
+    ],
+    "center_rows": 13429,
+    "patch_pixel_rows": 120861
+  },
+  "validation": {
+    "center_membership_exact": true,
+    "row_major_patch_order_exact": true,
+    "schema_and_band_order_exact": true,
+    "region_membership_exact": true,
+    "duplicate_patch_keys": 0,
+    "s1_mask_sentinel_disagreements": 0,
+    "s2_mask_sentinel_disagreements": 4,
+    "masked_s1_tokens": 13861,
+    "masked_s2_group_tokens": 300216
+  },
+  "frozen_inputs": {
+    "sample_manifest_sha256": "04c4e7454ead6cd415f5d761593d9e88b8041dd6611f630064fca798ccf6421b",
+    "temporal_grid_sha256": "133591caab146edd844a6f395828b9eda153fe810173fe7c44d569e92c68497a"
+  },
+  "canonical_npz": {
+    "path": "gitignored runtime output",
+    "sha256": "b4c4e75d3213e1532e8da1b7dab1bf37fd3431778cf764b9199a8734006d6790"
+  }
+}

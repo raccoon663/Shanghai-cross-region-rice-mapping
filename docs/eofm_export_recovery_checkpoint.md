@@ -1,74 +1,99 @@
-# EOFM export recovery checkpoint — 2026-09-02
+# EOFM full input and representation freeze — 2026-09-05
 
-This is an input-recovery checkpoint, not a representation or benchmark freeze.
-The frozen scientific configuration and sample population are unchanged.
+Both new full representations are frozen and validated. This completes the input
+recovery and embedding stage; the four-representation downstream benchmark has
+not been run.
 
-## Locally verified inventory
+## Authoritative state
 
-- Galileo: c000–c017, **18/27 chunks**, 9,000 centers and 81,000 patch-pixel rows.
-- Missing local Galileo chunks: c018–c026 (4,429 centers / 39,861 patch rows).
-- c017 was downloaded in this session and passed all checks. Its Downloads
-  copy and retained repository runtime copy have identical SHA-256
-  `4f07327851311df23778d91b3fac55cbf1620e8d50a2e24423cfaad625761edd`.
-- The c017 temporary Drive copy was moved to recoverable Trash. It was **not**
-  permanently purged in this session. No local backup or original TIFF was deleted.
-- The full aggregate ledger is
-  `results/manifests/eofm_galileo_recovery_validation.json`. It contains file
-  hashes and aggregate validation results, not coordinates or feature values.
-- No monthly Presto CSV was found in the configured local download directory.
-  The GEE task list shows completed monthly c000/c001 exports; these have not
-  been counted as locally recovered or validated. Monthly input readiness is
-  therefore not established.
+The consolidated machine-readable entry point is
+`results/manifests/eofm_full_representation_readiness.json`.
 
-## Current blocker and exact resume point
+| Representation | Validated chunks | Input rows | Centers | Full embedding | Repeat check |
+| --- | ---: | ---: | ---: | --- | --- |
+| Galileo nano, 3×3 at 10 m, encoder patch_size=1, 23 windows | 27/27 | 120,861 patch-pixel rows | 13,429 | 13,429 × 128 float32 | Bitwise identical |
+| presto_primary, 12 natural calendar months, January start | 27/27 | 13,429 point rows | 13,429 | 13,429 × 128 float32 | Bitwise identical |
 
-c018 was resubmitted with the frozen generator and GEE reported `completed`.
-Drive exposes the expected `eofm_galileo_patch3_2022_c018_09000_09500.csv`.
-The first download attempt failed with a visible Drive HTTP error; a retry
-timed out, and a further retry after refreshing Drive also timed out. No local
-c018 file was found after these attempts. The HTTP status/cause is not known.
+There are no missing chunks or embeddings. Both outputs have the exact same
+frozen manifest-row order: 1,429 Jiangxi source samples and 12,000 Shanghai
+target samples. All embedding values are finite. Labels/splits remain join
+metadata; no downstream training, target evaluation, or model selection ran.
 
-Keep the c018 cloud copy. Resume by downloading this **already completed**
-export, not by blindly submitting another task. Validate and hash the local
-file before any cleanup or c019 submission. c019's private script is prepared
-locally but has not been submitted in this session.
+The frozen sample-manifest SHA-256 remains
+`04c4e7454ead6cd415f5d761593d9e88b8041dd6611f630064fca798ccf6421b`.
 
-Drive showed approximately 14.93 GB of 15 GB used. Storage is tight, but the
-observed c018 failure was a download error, not an export quota failure.
+Logical hashes cover ordered int32 manifest rows followed by float32 embeddings:
 
-## Reproducible per-chunk validation
+- Galileo: `70f9071c3da30221d2f2ac2a81297a7779af02803d21403af5da2dfcafdf839b`
+- presto_primary: `5242245319350c184898071f33664e28c2b8e1ca212c8dd43317f2b039e42a30`
 
-`scripts/eofm/11_validate_recovery_chunks.py` reuses the existing frozen schema
-and hash helpers. It validates exact chunk filenames, every sample/patch key,
-every row's region, row count, schema/band ordering, zero duplicate keys, and
-finite/readable numeric values. Canonical row-major ordering is checked after
-sorting, as in the existing tensor-preparation code. It rejects changed hashes,
-missing previously validated files, and changed sample/grid contracts.
+## Detailed manifests
 
-```text
-python scripts/eofm/11_validate_recovery_chunks.py --representation galileo --chunk-dir outputs/eofm/galileo_smoke_downloaded --chunk-dir outputs/eofm/galileo_full_downloaded --report results/manifests/eofm_galileo_recovery_validation.json
-```
+All paths below are under `results/manifests/`:
 
-The ledger does not claim cloud cleanup, mask-semantic validation, or embedding
-validation. Those remain separate from download-integrity checks.
+- `eofm_galileo_recovery_validation.json`: 27 input chunks, schemas, identities, hashes.
+- `eofm_galileo_full_patch_validation.json`: full patch order, bands, months, masks.
+- `eofm_galileo_full_embedding_freeze.json`: checkpoint, normalization, deterministic full extraction.
+- `eofm_presto_primary_recovery_validation.json`: 27 monthly chunks and hashes.
+- `eofm_presto_primary_input_validation.json`: canonical monthly tensor and masks.
+- `eofm_presto_primary_smoke_validation.json`: 100-sample constructor/encoder check.
+- `eofm_presto_primary_embedding_freeze.json`: deterministic full monthly extraction.
 
-## Verification and restrictions
+Raw CSVs, patch tensors, point embeddings, checkpoints and detailed cloud-file
+state remain in ignored runtime storage. Only aggregate manifests and code are
+published. Existing Temporal-92D, AlphaEarth, and the 23-window Presto cadence
+sensitivity freeze remain unchanged.
 
-- EOFM reconstruction and recovery tests: **16 passed**.
-- `python -m pytest -q`: **22 passed, 13 failed**. All failures were caused by
-  missing `geopandas` in the current Python environment when loading the
-  existing wall-to-wall evaluator; its evaluation did not run.
+## Missing-data handling
+
+The full Galileo input contains four S2 exported-mask versus numeric-sentinel
+disagreements (the original smoke already contained one). The existing frozen
+preparation rule combines the explicit sensor mask with numeric availability,
+so these observations are masked rather than fabricated. S1 disagreements: zero.
+The monthly Presto tensor has 49 missing S1 and 2,411 missing S2 sample-months;
+the official constructor receives the existing explicit missing-data masks.
+
+## Recovery and execution
+
+This continuation recovered Galileo c019–c026 and all monthly Presto chunks.
+Eight new Galileo exports and 25 new monthly Presto exports were submitted;
+the two earlier completed monthly exports were downloaded without resubmission.
+No export failure or duplicate submission was recorded in this continuation.
+Two Galileo status-query interruptions were recovered from the existing cloud
+files. The serial runner now retries both native and SDK-wrapped DNS failures
+on read-only queries, without retrying export submission blindly.
+
+Cloud cleanup was limited to validated temporary CSVs with retained local
+backups. The current recovery ledger records five Galileo and twenty Presto
+CSV purges for quota; four Galileo and seven Presto CSVs remain in recoverable
+Trash. The Galileo counts cover c018–c026 only and do not claim cleanup history
+for earlier chunks. Retained backup hashes were rechecked at final audit.
+
+Use `scripts/eofm/12_recover_exports_serial.py` for restartable recovery.
+`--proxy-port 0` selects direct access; an explicit local proxy port can be
+supplied when required. Resume at the first missing chunk from the ledger.
+`--backup-dir` must point to retained local storage distinct from the working
+copy. Frozen project, sample and Galileo grid checks remain enforced.
+
+Full Galileo preparation accepts repeated `--chunk-dir` arguments, so smoke
+and later chunks can remain in their original directories. The full encoder
+accepts `--extra-site-packages` for a separate dependency directory. The pinned
+runtime dependency versions used here were einops 0.7.0 for Galileo and 0.6.0
+for Presto; model checkpoints and scientific settings were not changed.
+
+## Validation and Git
+
+- Full repository suite: **42 passed**.
 - `python -m compileall src scripts`: passed.
-- No four-way/source/target/few-shot/OOD benchmark, paired statistics, parcel
-  deployment update, or README metric change was performed.
-- Full Galileo and monthly `presto_primary` inputs/embeddings are **not ready**.
-  The existing 23-window Presto freeze is preserved unchanged.
+- Both full extractions repeated with bitwise equality on CUDA.
+- Final audit checked exact sample/region order, output hashes, finite values,
+  full input inventories, and retained local backup hashes.
 
-## Git handoff
+Work remains on `feature/eo-foundation-model-benchmark`. The old local and
+remote histories diverged, but their prior checkpoint trees differed only in
+`AGENTS.md`. Publication applies this completed change on top of the existing
+remote feature history, preserving both histories without a force-push or a
+merge into main. See the final Git commit for the published snapshot.
 
-The validation code, tests, aggregate ledger, and this checkpoint are committed
-on `feature/eo-foundation-model-benchmark`. Push was rejected because the remote
-contains unseen commits. Fetch then stalled; a bounded retry failed to connect
-to GitHub on port 443. No force-push, merge, or remote-history rewrite was made.
-Fetch and inspect the remote changes before reconciling and pushing this local
-checkpoint. Raw exports and private runtime scripts remain ignored.
+The next scientific stage is the downstream representation benchmark. It is
+not part of this completed input/embedding freeze.

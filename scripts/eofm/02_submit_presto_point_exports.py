@@ -102,7 +102,9 @@ def _stack(ee: Any, config: dict[str, Any], grid: dict[str, Any], region: Any) -
     ee_config = config["earth_engine"]
     missing = float(ee_config["missing_value"])
     s2_bands = list(ee_config["sentinel_2_bands"])
-    stack = ee.Image([])
+    # The Python SDK rejects Image([]); selecting zero bands is the equivalent
+    # empty stack used by the frozen Code Editor generator before addBands.
+    stack = ee.Image(0).select([])
 
     def mask_s2(image: Any) -> Any:
         scl = image.select("SCL")

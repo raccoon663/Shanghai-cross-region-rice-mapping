@@ -41,7 +41,8 @@ def expected_columns(s2_bands: list[str], tags: list[str]) -> list[str]:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", type=Path, default=DEFAULT_CONFIG)
-    parser.add_argument("--chunk-dir", type=Path, default=DEFAULT_CHUNKS)
+    parser.add_argument("--chunk-dir", type=Path, action="append",
+                        help="Repeat for chunks retained in separate runtime directories")
     parser.add_argument("--scope", choices=["smoke", "full"], default="smoke")
     parser.add_argument("--output", type=Path)
     parser.add_argument("--report", type=Path)
@@ -58,7 +59,11 @@ def main() -> None:
     tags = [item["tag"] for item in grid["windows"]]
     s2_bands = list(config["earth_engine"]["sentinel_2_bands"])
     columns = expected_columns(s2_bands, tags)
-    paths = sorted(args.chunk_dir.resolve().glob("eofm_galileo_patch3_2022_c*.csv"))
+    paths = sorted(
+        [path for folder in (args.chunk_dir or [DEFAULT_CHUNKS])
+         for path in folder.resolve().glob("eofm_galileo_patch3_2022_c*.csv")],
+        key=lambda path: path.name,
+    )
     chunk_ids = [0, 3] if args.scope == "smoke" else list(range(27))
     expected_names = [
         f"eofm_galileo_patch3_2022_c{chunk:03d}_{chunk * 500:05d}_"
@@ -66,7 +71,7 @@ def main() -> None:
         for chunk in chunk_ids
     ]
     if [path.name for path in paths] != expected_names:
-        raise ValueError(f"Expected the two frozen smoke files, found {[p.name for p in paths]}")
+        raise ValueError(f"Expected the frozen {args.scope} chunk inventory, found {[p.name for p in paths]}")
 
     frames, chunk_records = [], []
     for path in paths:

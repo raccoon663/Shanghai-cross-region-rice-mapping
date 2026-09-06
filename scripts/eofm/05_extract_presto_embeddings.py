@@ -179,7 +179,7 @@ def main() -> None:
             "logical_sha256_manifest_rows_plus_float32_embeddings": representation_hash,
             "repeat_logical_sha256": repeat_hash,
             "repeat_bitwise_equal": bool(args.verify_repeat),
-            "runtime_output": "gitignored outputs/eofm/presto_embeddings_2022.npz",
+            "runtime_output": "gitignored runtime output: " + output.name,
             "runtime_file_sha256": sha256(output),
         },
         "population": {
