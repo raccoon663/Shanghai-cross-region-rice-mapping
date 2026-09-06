@@ -8,6 +8,8 @@ This project started with a simple question: **how well does a rice classifier t
 
 The current Chongming map is a deployment prototype, not an independently validated Shanghai rice map. Shanghai sample-level scores use an official product as a weak reference.
 
+[Transfer study](#historical-cross-region-transfer) · [Parcel mapping](#parcel-level-extension) · [Four-representation benchmark](#four-representation-benchmark) · [Reproduction](#reproducing-the-project)
+
 ## Main questions
 
 1. How much performance is lost when a Jiangxi-trained model is applied directly to Shanghai?
@@ -33,7 +35,7 @@ flowchart LR
 
 ![Project workflow](assets/figures/workflow.png)
 
-## Cross-region transfer
+## Historical cross-region transfer
 
 The controlled source study contains 1,429 Jiangxi rice/non-rice samples split with group-disjoint spatial blocks. The Shanghai study uses 12,000 balanced product-derived samples, with separate target-pool and target-validation blocks.
 
@@ -85,6 +87,34 @@ These changes describe **where the model output is allowed to be used**, not mea
 
 ![Raw probability, field structure, and parcel classes](assets/figures/raw_to_parcel_comparison.png)
 
+## Four-representation benchmark
+
+A matched extension compares reconstructed Temporal-92D, AlphaEarth, monthly
+Presto and Galileo on all 13,429 samples. It includes 2,400 few-shot fits with
+shared draws and paired spatial-block uncertainty estimates.
+
+| Representation | Zero-shot F1* | 500 distributed weak labels, target-only F1* |
+|---|---:|---:|
+| Temporal-92D (rebuilt) | 0.815 | 0.859 |
+| AlphaEarth | 0.836 | 0.898 |
+| Presto (monthly) | 0.826 | 0.884 |
+| Galileo | 0.822 | 0.862 |
+
+\*Shanghai weak-reference agreement. Zero-shot means use 3 fixed seeds;
+few-shot means use 30 shared draws. All six zero-shot paired intervals include
+zero. At budget 500, AlphaEarth has higher few-shot means, while clustered
+label collection produces lower scores and greater variability. AlphaEarth's
+10-NN cosine error AUROC is 0.798; the same score is near or below chance for
+the other representations.
+
+![Shared-draw few-shot benchmark](assets/figures/eofm_benchmark_v1/fewshot_comparison.png)
+
+This extension uses a reconstructed Temporal data version and different upstream
+inputs across representation systems. It does not replace the historical
+results or change the deployed parcel model. See the
+[benchmark case study](docs/eofm_benchmark_case_study.md) for paired intervals,
+negative results, and [reproduction instructions](docs/eofm_benchmark_reproduction.md).
+
 ## What is currently validated
 
 The project supports conclusions about:
@@ -128,7 +158,7 @@ falls outside the reference footprint. This reflects false-positive rice
 predictions under low rice prevalence, not a recall failure — recall is high
 (0.88). M2 and M2 QA produce identical masks, so QA does not change the
 weak-reference score. A block-level paired analysis (full details in
-[`results/summary/wall_to_wall_weak_reference_report.md`](results/summary/wall_to_wall_weak_reference_report.md)
+[wall-to-wall report](results/summary/wall_to_wall_weak_reference_report.md)
 and [`docs/experiments.md`](docs/experiments.md)) shows M1/M1b improve block-level
 F1 versus M0 in roughly 63–66% of blocks, while M2/M2 QA are neutral.
 
@@ -171,6 +201,8 @@ tests/                   split, manifest, portability, and area tests
 
 ## Documentation
 
+- [Four-representation benchmark case study](docs/eofm_benchmark_case_study.md)
+- [Benchmark reproduction](docs/eofm_benchmark_reproduction.md)
 - [Methodology](docs/methodology.md)
 - [Experiments and ablations](docs/experiments.md)
 - [Validation protocol](docs/validation.md)

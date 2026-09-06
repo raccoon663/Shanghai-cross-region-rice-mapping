@@ -1,0 +1,32 @@
+{
+  "status": "frozen_before_any_target_metric",
+  "files": {
+    "source_temporal_reconstructed_42.npz": "a75b2f5df0a325364ddb9bc6dbdd7d8dec1f8cda88a5edd63a190571f3197726",
+    "source_temporal_reconstructed_42.joblib": "4415ce74020596811444d23015c887258fa9b20f165fc05b15067586b5c9f355",
+    "source_temporal_reconstructed_43.npz": "bb6d715c97f7cb6e0598ed7201d20b619e227c78a207b36652325d567adc3655",
+    "source_temporal_reconstructed_43.joblib": "2b8e8f5de2495516e5623ed2e031de94dae56c6fd8259e948860c9cb65cbe625",
+    "source_temporal_reconstructed_44.npz": "30bb1f43c5de6dd2d680676b4da3fa3e3b1f8c3238317bde3f1775dfd8e70bfc",
+    "source_temporal_reconstructed_44.joblib": "913b6fda68ab5337e048899b0677ebd90f3c1ee04ddc381a7a3920072f043a86",
+    "source_alphaearth_42.npz": "d38be8e869565ed0653bc60a0513436d3fc1de9ab9de09da1d8e7a088e57493f",
+    "source_alphaearth_42.joblib": "3b9c870d4a08ee166b9ced083b015a83b2fabf350f12d78ddfcb03b54fb4d3b9",
+    "source_alphaearth_43.npz": "2ca450cce069b91eaae7c558bf06d2f6f797eaa455fe7919f55ee7915c4e5b91",
+    "source_alphaearth_43.joblib": "83533e68473a95448a3ff67a0b25829ccc5c6f8d7dd9b5387ada2aef6ea65868",
+    "source_alphaearth_44.npz": "9eb67ededef6a094a5661ae94204286390be5f7fd94c7dc93e87ef681f2cca5a",
+    "source_alphaearth_44.joblib": "6e9c8551c0f2a304093c21da5ac0d18678ea5560786619bfb7223318c7d90d40",
+    "source_presto_primary_42.npz": "08701bd7d2099030b7024fddb0e4b98c7ff91dbe5ff746f136710c12a0b0e5d9",
+    "source_presto_primary_42.joblib": "b6af88d406d4df33f225f0ba9cbaa4322e3ee78980a1eea7c88e0c584f76b93c",
+    "source_presto_primary_43.npz": "e480f86289818a21e075a20109e9fa9b50d73de007a6865734bc2c27d85c8e98",
+    "source_presto_primary_43.joblib": "13601dabd2737f275ad7d03ac4af840aa1c19d4186f4e296f0e15650de699d8a",
+    "source_presto_primary_44.npz": "0b6e420fdb24847230dc56c3d6dc9deebc450f74f6a3aacf058105ef0601f251",
+    "source_presto_primary_44.joblib": "5c7770af7f107d0db5adba9a7604afb593dbd8b1025f14a774151bdbc56ccdbb",
+    "source_galileo_42.npz": "bd685958f6a220811d06aac7215d0c6198bc350b241d70803592161392f00305",
+    "source_galileo_42.joblib": "979f542a1f4b52d24e0c83d447be0020a9cd28cdfe43d48bb080f754f063c5f2",
+    "source_galileo_43.npz": "e8ee9e229528892e5c8fe7ccf6005ada042bdf562a92aadde76ef543fe18d5d8",
+    "source_galileo_43.joblib": "5252bfc26fe8ec41d5dff9d8eeb241c6c3cc6a22cb3ed0fa0560b01e7d193512",
+    "source_galileo_44.npz": "43c73f59c2c19a587e20f0dca7f13c8c67714396d4f9c3b479aae518e85dc934",
+    "source_galileo_44.joblib": "d1c1f8c32cb1d8d900cc8b0ce940be513cfd6f41d00ddc6b2ab03a8d87d0b664"
+  },
+  "training_split": "source_train_only",
+  "threshold": 0.5,
+  "protocol_sha256": "dcb9584aa87be2efb724d40a362c3f25fedd1e7187bfce8c2aed164e114b4745"
+}

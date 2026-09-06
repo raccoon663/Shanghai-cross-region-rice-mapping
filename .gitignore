@@ -45,3 +45,13 @@ data/field_delineation_test_aoi_label_aided_invalidated_20260814.geojson
 Thumbs.db
 .idea/
 .vscode/
+
+# Local collaboration and superseded execution records
+AGENTS.md
+docs/eo_foundation_model_audit.md
+docs/eofm_data_recovery_inventory.md
+docs/eofm_export_recovery_checkpoint.md
+
+# Curated four-representation evidence
+!results/eofm_benchmark_v1/
+!results/eofm_benchmark_v1/**

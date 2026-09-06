@@ -98,7 +98,7 @@
     }
   ],
   "recovered_in_sibling_workspace_on_2026_08_23": {
-    "workspace": "C:/Users/ASUS/Documents/Codex/2026-07-26/sentinel-fusion-transfer-rice",
+    "workspace": "${RICE_FUSION_LEGACY_ROOT}",
     "note": "Local recovery paths are machine-specific and the large files remain untracked.",
     "files": [
       {"role": "source_split_geometries", "relative_path": "outputs/experiments/rf_baseline_m2_v1/source_splits.csv", "rows": 1429, "sha256": "75bfc6d5d2fbfb294866dc2e087b40f0ecce4e9e33dfacb1e4769d2cb80d03b4"},

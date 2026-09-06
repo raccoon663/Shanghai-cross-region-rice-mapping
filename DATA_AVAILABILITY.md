@@ -98,6 +98,14 @@ The Code Editor fallback is `gee/03_export_alphaearth_samples.js`.
 
 ## Shanghai labels
 
+The four-representation extension has a separate
+[reproduction guide](docs/eofm_benchmark_reproduction.md), including exact
+Temporal, AlphaEarth, Presto and Galileo runtime paths and hash requirements.
+Its [curated aggregate evidence](results/eofm_benchmark_v1/README.md) is available
+without these runtime inputs. Per-sample arrays, predictions, draws and model
+weights are excluded. Missing frozen inputs prevent full numerical reproduction;
+the public aggregate tables alone cannot regenerate per-sample statistics.
+
 The official Shanghai product can reproduce the weak-reference experiments,
 but it cannot establish field accuracy. The raster itself is not redistributed:
 its redistribution rights were not established for this repository. A provider

@@ -1,0 +1,36 @@
+version: 1
+experiment: eofm_four_way_v1
+output_dir: outputs/eofm_benchmark_v1
+sample_manifest: data_metadata/alphaearth_sample_manifest.csv
+sample_manifest_sha256: 04c4e7454ead6cd415f5d761593d9e88b8041dd6611f630064fca798ccf6421b
+temporal_chunks: outputs/eofm/ee/downloaded_20260823
+alphaearth_relative: outputs/alphaearth/alphaearth_samples_2022.csv
+alphaearth_sha256: e84a4c433867c8c854032162772ef059091a2e628a4edcb65f5dd29195ef8ef0
+presto_primary: outputs/eofm/presto_primary_embeddings_2022_monthly.npz
+galileo: outputs/eofm/galileo_full_embeddings_2022.npz
+representations: [temporal_reconstructed, alphaearth, presto_primary, galileo]
+source_seeds: [42, 43, 44]
+few_shot_seeds: [42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71]
+budgets: [20, 50, 100, 200, 500]
+regimes: [distributed, clustered]
+methods: [target_only, joint]
+threshold: 0.5
+rf:
+  source_trees: 500
+  adaptation_trees: 300
+  min_samples_leaf: 2
+  max_features: sqrt
+  class_weight: balanced_subsample
+  n_jobs: 1
+parallel_fits: 4
+imputation: training_rows_only_median_all_missing_fallback_zero
+joint_weighting: target_total_weight_equals_source_total_weight_no_class_weight
+ood:
+  source_seed: 42
+  scores: [nn_standardized, nn_cosine, knn10_cosine, mahalanobis, domain_probability]
+  coverages: [0.9, 0.8, 0.7, 0.6, 0.5]
+  bootstrap_reps: 500
+  bootstrap_seed: 20260905
+paired_bootstrap_reps: 1000
+paired_bootstrap_seed: 20260905
+publication: local_only_until_user_reviews_portfolio_version

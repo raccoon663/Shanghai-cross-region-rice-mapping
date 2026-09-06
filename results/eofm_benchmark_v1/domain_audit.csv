@@ -1,0 +1,5 @@
+representation,true_domain_auroc,permuted_train_label_auroc
+temporal_reconstructed,1.0,0.4819363868716784
+alphaearth,1.0,0.4745121505943446
+presto_primary,0.9990161872692604,0.4830419083938497
+galileo,0.9929307476976754,0.4721489715607124

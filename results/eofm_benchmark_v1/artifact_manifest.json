@@ -1,0 +1,22 @@
+{
+  "experiment": "eofm_four_way_v1",
+  "files": {
+    "results/eofm_benchmark_v1/domain_audit.csv": "22b1a457a8c83884e6fb8a8ef0e90a329afa1722dd22cb7a1e0fae39c75400b5",
+    "results/eofm_benchmark_v1/fewshot_runs.csv": "306ce867667fbd9e770ff90e056a89168bf69b6f970c44223842a2972eb5010e",
+    "results/eofm_benchmark_v1/fewshot_summary.csv": "95da55d22b42ba5fd9f3f23075619bbc73f9fca977048d5d137d6e391f017807",
+    "results/eofm_benchmark_v1/ood_deciles.csv": "cf6b4756e7d592a3798455609e6fdafa1b202d1b104a1187e31b9873c1785809",
+    "results/eofm_benchmark_v1/ood_summary.csv": "a4e468838f82918a860e09aa73b4275fb84bf266421999ea738cbf1c096679c3",
+    "results/eofm_benchmark_v1/paired_f1_intervals.csv": "9582bace3e260c2760330b40f68d0f72364e74ea0251b70ab2611a2d866feed9",
+    "results/eofm_benchmark_v1/risk_coverage.csv": "1502ad37bff0cf33c49552091c9b3cbacc0cf115b5c2348a37b1427865a7bf5c",
+    "results/eofm_benchmark_v1/risk_coverage_summary.csv": "35aa701a63bf450796ffc8d4daa7fd48756a9638f65966083f4d66700d6b9ba4",
+    "results/eofm_benchmark_v1/shared_draw_summary.csv": "9b1c0e239d06179f54794de696c0e27c5142f93599fd81fffeb6b87566fb6d8c",
+    "results/eofm_benchmark_v1/source_zero_shot_runs.csv": "ef5acc3b2196c478e7680f5657ffdc5c2e19474f03ade459949ae21dd0e0fc3b",
+    "results/eofm_benchmark_v1/source_zero_shot_summary.csv": "2593d8dd0ced3aae6dfd67027f3e9bebc04b537a463995079cef431da6278c48",
+    "assets/figures/eofm_benchmark_v1/fewshot_comparison.png": "444cfd44c9301c855e7422597d3f687f66df1a552c3f3a8270aa3174789c5f0a",
+    "assets/figures/eofm_benchmark_v1/ood_comparison.png": "f70b3db3b8fbf0f1b3b4ec3a6427421c91035589f10226e6a0246a275329c3c1",
+    "assets/figures/eofm_benchmark_v1/transfer_comparison.png": "bdddfab2f18b5444c0fcaae52e998fbea33b24bbda453d8b3aef3d9d2924b025",
+    "results/eofm_benchmark_v1/protocol_freeze.json": "dcb9584aa87be2efb724d40a362c3f25fedd1e7187bfce8c2aed164e114b4745",
+    "results/eofm_benchmark_v1/source_prediction_freeze.json": "ed5a39b0a1e5b91433fbe32d66f1d7e26ca7d010772be1f7b2a5bd0a1c04aa69",
+    "results/eofm_benchmark_v1/execution_environment.json": "5cddb1e94fc87e3dff480eb7ff307d9b5043d40a6f46f4edc0a3a8afdca26668"
+  }
+}
