@@ -1,0 +1,15 @@
+# Preserve byte identities for the additive research artifact manifest.
+results/geoai_rqs_v1/** -text whitespace=cr-at-eol
+assets/figures/geoai_rqs_v1/** -text -whitespace
+configs/geoai_rqs.yaml text eol=lf
+configs/geoai_rqs_reproduce.yaml text eol=lf
+src/experiments/geoai_methods.py text eol=lf
+src/experiments/run_geoai_rqs.py text eol=lf
+scripts/run_rq*.py text eol=lf
+scripts/make_paper_figures.py text eol=lf
+scripts/validate_geoai_results.py text eol=lf
+scripts/check_geoai_weight_degeneracy.py text eol=lf
+tests/test_geoai_research.py text eol=lf
+docs/geoai_research*.md text eol=lf
+RESULTS.md -text whitespace=cr-at-eol
+TODO.md text eol=lf

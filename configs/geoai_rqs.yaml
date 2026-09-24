@@ -1,0 +1,30 @@
+experiment: geoai_rqs_v1
+base_config: configs/eofm_benchmark.yaml
+output_dir: outputs/geoai_rqs_v1
+result_dir: results/geoai_rqs_v1
+figure_dir: assets/figures/geoai_rqs_v1
+seeds: [42, 43, 44, 45, 46]
+additional_budget: 250
+threshold: 0.5
+rf_trees: 500
+fewshot_trees: 300
+parallel_fits: 4
+importance:
+  folds: 5
+  clip: [0.1, 10.0]
+  logistic_c: 1.0
+  max_iter: 2000
+pseudo:
+  threshold: 0.95
+  max_samples: 850
+  total_weight_relative_to_source: 1.0
+ood:
+  source_seed: 42
+  k: 10
+  coverages: [0.5, 0.7, 0.8, 0.9, 1.0]
+  bootstrap_reps: 500
+  bootstrap_seed: 20260923
+  quantiles: 10
+  domain_trees: 300
+  scores: [euclidean_nn, cosine_nn, cosine_knn, mahalanobis, centroid, entropy, confidence, margin, vote_uncertainty, tree_variance, domain_probability]
+interpretation: product_weak_reference_agreement_not_independent_field_accuracy

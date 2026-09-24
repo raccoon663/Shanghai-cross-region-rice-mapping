@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="684pt" height="291.6pt" viewBox="0 0 684 291.6" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-09-23T11:42:47.806455</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 291.6 
+L 684 291.6 
+L 684 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 18.36 119.7432 
+L 219.24 119.7432 
+Q 223.704 119.7432 223.704 115.308 
+L 223.704 54.324 
+Q 223.704 49.8888 219.24 49.8888 
+L 18.36 49.8888 
+Q 13.896 49.8888 13.896 54.324 
+L 13.896 115.308 
+Q 13.896 119.7432 18.36 119.7432 
+z
+" clip-path="url(#p9c89dcda02)" style="fill: #eaf2f8; stroke: #35658b; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 241.56 119.7432 
+L 442.44 119.7432 
+Q 446.904 119.7432 446.904 115.308 
+L 446.904 54.324 
+Q 446.904 49.8888 442.44 49.8888 
+L 241.56 49.8888 
+Q 237.096 49.8888 237.096 54.324 
+L 237.096 115.308 
+Q 237.096 119.7432 241.56 119.7432 
+z
+" clip-path="url(#p9c89dcda02)" style="fill: #eaf2f8; stroke: #35658b; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 464.76 119.7432 
+L 665.64 119.7432 
+Q 670.104 119.7432 670.104 115.308 
+L 670.104 54.324 
+Q 670.104 49.8888 665.64 49.8888 
+L 464.76 49.8888 
+Q 460.296 49.8888 460.296 54.324 
+L 460.296 115.308 
+Q 460.296 119.7432 464.76 119.7432 
+z
+" clip-path="url(#p9c89dcda02)" style="fill: #eaf2f8; stroke: #35658b; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 18.36 252.7992 
+L 219.24 252.7992 
+Q 223.704 252.7992 223.704 248.364 
+L 223.704 187.38 
+Q 223.704 182.9448 219.24 182.9448 
+L 18.36 182.9448 
+Q 13.896 182.9448 13.896 187.38 
+L 13.896 248.364 
+Q 13.896 252.7992 18.36 252.7992 
+z
+" clip-path="url(#p9c89dcda02)" style="fill: #eaf2f8; stroke: #35658b; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 241.56 252.7992 
+L 442.44 252.7992 
+Q 446.904 252.7992 446.904 248.364 
+L 446.904 187.38 
+Q 446.904 182.9448 442.44 182.9448 
+L 241.56 182.9448 
+Q 237.096 182.9448 237.096 187.38 
+L 237.096 248.364 
+Q 237.096 252.7992 241.56 252.7992 
+z
+" clip-path="url(#p9c89dcda02)" style="fill: #eaf2f8; stroke: #35658b; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 464.76 252.7992 
+L 665.64 252.7992 
+Q 670.104 252.7992 670.104 248.364 
+L 670.104 187.38 
+Q 670.104 182.9448 665.64 182.9448 
+L 464.76 182.9448 
+Q 460.296 182.9448 460.296 187.38 
+L 460.296 248.364 
+Q 460.296 252.7992 464.76 252.7992 
+z
+" clip-path="url(#p9c89dcda02)" style="fill: #eaf2f8; stroke: #35658b; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'" transform="translate(83.9875 81.41268)">Jiangxi source</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'" transform="translate(62.700781 93.415414)">850 training / 314 test</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'" transform="translate(281.75625 81.41268)">Representation systems</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'" transform="translate(265.410156 93.415414)">Temporal · AE · Presto · Galileo</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'" transform="translate(522.682031 81.412289)">Frozen source RF</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'" transform="translate(491.903906 93.415023)">Source / Shanghai evaluation</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'" transform="translate(54.489844 214.46868)">Shanghai adaptation pool</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'" transform="translate(47.966406 226.471414)">9,249 weak labels / features</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'" transform="translate(256.025 214.46868)">Adaptation → Shanghai evaluation</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'" transform="translate(250.707812 226.471414)">Few-shot · CORAL · weights · pseudo</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'" transform="translate(491.316406 214.46868)">Source-only risk &amp; abstention</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'" transform="translate(483.210938 226.471414)">Domain ≠ failure · risk–coverage</text>
+   </g>
+   <g id="patch_8">
+    <path d="M 224.029182 84.816 
+Q 229.005286 84.816 232.304338 84.816 
+" style="fill: none; stroke: #35658b; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 228.304338 82.816 
+L 232.304338 84.816 
+L 228.304338 86.816 
+" style="fill: none; stroke: #35658b; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 447.229182 84.816 
+Q 452.205286 84.816 455.504338 84.816 
+" style="fill: none; stroke: #35658b; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 451.504338 82.816 
+L 455.504338 84.816 
+L 451.504338 86.816 
+" style="fill: none; stroke: #35658b; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 224.029182 217.872 
+Q 229.005286 217.872 232.304338 217.872 
+" style="fill: none; stroke: #35658b; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 228.304338 215.872 
+L 232.304338 217.872 
+L 228.304338 219.872 
+" style="fill: none; stroke: #35658b; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 565.2 122.852327 
+Q 565.2 149.95806 565.2 175.386741 
+" style="fill: none; stroke: #35658b; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 567.2 171.386741 
+L 565.2 175.386741 
+L 563.2 171.386741 
+" style="fill: none; stroke: #35658b; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'DejaVu Sans'; text-anchor: middle" x="342" y="23.832" transform="rotate(-0 342 23.832)">Geographic transfer, adaptation and reliability</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle" x="342" y="156.888" transform="rotate(-0 342 156.888)">Same 2,751 held-out Shanghai points for every representation and adaptation method</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle" x="342" y="278.856" transform="rotate(-0 342 278.856)">Spatial blocks preserved · training-only preprocessing · evaluation labels used only for metrics</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p9c89dcda02">
+   <rect x="7.2" y="7.2" width="669.6" height="277.2"/>
+  </clipPath>
+ </defs>
+</svg>

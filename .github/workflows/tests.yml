@@ -17,4 +17,5 @@ jobs:
       - run: pytest -q
       - run: python scripts/check_data.py
       - run: python scripts/validate_release.py
+      - run: python scripts/validate_geoai_results.py
       - run: python -m compileall -q src scripts

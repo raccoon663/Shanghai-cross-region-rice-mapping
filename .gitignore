@@ -56,3 +56,7 @@ docs/eofm_export_recovery_checkpoint.md
 # Curated four-representation evidence
 !results/eofm_benchmark_v1/
 !results/eofm_benchmark_v1/**
+
+# Aggregate transfer and reliability study
+!results/geoai_rqs_v1/
+!results/geoai_rqs_v1/**

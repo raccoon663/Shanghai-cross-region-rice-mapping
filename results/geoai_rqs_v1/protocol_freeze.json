@@ -1,0 +1,85 @@
+{
+  "config": {
+    "experiment": "geoai_rqs_v1",
+    "base_config": "configs/eofm_benchmark.yaml",
+    "output_dir": "outputs/geoai_rqs_v1",
+    "result_dir": "results/geoai_rqs_v1",
+    "figure_dir": "assets/figures/geoai_rqs_v1",
+    "seeds": [
+      42,
+      43,
+      44,
+      45,
+      46
+    ],
+    "additional_budget": 250,
+    "threshold": 0.5,
+    "rf_trees": 500,
+    "fewshot_trees": 300,
+    "parallel_fits": 4,
+    "importance": {
+      "folds": 5,
+      "clip": [
+        0.1,
+        10.0
+      ],
+      "logistic_c": 1.0,
+      "max_iter": 2000
+    },
+    "pseudo": {
+      "threshold": 0.95,
+      "max_samples": 850,
+      "total_weight_relative_to_source": 1.0
+    },
+    "ood": {
+      "source_seed": 42,
+      "k": 10,
+      "coverages": [
+        0.5,
+        0.7,
+        0.8,
+        0.9,
+        1.0
+      ],
+      "bootstrap_reps": 500,
+      "bootstrap_seed": 20260923,
+      "quantiles": 10,
+      "domain_trees": 300,
+      "scores": [
+        "euclidean_nn",
+        "cosine_nn",
+        "cosine_knn",
+        "mahalanobis",
+        "centroid",
+        "entropy",
+        "confidence",
+        "margin",
+        "vote_uncertainty",
+        "tree_variance",
+        "domain_probability"
+      ]
+    },
+    "interpretation": "product_weak_reference_agreement_not_independent_field_accuracy"
+  },
+  "inputs": {
+    "configs\\geoai_rqs.yaml": "af4b9ad7c824da5ca3c36fb0c2d95e2bca5cd7daa85b8c09da9d76be2df2f815",
+    "configs\\eofm_benchmark.yaml": "df04e392a97d00485ef6ba08bf226bf13a9f482e58f3c969bfd41b35c7c957e2",
+    "outputs\\eofm_benchmark_v1\\protocol_freeze.json": "dcb9584aa87be2efb724d40a362c3f25fedd1e7187bfce8c2aed164e114b4745",
+    "outputs\\eofm_benchmark_v1\\private\\canonical.npz": "b0b52d47183dad36afe21c43c4cc4f3636cbea5130e10edd8b8dc00628da38f0",
+    "outputs\\eofm_benchmark_v1\\private\\shared_draws.npz": "6201464f4be53d945d39e8013576021442d5737f1b00c11940ad722d1587fc82",
+    "data_metadata\\alphaearth_sample_manifest.csv": "04c4e7454ead6cd415f5d761593d9e88b8041dd6611f630064fca798ccf6421b",
+    "outputs\\eofm_benchmark_v1\\source_prediction_freeze.json": "ed5a39b0a1e5b91433fbe32d66f1d7e26ca7d010772be1f7b2a5bd0a1c04aa69"
+  },
+  "legacy_fewshot_inventory_sha256": "e3daef66d2e56a8de03f2102f0dc8ff63498b74bd8814d5590cb7ffd2ff118b6",
+  "target_evaluation_split": "target_val",
+  "target_labels_for_fit": false,
+  "prior_target_results_seen": true,
+  "pre_registered": false,
+  "environment": {
+    "python": "3.12.4",
+    "numpy": "2.5.2",
+    "pandas": "2.3.3",
+    "sklearn": "1.9.0",
+    "scipy": "1.18.1"
+  }
+}

@@ -115,6 +115,25 @@ results or change the deployed parcel model. See the
 [benchmark case study](docs/eofm_benchmark_case_study.md) for paired intervals,
 negative results, and [reproduction instructions](docs/eofm_benchmark_reproduction.md).
 
+## Adaptation and prediction reliability
+
+The follow-up study tests whether simple domain adaptation improves transfer and
+whether uncertainty scores identify unreliable Shanghai predictions.
+
+- **Label efficiency:** AlphaEarth reaches F1 0.871 with 50 distributed weak labels,
+  compared with 0.859 for Temporal using 500 (target-only training).
+- **Adaptation:** CORAL and single-round self-training reduce mean F1 for all four
+  representations. Importance weighting gives a small gain for Galileo, with unstable weights.
+- **Failure prediction:** AlphaEarth cosine 10-NN distance reaches error AUROC 0.798.
+  Retaining the lowest-risk half reduces weak-reference disagreement from 22.8% to 5.4%.
+- **Domain shift is a different outcome:** the AlphaEarth domain classifier reaches
+  domain AUROC 1.000, but error AUROC is only 0.463.
+
+The zero-shot paired intervals still include zero for all representation pairs;
+the few-shot and reliability findings do not establish a universal encoder ranking.
+Read the [research results](RESULTS.md) for the comparisons and figures, or the
+[methods and reproduction guide](docs/geoai_research_protocol.md) for the protocol.
+
 ## What is currently validated
 
 The project supports conclusions about:

@@ -1,0 +1,72 @@
+{
+  "rows": 13429,
+  "split_counts": {
+    "target_pool": 9249,
+    "target_val": 2751,
+    "source_train": 850,
+    "source_test": 314,
+    "source_val": 265
+  },
+  "split_class_counts": {
+    "('source_test', 0)": 137,
+    "('source_test', 1)": 177,
+    "('source_train', 0)": 370,
+    "('source_train', 1)": 480,
+    "('source_val', 0)": 115,
+    "('source_val', 1)": 150,
+    "('target_pool', 0)": 4872,
+    "('target_pool', 1)": 4377,
+    "('target_val', 0)": 1128,
+    "('target_val', 1)": 1623
+  },
+  "coordinate_duplicate_rows": 0,
+  "coordinate_groups_crossing_splits": 0,
+  "spatial_blocks_disjoint": true,
+  "geometry_audit": "unavailable: point manifest has no polygon geometry",
+  "spatial_buffer": "not guaranteed; adjacent blocks and shared encoder context remain possible",
+  "label_sources": {
+    "('jiangxi', 'official_product')": 1429,
+    "('shanghai', 'official_product_weak_label')": 12000
+  },
+  "representations": {
+    "temporal_reconstructed": {
+      "shape": [
+        13429,
+        92
+      ],
+      "missing": 9842,
+      "duplicate_feature_rows": 0,
+      "identical_feature_groups_crossing_splits": 0
+    },
+    "alphaearth": {
+      "shape": [
+        13429,
+        64
+      ],
+      "missing": 0,
+      "duplicate_feature_rows": 0,
+      "identical_feature_groups_crossing_splits": 0
+    },
+    "presto_primary": {
+      "shape": [
+        13429,
+        128
+      ],
+      "missing": 0,
+      "duplicate_feature_rows": 0,
+      "identical_feature_groups_crossing_splits": 0
+    },
+    "galileo": {
+      "shape": [
+        13429,
+        128
+      ],
+      "missing": 0,
+      "duplicate_feature_rows": 0,
+      "identical_feature_groups_crossing_splits": 0
+    }
+  },
+  "legacy_artifact_hashes_verified": 17,
+  "legacy_source_files_verified": 24,
+  "shared_draws_verified": 300
+}
