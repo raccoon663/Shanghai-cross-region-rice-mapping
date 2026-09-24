@@ -1,6 +1,11 @@
 # Experiments and results
 
-## Overview
+The current controlled study is summarized in [RESULTS.md](../RESULTS.md), with
+its [protocol](geoai_research_protocol.md) and [four-representation case study](eofm_benchmark_case_study.md).
+The historical transfer and OOD values below retain their original experiment
+versions; they are not interchangeable with the reconstructed multi-seed benchmark.
+
+## Historical and deployment experiments
 
 | Experiment | Evaluation | Main result | Limitation |
 |---|---|---|---|
@@ -24,7 +29,7 @@ With 500 distributed Shanghai weak labels, target-only temporal and AlphaEarth m
 
 Several adaptation attempts did not improve the result. Three rounds of high-confidence pseudo-labeling reduce temporal agreement from 0.813 to 0.795, suggesting error reinforcement under domain shift. Directly concatenating the 92 temporal features with the 64 AlphaEarth dimensions also overfits at small label budgets. PCA compression reduces the penalty but still does not beat AlphaEarth alone.
 
-## OOD and calibration
+## Historical OOD and calibration
 
 A feature-only Jiangxi-versus-Shanghai domain classifier reaches AUROC near 1, while permutation controls return to approximately 0.5. This confirms that the two regions are easily separable in representation space.
 
@@ -33,6 +38,15 @@ However, domain-classifier probability is not a useful score for ranking which S
 The nearest and farthest 10-NN OOD deciles show approximately 1.1% and 50.2% weak-reference disagreement. When a risk threshold selected on tuning blocks is transferred to held spatial blocks, OOD-only rejection retains 49.4% coverage with 5.7% disagreement.
 
 These numbers are useful for target-domain triage, but they are still evaluated against an official-product weak reference rather than independent field truth.
+
+The historical maximum distance error AUROC of 0.800 and domain-probability
+error AUROC of 0.415 refer to the earlier diagnostic. The controlled research
+study instead reports AlphaEarth cosine 10-NN error AUROC 0.797663 and
+domain-probability error AUROC 0.463006, using the protocol in
+[the reliability study](geoai_research_protocol.md#rq3-separate-domain-and-error-outcomes).
+Its domain RF uses source-training and target-pool features with domain balancing,
+unlike the earlier class-matched diagnostic. Historical tuning-block rejection
+and the new offline ranking curves are also different selection protocols.
 
 ## DAv2 versus FTW
 
@@ -109,7 +123,12 @@ Weak-reference F1:
 | M2 parcel | 0.359 (0.455 / 0.296) | 0.621 (0.455 / 0.978) |
 | M2 QA | 0.359 (0.455 / 0.296) | 0.621 (0.455 / 0.978) |
 
-The low weak-reference F1 is driven by **precision**, not recall. The official reference is sparse (7,134 ha within the M0 region) while the deployment products are wall-to-wall, so most predicted rice pixels fall outside the reference rice footprint and count as false positives. This is expected for a consistency check against a partial reference and does not by itself imply poor field-level accuracy.
+For M0, low weak-reference F1 is driven by precision rather than recall. The
+reference labels 7,134.28 ha as rice within the M0 footprint; most predicted rice
+pixels are reference non-rice. The saved alignment audit records a fully coded
+binary reference with no nodata. These disagreements should therefore not be
+explained as missing or partial reference coverage. They count as false positives
+against the product, while independent field accuracy remains unknown.
 
 The FTW gates (M1, M1b) raise both conditional-retained recall and agreement, but in Mode A they remove reference rice they abstain on; full-grid recall therefore falls (M0 0.882 → M1 0.610 → M1b 0.575) and spatial retention shrinks to 28.1% and 15.7%. M2 and M2 QA produce identical binary masks, so QA does not change the weak-reference score; QA only trims the Uncertain/QA-risk tail that the binary evaluation already treats as non-rice.
 

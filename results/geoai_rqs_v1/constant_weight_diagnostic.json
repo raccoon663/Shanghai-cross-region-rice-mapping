@@ -1,0 +1,17 @@
+{
+  "none": {
+    "constant_weight": null,
+    "max_probability_delta_to_source": 0.0,
+    "max_probability_delta_to_importance": 0.09141243176388048
+  },
+  "unit": {
+    "constant_weight": 1.0,
+    "max_probability_delta_to_source": 0.09141243176388048,
+    "max_probability_delta_to_importance": 0.0
+  },
+  "normalized_clipping_floor": {
+    "constant_weight": 1.0,
+    "max_probability_delta_to_source": 0.09141243176388048,
+    "max_probability_delta_to_importance": 0.0
+  }
+}

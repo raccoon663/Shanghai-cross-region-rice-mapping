@@ -6,6 +6,11 @@ representation systems support transfer, economical target-label collection,
 and identification of risky predictions. It adds a matched benchmark to the
 existing deployment study; the parcel classifier remains unchanged.
 
+The [adaptation and reliability results](../RESULTS.md) extend this matched
+benchmark with controlled unsupervised methods and eleven risk scores. The
+[research protocol](geoai_research_protocol.md) distinguishes its five-seed
+adaptation baseline and domain classifier from this benchmark.
+
 ## Study design
 
 All four systems use the same 1,429 Jiangxi and 12,000 Shanghai samples, spatial
