@@ -12,6 +12,10 @@ boundaries and label-independent quality checks.
 Shanghai evaluation uses an official product as a **weak reference, not
 independent field truth**. The parcel product is a deployment prototype.
 
+![Final Rice, Non-rice, and QA-risk parcel map](assets/figures/final_parcel_class_map.png)
+
+*Chongming parcel-mapping prototype: predicted Rice, Non-rice and Uncertain / QA-risk parcels; independent field validation remains pending.*
+
 [Research results](RESULTS.md) · [Four-representation benchmark](#four-representation-benchmark) · [Reliability](#adaptation-and-prediction-reliability) · [Parcel deployment](#parcel-level-deployment) · [Reproduction](#reproducing-the-project)
 
 ## Main questions
@@ -157,8 +161,6 @@ The field boundaries were aligned with the rice-probability raster and used to s
 These changes describe **where the model output is allowed to be used**, not measured classification-error removal.
 
 ![Raw probability, field structure, and parcel classes](assets/figures/raw_to_parcel_comparison.png)
-
-![Final Rice, Non-rice, and QA-risk parcel map](assets/figures/final_parcel_class_map.png)
 
 ## Validation scope
 
