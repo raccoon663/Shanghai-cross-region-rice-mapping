@@ -1,74 +1,145 @@
 # Cross-Region Parcel-Level Rice Mapping
 
-### From Jiangxi-trained rice models to field-level mapping in Chongming, Shanghai
+### Geographic generalization from Jiangxi to Shanghai
 
-This project started with a simple question: **how well does a rice classifier trained in Jiangxi transfer to Shanghai?** I first tested direct Sentinel-1/2 transfer, then used AlphaEarth embeddings and out-of-distribution (OOD) distance to examine where the model was more likely to fail. A later extension converted the pixel predictions into field-level maps for Chongming using FTW field boundaries and simple quality-control rules.
+This project studies how rice mapping models generalize from Jiangxi to Shanghai
+under geographic domain shift. It compares Earth-observation representation
+systems, limited target supervision and simple domain adaptation, then examines
+prediction reliability, failure detection and selective prediction. A Chongming
+parcel-mapping prototype connects transferred pixel probabilities with field
+boundaries and label-independent quality checks.
 
-![Final Rice, Non-rice, and QA-risk parcel map](assets/figures/final_parcel_class_map.png)
+Shanghai evaluation uses an official product as a **weak reference, not
+independent field truth**. The parcel product is a deployment prototype.
 
-The current Chongming map is a deployment prototype, not an independently validated Shanghai rice map. Shanghai sample-level scores use an official product as a weak reference.
-
-[Transfer study](#historical-cross-region-transfer) · [Parcel mapping](#parcel-level-extension) · [Four-representation benchmark](#four-representation-benchmark) · [Reproduction](#reproducing-the-project)
+[Research results](RESULTS.md) · [Four-representation benchmark](#four-representation-benchmark) · [Reliability](#adaptation-and-prediction-reliability) · [Parcel deployment](#parcel-level-deployment) · [Reproduction](#reproducing-the-project)
 
 ## Main questions
 
-1. How much performance is lost when a Jiangxi-trained model is applied directly to Shanghai?
-2. Do AlphaEarth embeddings transfer better than the original Sentinel-1/2 temporal features?
-3. Can distance from the Jiangxi training distribution identify risky Shanghai predictions?
-4. Can pixel predictions be converted into more useful field-level outputs without retraining the rice classifier?
+1. How well do Jiangxi-trained rice models transfer to Shanghai?
+2. How do Temporal-92D, AlphaEarth, Presto and Galileo behave under geographic shift?
+3. How much target supervision is needed to recover transfer performance?
+4. Do simple unsupervised adaptation methods improve cross-region transfer?
+5. Can risk scores identify unreliable predictions and support selective prediction?
+6. Can transferred pixel predictions support useful parcel-level deployment products?
 
 ## Workflow
 
 ```mermaid
-flowchart LR
-    J[Jiangxi samples] --> S[Sentinel-1/2 temporal features]
-    S --> R[Source-trained rice classifier]
-    R --> M[Shanghai rice probability]
-    M --> P[Parcel aggregation]
-    F[FTW field boundaries] --> P
-    P --> Q[Rice / Non-rice / QA-risk parcels]
-
-    J -. same sample membership .-> A[AlphaEarth embeddings]
-    A --> O[Transfer and OOD analysis]
-    O -. diagnostic evidence .-> Q
+flowchart TD
+    J["Jiangxi source data"] --> R["Matched representation systems<br/>Temporal-92D · AlphaEarth · Presto · Galileo"]
+    T["Shanghai pool and held-out spatial blocks"] --> R
+    R --> A["Zero-shot transfer · target-label efficiency<br/>Simple domain adaptation"]
+    A --> U["Reliability · OOD · uncertainty<br/>Failure detection and selective prediction"]
+    J --> H["Frozen historical Sentinel model"]
+    H --> M["Shanghai rice probability"]
+    M --> P["Parcel aggregation"]
+    F["FTW field boundaries"] --> P
+    P --> Q["Label-independent QA and abstention"]
+    Q --> D["Chongming deployment prototype"]
+    U -. "evidence for deployment limits" .-> D
 ```
 
-![Project workflow](assets/figures/workflow.png)
+The research comparisons share sample membership and spatial splits; the pool
+and held-out rows have separate roles. Reliability scoring is evaluated on frozen
+source-only predictions, not on adapted models. The parcel prototype retains the
+historical Sentinel classifier; sample-level risk scores have not been deployed
+as a wall-to-wall risk layer.
 
 ## Historical cross-region transfer
 
-The controlled source study contains 1,429 Jiangxi rice/non-rice samples split with group-disjoint spatial blocks. The Shanghai study uses 12,000 balanced product-derived samples, with separate target-pool and target-validation blocks.
+The historical study uses 1,429 Jiangxi samples and 12,000 balanced Shanghai
+product-derived samples, with group-disjoint source splits and separate Shanghai
+pool and evaluation blocks. It compares Sentinel temporal features with annual
+AlphaEarth embeddings.
 
-The Sentinel representation contains 92 temporal features: 23 Sentinel-2 NDVI observations and 23 observations each of Sentinel-1 VV, VH, and RVI. The same sample membership was also represented using 64-dimensional 2022 AlphaEarth embeddings.
-
-| Experiment | Sentinel temporal | AlphaEarth |
+| Historical experiment | Sentinel temporal | AlphaEarth |
 |---|---:|---:|
-| Jiangxi source-test F1 | 0.947 | **0.962** |
-| Shanghai zero-shot F1* | 0.813 | **0.836** |
-| Shanghai with 500 weak labels* | 0.854 | **~0.895** |
+| Jiangxi source-test F1 | 0.947 | 0.962 |
+| Shanghai zero-shot F1* | 0.813 | 0.836 |
 
-\*Shanghai values measure agreement with an official-product weak reference, not independent field accuracy.
+\*Shanghai values measure weak-reference agreement. These are the frozen
+[historical headline values](results/summary/headline_metrics.csv), not the
+multi-seed means from the reconstructed four-representation benchmark below.
+The ordering reverses on a stricter product-derived subset; the historical
+pseudo-labeling and feature-concatenation experiments also retain negative results.
+See [experiments and ablations](docs/experiments.md).
 
-The zero-shot ordering is not universal: on a stricter product-derived subset, temporal features slightly outperform AlphaEarth. I therefore treat AlphaEarth as a useful transfer representation rather than as an automatic replacement for the Sentinel time series.
+### Historical OOD diagnostic
 
-## OOD and prediction risk
+The earlier distance diagnostic reports a **maximum error AUROC of 0.800** at
+the precision retained in the [historical table](results/summary/headline_metrics.csv).
+Its domain-classifier and rejection protocols are described in
+[the historical OOD analysis](docs/experiments.md#historical-ood-and-calibration).
+This is distinct from the controlled AlphaEarth cosine 10-NN result
+**0.797663** below: different experiment versions, score comparisons and domain
+classifier protocols should not be conflated.
 
-A Jiangxi-vs-Shanghai domain classifier separates the two regions almost perfectly, but that probability is not useful for ranking which individual Shanghai samples are likely to be wrong. Distance to the Jiangxi representation space is much more informative.
+## Four-representation benchmark
 
-- Best OOD error AUROC: **0.800**.
-- Nearest vs. farthest 10-NN risk deciles: about **1.1% vs. 50.2%** weak-reference disagreement.
-- Domain-classifier probability: error AUROC **0.415**, despite domain AUROC near 1.0.
-- OOD-only selective prediction can reduce disagreement substantially by abstaining on high-risk samples.
+Temporal-92D (rebuilt), AlphaEarth, monthly Presto and Galileo use the same
+13,429 locations: 850 source-training, 265 source-validation, 314 source-test,
+9,249 target-pool and 2,751 held-out Shanghai samples. The benchmark includes
+2,400 few-shot fits with shared draws and paired spatial-block intervals.
 
-![OOD risk summary](assets/figures/ood_risk_summary.png)
+| Representation | Jiangxi source-test F1 | Shanghai zero-shot F1* | 500 distributed weak labels, target-only F1* |
+|---|---:|---:|---:|
+| Temporal-92D (rebuilt) | 0.959479 | 0.814868 | 0.859394 |
+| AlphaEarth | 0.964815 | 0.836000 | 0.898126 |
+| Presto (monthly) | 0.948728 | 0.826249 | 0.884001 |
+| Galileo | 0.941607 | 0.822096 | 0.861694 |
 
-Several approaches did not help. Three rounds of pseudo-labeling reduced temporal weak-reference F1 from 0.813 to 0.795, and directly concatenating the 92 temporal features with AlphaEarth overfit under small target-label budgets. PCA reduced the penalty but did not outperform AlphaEarth alone.
+\*Shanghai weak-reference agreement. Values are rounded from the
+[saved representation table](results/geoai_rqs_v1/table1_representation.csv).
+Source and zero-shot means use 3 fixed seeds; few-shot means use 30 shared draws.
+All six zero-shot paired intervals include zero. Clustered label collection
+produces lower means and greater variability under the tested samplers.
 
-More details are in [experiments.md](docs/experiments.md) and [experiment_history.md](docs/experiment_history.md).
+**AlphaEarth was more label-efficient under this protocol:** 50 distributed
+weak labels give target-only F1 **0.870594**, compared with **0.859394** for
+Temporal at 500 labels. This does not establish a universal representation ranking.
 
-## Parcel-level extension
+![Shared-draw few-shot benchmark](assets/figures/eofm_benchmark_v1/fewshot_comparison.png)
 
-The source-only 20 m Sentinel probability raster was then used as the input to a field-level mapping experiment in Chongming. The rice model and its 0.50 threshold were kept unchanged during this step.
+The representation systems have different upstream inputs, and Temporal is a
+reconstruction rather than the historical source table. The research extension
+adds 80 fits at 250 labels using five shared draws; it preserves the earlier
+2,400 fits. See the [benchmark case study](docs/eofm_benchmark_case_study.md),
+[reproduction guide](docs/eofm_benchmark_reproduction.md) and [full results](RESULTS.md).
+
+## Adaptation and prediction reliability
+
+**Simple adaptation gives useful negative results.** With matched 500-tree RFs
+and five seeds, CORAL and fixed single-round self-training reduce mean F1 for all
+four representations. Importance weighting provides no consistent recovery:
+Galileo rises from **0.821962 to 0.829897**, while Temporal's change is only
+**+0.000507** and AlphaEarth and Presto decline. Most ratios hit the clipping
+floor for Temporal, AlphaEarth and Presto; Galileo's effective source sample size
+falls to **43.24**. AlphaEarth's weights are uniform, and its small change comes
+from the RF bootstrap sampling path rather than useful density correction.
+These findings apply to the tested methods and settings, not domain adaptation
+in general. The five-seed baseline differs from the three-seed benchmark above.
+See the [adaptation table](results/geoai_rqs_v1/table2_adaptation.csv) and
+[weight diagnostics](results/geoai_rqs_v1/importance_diagnostics.csv).
+
+**Domain separation is not error detection.** In the controlled reliability
+study, AlphaEarth's domain classifier has domain AUROC **0.999999** but
+error AUROC **0.463006**. Cosine 10-NN distance instead reaches error AUROC
+**0.797663**. All are rounded from the [saved risk scores](results/geoai_rqs_v1/rq3_scores.csv).
+The study compares eleven scores per representation using frozen source-only
+predictions; distance is not equally useful for every representation.
+
+**Selective prediction:** accepting the lowest-risk half of AlphaEarth
+predictions by cosine 10-NN distance reduces weak-reference disagreement from
+**22.79% to 5.38%** (actual retained coverage **50.018%**, because counts are
+discrete). This is offline ranking behavior, not a guaranteed deployment error
+bound or a conformal coverage claim. Pool-selected thresholds are evaluated
+separately. Read [RESULTS.md](RESULTS.md) for the comparisons and curves, or the
+[research protocol](docs/geoai_research_protocol.md) for fitting and selection rules.
+
+## Parcel-level deployment
+
+The historical source-only 20 m Sentinel probability raster is used as the input to a field-level mapping experiment in Chongming. The rice model and its 0.50 threshold were kept unchanged during this step.
 
 I compared Delineate Anything v2 with FTW PRUE on the same 5 × 5 km label-free AOI. DAv2 often merged multiple visible fields into very large objects, while FTW preserved substantially more narrow-field structure, so FTW was used for the final parcel experiment.
 
@@ -87,60 +158,16 @@ These changes describe **where the model output is allowed to be used**, not mea
 
 ![Raw probability, field structure, and parcel classes](assets/figures/raw_to_parcel_comparison.png)
 
-## Four-representation benchmark
+![Final Rice, Non-rice, and QA-risk parcel map](assets/figures/final_parcel_class_map.png)
 
-A matched extension compares reconstructed Temporal-92D, AlphaEarth, monthly
-Presto and Galileo on all 13,429 samples. It includes 2,400 few-shot fits with
-shared draws and paired spatial-block uncertainty estimates.
-
-| Representation | Zero-shot F1* | 500 distributed weak labels, target-only F1* |
-|---|---:|---:|
-| Temporal-92D (rebuilt) | 0.815 | 0.859 |
-| AlphaEarth | 0.836 | 0.898 |
-| Presto (monthly) | 0.826 | 0.884 |
-| Galileo | 0.822 | 0.862 |
-
-\*Shanghai weak-reference agreement. Zero-shot means use 3 fixed seeds;
-few-shot means use 30 shared draws. All six zero-shot paired intervals include
-zero. At budget 500, AlphaEarth has higher few-shot means, while clustered
-label collection produces lower scores and greater variability. AlphaEarth's
-10-NN cosine error AUROC is 0.798; the same score is near or below chance for
-the other representations.
-
-![Shared-draw few-shot benchmark](assets/figures/eofm_benchmark_v1/fewshot_comparison.png)
-
-This extension uses a reconstructed Temporal data version and different upstream
-inputs across representation systems. It does not replace the historical
-results or change the deployed parcel model. See the
-[benchmark case study](docs/eofm_benchmark_case_study.md) for paired intervals,
-negative results, and [reproduction instructions](docs/eofm_benchmark_reproduction.md).
-
-## Adaptation and prediction reliability
-
-The follow-up study tests whether simple domain adaptation improves transfer and
-whether uncertainty scores identify unreliable Shanghai predictions.
-
-- **Label efficiency:** AlphaEarth reaches F1 0.871 with 50 distributed weak labels,
-  compared with 0.859 for Temporal using 500 (target-only training).
-- **Adaptation:** CORAL and single-round self-training reduce mean F1 for all four
-  representations. Importance weighting gives a small gain for Galileo, with unstable weights.
-- **Failure prediction:** AlphaEarth cosine 10-NN distance reaches error AUROC 0.798.
-  Retaining the lowest-risk half reduces weak-reference disagreement from 22.8% to 5.4%.
-- **Domain shift is a different outcome:** the AlphaEarth domain classifier reaches
-  domain AUROC 1.000, but error AUROC is only 0.463.
-
-The zero-shot paired intervals still include zero for all representation pairs;
-the few-shot and reliability findings do not establish a universal encoder ranking.
-Read the [research results](RESULTS.md) for the comparisons and figures, or the
-[methods and reproduction guide](docs/geoai_research_protocol.md) for the protocol.
-
-## What is currently validated
+## Validation scope
 
 The project supports conclusions about:
 
 - Jiangxi source performance;
 - weak-reference transfer from Jiangxi to Shanghai;
-- AlphaEarth vs. Sentinel representation behavior;
+- matched four-representation behavior and target-label efficiency;
+- controlled simple adaptation, including negative results;
 - OOD risk ranking and selective prediction;
 - field geometry and parcel aggregation;
 - label-independent QA for the Chongming deployment prototype;
@@ -170,16 +197,20 @@ the two evaluation modes below.
   retains; a conditional subset statistic, not a same-population improvement over
   M0.
 
-The weak-reference F1 is low mainly because precision is the binding term (M0
-precision 0.202): the official reference is sparse (7,134 ha within the M0
-region) while the deployment products are wall-to-wall, so most predicted rice
-falls outside the reference footprint. This reflects false-positive rice
-predictions under low rice prevalence, not a recall failure — recall is high
-(0.88). M2 and M2 QA produce identical masks, so QA does not change the
+For M0, low weak-reference F1 is driven by precision (**0.202**) despite recall
+of **0.882**. The reference labels **7,134.28 ha** as rice within the evaluated
+footprint; rice prevalence is low, and many predicted rice pixels are reference
+non-rice. The saved alignment audit records a fully coded binary reference with
+no nodata, so these disagreements cannot be explained as unlabeled reference
+coverage. They remain product disagreements rather than verified field errors.
+M2 and M2 QA produce identical masks, so QA does not change the
 weak-reference score. A block-level paired analysis (full details in
 [wall-to-wall report](results/summary/wall_to_wall_weak_reference_report.md)
 and [`docs/experiments.md`](docs/experiments.md)) shows M1/M1b improve block-level
-F1 versus M0 in roughly 63–66% of blocks, while M2/M2 QA are neutral.
+F1 versus M0 in 22/35 and 21/32 evaluable blocks, respectively; M2/M2 QA have median change zero.
+
+
+Values come from the [wall-to-wall metric table](results/tables/wall_to_wall_weak_reference_metrics.csv), [paired block summary](results/tables/wall_to_wall_block_summary.csv) and [alignment audit](results/summary/wall_to_wall_alignment_audit.json).
 
 ## Reproducing the project
 
@@ -202,15 +233,25 @@ it directly without first installing `.[dev]`. Then run:
 python scripts/check_data.py
 python -m pytest -q
 python scripts/validate_release.py
+python scripts/validate_geoai_results.py
 python -m compileall -q src scripts
 ```
 
 Missing large raster/runtime files reported by `scripts/check_data.py` are expected in a clean Git clone. Large imagery, external model checkpoints, the official Shanghai reference raster, and generated GeoTIFF/GPKG products are not stored in Git. Public collection IDs, reconstruction scripts, file manifests, and expected missing-data behavior are documented in [DATA_AVAILABILITY.md](DATA_AVAILABILITY.md).
 
+
+Research tables and figures can be rebuilt from committed aggregate results with
+`python scripts/make_paper_figures.py`. Run this in a disposable checkout when
+checking reproduction, so regenerated image metadata and tables do not overwrite
+the frozen release. Full experiments use the separate output paths in
+`configs/geoai_rqs_reproduce.yaml`; follow the
+[research reproduction protocol](docs/geoai_research_protocol.md#reproduction).
+
 ## Repository structure
 
 ```text
-assets/figures/          main project figures
+RESULTS.md               transfer, adaptation and reliability findings
+assets/figures/          main project and research figures
 configs/                 experiment configurations
 data/                    small public examples
 data_metadata/           manifests and data registry
@@ -225,22 +266,29 @@ tests/                   split, manifest, portability, and area tests
 ## Limitations
 
 - Shanghai evaluation currently relies on an official-product weak reference rather than independent field truth.
-- The wall-to-wall weak-reference F1 measures consistency with an official product, not field accuracy; its low value reflects the frozen source model's many false-positive rice predictions under low rice prevalence (precision 0.202), not a recall failure — recall is high (0.88).
+- Wall-to-wall scores measure product consistency; low M0 precision indicates many disagreements with reference non-rice, not independently verified field errors.
 - The deployment prototype covers central/eastern Chongming rather than all of Shanghai.
 - FTW boundaries are useful agricultural field approximations, not cadastral truth.
 - Ten-metre field delineation and 20 m rice probabilities cannot resolve every narrow bund, ditch, or tiny parcel.
 - AlphaEarth OOD analysis is sample-based; this repository does not claim a wall-to-wall Shanghai OOD surface.
 - A filtered or excluded parcel should not be interpreted automatically as a classification error.
+- The target set has been examined in earlier work; the research extension is exploratory, not an untouched external test.
+- Disjoint spatial blocks can retain nearby spatial dependence; overlapping encoder context cannot be ruled out.
+- Different upstream inputs prevent isolating architecture effects, and no independent geographic pretraining-overlap audit is available.
+- The study does not establish universal representation rankings or general failure of domain adaptation.
+- Risk ranking and selective prediction provide no conformal coverage guarantee or deployment error bound.
 
 ## Documentation
 
-- [Four-representation benchmark case study](docs/eofm_benchmark_case_study.md)
-- [Benchmark reproduction](docs/eofm_benchmark_reproduction.md)
-- [Methodology](docs/methodology.md)
-- [Experiments and ablations](docs/experiments.md)
-- [Validation protocol](docs/validation.md)
-- [Earlier experiments and project history](docs/experiment_history.md)
-- [Selected public result files](results/README.md)
+- [Research results](RESULTS.md): representation transfer, label efficiency, adaptation and reliability.
+- [Research protocol and reproduction](docs/geoai_research_protocol.md): fitting, risk scoring and selective prediction.
+- [Four-representation benchmark case study](docs/eofm_benchmark_case_study.md) and [benchmark reproduction](docs/eofm_benchmark_reproduction.md).
+- [Methodology](docs/methodology.md): data, historical classifier and parcel workflow.
+- [Experiments and ablations](docs/experiments.md): historical results and deployment evaluation.
+- [Validation protocol](docs/validation.md) and [data availability](DATA_AVAILABILITY.md).
+- [README evidence guide](docs/readme_evidence.md): numerical sources and experiment-version distinctions.
+- [Earlier experiments and project history](docs/experiment_history.md).
+- [Selected public result files](results/README.md).
 
 ## License and acknowledgements
 
