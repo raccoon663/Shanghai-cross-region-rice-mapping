@@ -2,8 +2,9 @@
 
 This repository is designed to be useful without committing multi-gigabyte
 GeoTIFF exports. All sensor and embedding inputs are from public Google Earth
-Engine collections. The Shanghai map used for evaluation is an **official
-product used as a weak reference**, not independent field ground truth.
+Engine collections. The Shanghai map used for evaluation is an **external rice-map product used
+as a weak reference**, not independent field ground truth. Its publisher and
+original citation are not established by the retained acquisition records.
 
 ## What is retained
 
@@ -115,22 +116,52 @@ without these runtime inputs. Per-sample arrays, predictions, draws and model
 weights are excluded. Missing frozen inputs prevent full numerical reproduction;
 the public aggregate tables alone cannot regenerate per-sample statistics.
 
-The official Shanghai product can reproduce the weak-reference experiments,
-but it cannot establish field accuracy. The raster itself is not redistributed:
-its redistribution rights were not established for this repository. A provider
-file list is retained as `data_metadata/official_reference_ftp_manifest.txt`,
-and `scripts/download_official_rice_ftp.py` documents the acquisition route.
+### Shanghai reference provenance
+
+The retained [FTP file listing](data_metadata/official_reference_ftp_manifest.txt)
+contains `/China-Rice-10m-20m-2022.zip` among annual rice-map archives. The
+[acquisition script](scripts/download_official_rice_ftp.py) reads connection
+details from a user-supplied temporary note and selects a Shanghai raster or an
+annual rice archive. The [data registry](data_metadata/data_registry.yaml)
+identifies the aligned evaluation raster as
+`inputs/official_reference/shanghai_2022_rice_aligned_20m.tif`.
+
+These records establish an acquisition route and local artifact names, but do
+not identify a publisher, institutional authority, DOI, paper, original data
+portal, or a release/license record tying that archive to this evaluated raster.
+The archive filename alone is insufficient to assign a provider or citation.
+We therefore describe it as an **external rice-map product** rather than an
+official product. The historical `official_reference` paths and
+`official_product_weak_label` identifiers remain unchanged for reproducibility;
+they are legacy names, not evidence of official status. The same caution applies
+to source-side `official_product` identifiers. Historical result captions retain
+their original wording; this provenance statement governs their interpretation.
+
+Coverage also needs a qualification. The
+[alignment script](src/data/align_target_reference.py) initializes the destination
+to zero, reprojects with nearest-neighbor resampling and destination nodata zero,
+then binarizes positive values and writes `nodata=None`. The
+[saved alignment audit](results/summary/wall_to_wall_alignment_audit.json) describes
+the evaluated raster as fully coded. That describes the output encoding, not
+proof that the original product had complete valid coverage. The reported
+metrics treat output zero as non-rice. Without the original validity information,
+neither missing coverage nor field misclassification can be inferred as the
+cause of individual disagreements.
+
+The reference raster is not redistributed because redistribution rights have
+not been established. Exact reference-based reproduction requires the original
+runtime input; the FTP listing alone is not a complete provenance record.
 
 The repository includes a frozen, blank-label 400-parcel validation sample at
 `results/selected_outputs/independent_validation_sample_400.csv`. Independent
 labels are optional for running the code but required before making
 ground-truth accuracy or true-error claims.
 
-No manual labels are fabricated or inferred from the official product.
+No manual labels are fabricated or inferred from the external map product.
 
 ## Wall-to-wall weak-reference evaluation artifacts
 
-The wall-to-wall weak-reference consistency evaluation commits only lightweight artifacts. The frozen deployment-product rasters and the official reference raster are runtime artifacts (git-ignored, under `outputs/` and `inputs/`):
+The wall-to-wall weak-reference consistency evaluation commits only lightweight artifacts. The frozen deployment-product rasters and the external reference raster are runtime artifacts (git-ignored, under `outputs/` and `inputs/`):
 
 - `outputs/final_chongming_parcel_product/M0_raw_probability.tif`
 - `outputs/phase4_chongming_staged/products/M1_ftw_gated_probability.tif`

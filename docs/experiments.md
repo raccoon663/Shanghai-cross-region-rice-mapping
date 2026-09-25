@@ -10,7 +10,7 @@ versions; they are not interchangeable with the reconstructed multi-seed benchma
 | Experiment | Evaluation | Main result | Limitation |
 |---|---|---|---|
 | Source representation | Jiangxi source test | S2 F1 0.930; S1 F1 0.921; S1/S2 fusion F1 0.947; AlphaEarth F1 0.962 | Source-domain performance only |
-| Zero-shot transfer | Shanghai official-product weak reference | Temporal fusion ≈0.813; AlphaEarth ≈0.836 | Not independent Shanghai accuracy; ordering reverses on a stricter subset |
+| Zero-shot transfer | Shanghai product-derived weak reference | Temporal fusion ≈0.813; AlphaEarth ≈0.836 | Not independent Shanghai accuracy; ordering reverses on a stricter subset |
 | Low-label adaptation | Target-label budgets | At 500 labels, temporal target-only ≈0.854 and AlphaEarth ≈0.895 | Labels are weak-reference samples |
 | OOD ranking | Held Shanghai spatial blocks | Distance error AUROC up to 0.800; nearest/farthest 10-NN deciles ≈1.1%/50.2% disagreement | Predicts weak-reference disagreement, not verified field error |
 | Field model comparison | Same label-free 5 × 5 km AOI | FTW 231 objects vs DAv2 116; mean area 5.647 vs 13.990 ha | Workflow comparison, not architecture-only isolation |
@@ -37,7 +37,7 @@ However, domain-classifier probability is not a useful score for ranking which S
 
 The nearest and farthest 10-NN OOD deciles show approximately 1.1% and 50.2% weak-reference disagreement. When a risk threshold selected on tuning blocks is transferred to held spatial blocks, OOD-only rejection retains 49.4% coverage with 5.7% disagreement.
 
-These numbers are useful for target-domain triage, but they are still evaluated against an official-product weak reference rather than independent field truth.
+These numbers are useful for target-domain triage, but they are still evaluated against a product-derived weak reference rather than independent field truth.
 
 The historical maximum distance error AUROC of 0.800 and domain-probability
 error AUROC of 0.415 refer to the earlier diagnostic. The controlled research
@@ -92,7 +92,7 @@ The final parcel output contains 4,324 Rice, 545 Non-rice, and 2,461 Uncertain/Q
 
 ## Wall-to-wall weak-reference consistency evaluation
 
-The sampled weak-reference scores above use balanced 6,000 + 6,000 product samples. I also ran a wall-to-wall consistency evaluation that scores the full deployment rasters against the official Shanghai product as a weak reference. This is a deployment-consistency check, not an independent accuracy estimate.
+The sampled weak-reference scores above use balanced 6,000 + 6,000 product samples. I also ran a wall-to-wall consistency evaluation that scores the full deployment rasters against the external Shanghai rice-map product as a weak reference. This is a deployment-consistency check, not an independent accuracy estimate.
 
 All deployment rasters (M0 raw probability, M1 FTW-gated, M1b FTW + Dynamic World-gated, M2 parcel class, M2 QA final parcel) and the reference raster are co-registered at EPSG:32651, 20 m, 1071 × 1437. Each product is clipped to the common M0 valid footprint (1,500,751 pixels), which makes the predicted rice area invariant between the two evaluation modes and removes a previously reported M2 area discrepancy.
 
@@ -125,10 +125,11 @@ Weak-reference F1:
 
 For M0, low weak-reference F1 is driven by precision rather than recall. The
 reference labels 7,134.28 ha as rice within the M0 footprint; most predicted rice
-pixels are reference non-rice. The saved alignment audit records a fully coded
-binary reference with no nodata. These disagreements should therefore not be
-explained as missing or partial reference coverage. They count as false positives
-against the product, while independent field accuracy remains unknown.
+pixels are reference non-rice and count as false positives against the product.
+The aligned raster has no nodata, but alignment assigns zero to empty destinations;
+this does not establish the original product's valid coverage. Neither missing
+coverage nor field misclassification is established as the cause of individual
+disagreements. See [reference provenance](../DATA_AVAILABILITY.md#shanghai-reference-provenance).
 
 The FTW gates (M1, M1b) raise both conditional-retained recall and agreement, but in Mode A they remove reference rice they abstain on; full-grid recall therefore falls (M0 0.882 → M1 0.610 → M1b 0.575) and spatial retention shrinks to 28.1% and 15.7%. M2 and M2 QA produce identical binary masks, so QA does not change the weak-reference score; QA only trims the Uncertain/QA-risk tail that the binary evaluation already treats as non-rice.
 

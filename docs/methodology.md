@@ -6,11 +6,17 @@ This repository studies geographic transfer of a 2022 rice classifier from Jiang
 
 The source rice classifier is kept unchanged during parcel integration. FTW field boundaries and parcel QA rules are defined without using Shanghai rice labels to tune the classifier.
 
+The current representation, adaptation and reliability study is specified in
+the [research protocol](geoai_research_protocol.md). The sections below retain
+the original transfer and parcel workflow where indicated.
+
 ## Data and spatial splits
 
 The controlled binary source study contains 1,429 valid Jiangxi samples: 622 non-rice and 807 rice. Group-disjoint spatial blocks define 850 training, 265 validation, and 314 source-test samples.
 
-The Shanghai weak-reference study contains 12,000 balanced samples derived from an official product. These are divided into 9,249 target-pool samples and 2,751 spatially disjoint target-validation samples. Their shared manifest is [`data_metadata/alphaearth_sample_manifest.csv`](../data_metadata/alphaearth_sample_manifest.csv).
+The Shanghai weak-reference study contains 12,000 balanced samples derived from an external rice-map product. These are divided into 9,249 target-pool samples and 2,751 spatially disjoint target-validation samples. Their shared manifest is [`data_metadata/alphaearth_sample_manifest.csv`](../data_metadata/alphaearth_sample_manifest.csv).
+
+The [reference provenance record](../DATA_AVAILABILITY.md#shanghai-reference-provenance) does not establish a publisher or official status.
 
 These samples are separate from the earlier 1,118-row, four-class ENVI ROI experiment. Metrics from the legacy and controlled studies are therefore reported separately.
 
@@ -27,11 +33,11 @@ The parcel-mapping extension starts from the source-only 92-feature random-fores
 
 Configurations are stored under [`configs/`](../configs/), and public collection reconstruction is documented in [`DATA_AVAILABILITY.md`](../DATA_AVAILABILITY.md).
 
-## Transfer and OOD analysis
+## Historical transfer and OOD analysis
 
 The representation study compares source performance, Shanghai weak-reference agreement, low-label adaptation, calibration, domain separability, and distance from the Jiangxi training distribution.
 
-OOD scores are computed from representation features rather than coordinates or sample identifiers. Thresholds used for selective prediction are chosen on tuning blocks and evaluated on separate spatial blocks.
+OOD scores are computed from representation features rather than coordinates or sample identifiers. In the historical rejection experiment, thresholds are chosen on tuning blocks and evaluated on separate spatial blocks. The current study separately reports offline risk ranking and pool-quantile threshold transfer; see the [selection protocol](geoai_research_protocol.md#selective-prediction).
 
 The domain-classifier probability and nearest-source distance answer different questions. A model can easily distinguish Jiangxi from Shanghai while still providing little information about which individual Shanghai samples are likely to fail. The AlphaEarth/OOD analysis is therefore kept as a sample-level diagnostic; this repository does not claim a wall-to-wall AlphaEarth OOD map for Shanghai.
 
@@ -82,6 +88,6 @@ The repository stores schemas, selected tables, figures, and checksums. Full Geo
 
 ## Reproducibility and claim limits
 
-Scientific imports and runtime paths continue to use `outputs/`; excluding generated products from Git does not change code behavior. External checkpoints, large reconstructed imagery, the official Shanghai reference raster, virtual environments, and complete generated output trees are not included in the repository.
+Scientific imports and runtime paths continue to use `outputs/`; excluding generated products from Git does not change code behavior. External checkpoints, large reconstructed imagery, the Shanghai reference raster, virtual environments, and complete generated output trees are not included in the repository.
 
 The current evidence supports conclusions about source performance, weak-reference transfer, OOD risk ranking, field geometry, deployment coverage, parcel coherence, and QA behavior. It does not yet support independent Shanghai parcel precision, recall, F1, overall accuracy, or area accuracy.

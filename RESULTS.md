@@ -6,7 +6,8 @@ recover it, and whether risk scores identify predictions that should be withheld
 
 The comparison uses the same 13,429 sample locations and spatial splits for
 Temporal-92D, AlphaEarth-64D, monthly Presto-128D and Galileo-128D. Shanghai scores
-measure agreement with an official-product weak reference, not independent field accuracy.
+measure agreement with a product-derived weak reference, not independent field accuracy.
+[Reference provenance](DATA_AVAILABILITY.md#shanghai-reference-provenance) remains incomplete.
 
 ## Representation transfer and label efficiency
 
@@ -22,8 +23,10 @@ columns use target-only RFs and 30 shared, spatially distributed draws.
 The [full table](results/geoai_rqs_v1/table1_representation.md) includes SD,
 100/250-label results and seed counts; 250 labels uses five draws.
 
-AlphaEarth is more label-efficient in this comparison: 50 target labels exceed
-Temporal's mean at 500. Zero-shot differences are less conclusive: all six
+Under distributed, target-only training, AlphaEarth's mean F1 with 50 labels
+exceeds Temporal's mean with 500. This observation is not a formal sample-complexity
+result or a demonstrated tenfold reduction in annotation effort.
+Zero-shot differences are less conclusive: all six
 paired spatial-block intervals include zero. The ordering of mean F1 alone
 does not establish a zero-shot winner.
 

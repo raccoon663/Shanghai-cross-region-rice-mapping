@@ -40,7 +40,7 @@ Three-seed neural baselines did not improve on the Random Forest baseline; the b
 
 ## 3. Shanghai zero-shot transfer and adaptation
 
-Applying the Jiangxi-trained models directly to Shanghai produced a clear performance drop. On the official-product weak reference, temporal fusion reached about **0.813 F1** and AlphaEarth about **0.836**.
+Applying the Jiangxi-trained models directly to Shanghai produced a clear performance drop. On the product-derived weak reference, temporal fusion reached about **0.813 F1** and AlphaEarth about **0.836**.
 
 Adding small amounts of Shanghai weak-reference data improved performance, but the sampling strategy mattered. At 500 labels, target-only temporal training reached about **0.854**, while AlphaEarth reached roughly **0.895–0.898**.
 
@@ -70,7 +70,7 @@ This distinction became an important result of the project: **detecting that two
 
 ## 6. Reference sensitivity
 
-The Shanghai labels used in these experiments come from an official product rather than independent field observations. To check whether the main conclusions depended strongly on uncertain boundaries or tiny patches, I repeated key comparisons on a stricter interior/large-patch subset.
+The Shanghai labels used in these experiments come from an external rice-map product rather than independent field observations. To check whether the main conclusions depended strongly on uncertain boundaries or tiny patches, I repeated key comparisons on a stricter interior/large-patch subset.
 
 On that subset, the zero-shot ordering between AlphaEarth and temporal features reversed slightly. This is one reason the repository reports Shanghai numbers as weak-reference agreement rather than as independent target-domain accuracy.
 

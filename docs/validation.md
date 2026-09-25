@@ -2,17 +2,17 @@
 
 ## Current status
 
-The Chongming prototype is ready for independent parcel-level validation. No independent Shanghai parcel labels have been entered yet. Existing Shanghai scores are comparisons with an official rice product used as a weak reference, while geometry, coherence, and mapped-area statistics describe the deployment workflow rather than crop-classification accuracy.
+The Chongming prototype is ready for independent parcel-level validation. No independent Shanghai parcel labels have been entered yet. Existing Shanghai scores are comparisons with an external rice-map product used as a weak reference, while geometry, coherence, and mapped-area statistics describe the deployment workflow rather than crop-classification accuracy.
 
 The validation sample was defined on 2026-08-14, before any independent labels were added. The sampling manifest is [`results/summary/independent_validation_sampling_manifest.json`](../results/summary/independent_validation_sampling_manifest.json), and the blank 400-parcel table is [`results/selected_outputs/independent_validation_sample_400.csv`](../results/selected_outputs/independent_validation_sample_400.csv).
 
 ## Wall-to-wall weak-reference consistency (deployment check, not independent accuracy)
 
-The repository also includes a wall-to-wall weak-reference consistency evaluation of the deployment products (M0, M1, M1b, M2, M2 QA) against the official Shanghai product as a weak reference. This is a deployment-consistency and coverage check, **not** a substitute for the independent validation described below.
+The repository also includes a wall-to-wall weak-reference consistency evaluation of the deployment products (M0, M1, M1b, M2, M2 QA) against the external Shanghai rice-map product as a weak reference. This is a deployment-consistency and coverage check, **not** a substitute for the independent validation described below.
 
 Key distinctions from the independent protocol:
 
-- It uses the official product as a reference, which is partial (sparse) and not field truth; low wall-to-wall F1 reflects the frozen source model's many false-positive rice predictions under low rice prevalence (precision 0.202 for M0), not a measured recall failure — recall is high (0.88).
+- It uses an external map product, not field truth. M0 precision is 0.202 and recall 0.88 against this product. The evaluated raster is fully coded, but original valid coverage is not established by that encoding; see [reference provenance and alignment limits](../DATA_AVAILABILITY.md#shanghai-reference-provenance).
 - It scores the full raster grid, including abstained and excluded pixels, so it answers "what the whole map says" rather than "how accurate the retained parcels are".
 - The conditional-retained (Mode B) agreement is a subset statistic and must not be read as a same-population improvement over M0.
 
@@ -80,6 +80,6 @@ Bootstrap by parcel with stratification and include a tile-clustered sensitivity
 
 The sampling frame, stratum allocation, parcel IDs, seed, and original blank sample are kept unchanged once labeling starts. Model parameters, FTW settings, parcel-QA thresholds, the rice threshold, and validation geometries should likewise remain unchanged until the first independent evaluation is complete.
 
-Reference labels should be stored in a new versioned file rather than overwriting the blank sample. Labelers should not use the official Shanghai rice product or model outputs as reference evidence. Pixels or parcels removed by gating should continue to be described in terms of coverage or selectivity until independent labels show whether they were correct exclusions.
+Reference labels should be stored in a new versioned file rather than overwriting the blank sample. Labelers should not use the external Shanghai rice-map product or model outputs as reference evidence. Pixels or parcels removed by gating should continue to be described in terms of coverage or selectivity until independent labels show whether they were correct exclusions.
 
 Independent Shanghai parcel accuracy should only be reported after the adjudicated reference set is complete. Until then, the Chongming output should be described as a prototype awaiting independent validation rather than a validated all-Shanghai rice map.

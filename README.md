@@ -1,6 +1,6 @@
-# Cross-Region Parcel-Level Rice Mapping
+# Cross-Region Rice Mapping under Geographic Domain Shift
 
-### Geographic generalization from Jiangxi to Shanghai
+### EO representations, target supervision, adaptation, reliability and parcel deployment
 
 This project studies how rice mapping models generalize from Jiangxi to Shanghai
 under geographic domain shift. It compares Earth-observation representation
@@ -9,14 +9,28 @@ prediction reliability, failure detection and selective prediction. A Chongming
 parcel-mapping prototype connects transferred pixel probabilities with field
 boundaries and label-independent quality checks.
 
-Shanghai evaluation uses an official product as a **weak reference, not
-independent field truth**. The parcel product is a deployment prototype.
+Shanghai metrics measure agreement with an **external rice-map product, not
+independent field truth**. Its publisher and citation are not established in the
+retained records; see [reference provenance](DATA_AVAILABILITY.md#shanghai-reference-provenance).
 
 ![Final Rice, Non-rice, and QA-risk parcel map](assets/figures/final_parcel_class_map.png)
 
 *Chongming parcel-mapping prototype: predicted Rice, Non-rice and Uncertain / QA-risk parcels; independent field validation remains pending.*
 
 [Research results](RESULTS.md) · [Four-representation benchmark](#four-representation-benchmark) · [Reliability](#adaptation-and-prediction-reliability) · [Parcel deployment](#parcel-level-deployment) · [Reproduction](#reproducing-the-project)
+
+## Key findings
+
+- Four EO representation systems share sample membership and spatial splits;
+  all paired zero-shot intervals include zero, so no clear winner is established.
+- AlphaEarth shows stronger few-shot behavior under the tested distributed
+  weak-label protocol; this is not an estimate of real-world annotation savings.
+- CORAL and fixed single-round self-training do not improve transfer in the
+  tested settings; this does not establish that domain adaptation generally fails.
+- Separating Jiangxi from Shanghai is different from ranking prediction failures:
+  AlphaEarth cosine 10-NN distance is more informative than domain probability.
+
+These Shanghai findings describe product agreement, not independent field accuracy.
 
 ## Main questions
 
@@ -31,24 +45,32 @@ independent field truth**. The parcel product is a deployment prototype.
 
 ```mermaid
 flowchart TD
-    J["Jiangxi source data"] --> R["Matched representation systems<br/>Temporal-92D · AlphaEarth · Presto · Galileo"]
-    T["Shanghai pool and held-out spatial blocks"] --> R
-    R --> A["Zero-shot transfer · target-label efficiency<br/>Simple domain adaptation"]
-    A --> U["Reliability · OOD · uncertainty<br/>Failure detection and selective prediction"]
-    J --> H["Frozen historical Sentinel model"]
-    H --> M["Shanghai rice probability"]
-    M --> P["Parcel aggregation"]
-    F["FTW field boundaries"] --> P
-    P --> Q["Label-independent QA and abstention"]
-    Q --> D["Chongming deployment prototype"]
-    U -. "evidence for deployment limits" .-> D
+    subgraph R["Transfer and reliability"]
+        direction TB
+        J["Jiangxi source-training samples"] --> X["Representation extraction<br/>Temporal-92D · AlphaEarth · Presto · Galileo"]
+        X --> S["Source models and source-based risk scores"]
+        P["Shanghai target pool<br/>same representation extraction"] --> A["Pool-based fitting<br/>Few-shot · adaptation · domain scores<br/>Pool-quantile thresholds"]
+        S --> A
+        S --> E["EVALUATION ONLY<br/>Transfer · adaptation · failure ranking<br/>Selective prediction"]
+        A --> E
+        T["Shanghai held-out spatial blocks<br/>features for inference; labels for metrics"] --> E
+    end
+    subgraph D["Historical deployment"]
+        direction TB
+        H["Sentinel source classifier"] --> M["Shanghai probability"]
+        M --> F["FTW parcel aggregation"]
+        F --> Q["QA and abstention"]
+        Q --> C["Chongming prototype"]
+    end
 ```
 
-The research comparisons share sample membership and spatial splits; the pool
-and held-out rows have separate roles. Reliability scoring is evaluated on frozen
-source-only predictions, not on adapted models. The parcel prototype retains the
-historical Sentinel classifier; sample-level risk scores have not been deployed
-as a wall-to-wall risk layer.
+Shanghai held-out blocks enter evaluation only. Unsupervised adaptation uses
+target-pool features; supervised few-shot labels come only from that pool.
+Pool-quantile thresholds use pool scores, not held-out outcomes. Representation
+extraction is applied separately to each split, with training-only preprocessing
+as specified in the [protocol](docs/geoai_research_protocol.md).
+Reliability results use source-only rice predictions. The separate parcel
+prototype retains the original Sentinel model and has no wall-to-wall OOD layer.
 
 ## Historical cross-region transfer
 
@@ -62,9 +84,9 @@ AlphaEarth embeddings.
 | Jiangxi source-test F1 | 0.947 | 0.962 |
 | Shanghai zero-shot F1* | 0.813 | 0.836 |
 
-\*Shanghai values measure weak-reference agreement. These are the frozen
-[historical headline values](results/summary/headline_metrics.csv), not the
-multi-seed means from the reconstructed four-representation benchmark below.
+\*Product agreement. These [historical headline values](results/summary/headline_metrics.csv)
+use the original Temporal data; the benchmark below uses rebuilt Temporal and
+multi-seed means.
 The ordering reverses on a stricter product-derived subset; the historical
 pseudo-labeling and feature-concatenation experiments also retain negative results.
 See [experiments and ablations](docs/experiments.md).
@@ -75,9 +97,9 @@ The earlier distance diagnostic reports a **maximum error AUROC of 0.800** at
 the precision retained in the [historical table](results/summary/headline_metrics.csv).
 Its domain-classifier and rejection protocols are described in
 [the historical OOD analysis](docs/experiments.md#historical-ood-and-calibration).
-This is distinct from the controlled AlphaEarth cosine 10-NN result
-**0.797663** below: different experiment versions, score comparisons and domain
-classifier protocols should not be conflated.
+The controlled cosine 10-NN result below is **0.797663**. These values belong to
+different score comparisons and domain-classifier protocols; the
+[evidence guide](docs/readme_evidence.md) keeps the versions separate.
 
 ## Four-representation benchmark
 
@@ -99,9 +121,12 @@ Source and zero-shot means use 3 fixed seeds; few-shot means use 30 shared draws
 All six zero-shot paired intervals include zero. Clustered label collection
 produces lower means and greater variability under the tested samplers.
 
-**AlphaEarth was more label-efficient under this protocol:** 50 distributed
-weak labels give target-only F1 **0.870594**, compared with **0.859394** for
-Temporal at 500 labels. This does not establish a universal representation ranking.
+Under the tested distributed weak-label protocol, AlphaEarth with 50 target
+labels achieved mean F1 **0.870594**, while Temporal-92D with 500 achieved
+**0.859394** (target-only training). This indicates stronger few-shot behavior
+in this experiment, not a demonstrated 10× reduction in real-world annotation
+effort. Budgets were sampled independently, and acquiring balanced labels can
+require additional search or annotation.
 
 ![Shared-draw few-shot benchmark](assets/figures/eofm_benchmark_v1/fewshot_comparison.png)
 
@@ -121,8 +146,8 @@ Galileo rises from **0.821962 to 0.829897**, while Temporal's change is only
 floor for Temporal, AlphaEarth and Presto; Galileo's effective source sample size
 falls to **43.24**. AlphaEarth's weights are uniform, and its small change comes
 from the RF bootstrap sampling path rather than useful density correction.
-These findings apply to the tested methods and settings, not domain adaptation
-in general. The five-seed baseline differs from the three-seed benchmark above.
+These findings are specific to the tested settings. Adaptation means use five
+seeds; the representation table above uses three source seeds.
 See the [adaptation table](results/geoai_rqs_v1/table2_adaptation.csv) and
 [weight diagnostics](results/geoai_rqs_v1/importance_diagnostics.csv).
 
@@ -130,8 +155,8 @@ See the [adaptation table](results/geoai_rqs_v1/table2_adaptation.csv) and
 study, AlphaEarth's domain classifier has domain AUROC **0.999999** but
 error AUROC **0.463006**. Cosine 10-NN distance instead reaches error AUROC
 **0.797663**. All are rounded from the [saved risk scores](results/geoai_rqs_v1/rq3_scores.csv).
-The study compares eleven scores per representation using frozen source-only
-predictions; distance is not equally useful for every representation.
+The study compares eleven scores per representation on source-only predictions;
+distance is not equally useful for every representation.
 
 **Selective prediction:** accepting the lowest-risk half of AlphaEarth
 predictions by cosine 10-NN distance reduces weak-reference disagreement from
@@ -173,13 +198,13 @@ The project supports conclusions about:
 - OOD risk ranking and selective prediction;
 - field geometry and parcel aggregation;
 - label-independent QA for the Chongming deployment prototype;
-- wall-to-wall weak-reference consistency of the deployment products (consistency with an official product, not independent accuracy).
+- wall-to-wall weak-reference consistency of the deployment products (consistency with an external rice-map product, not independent accuracy).
 
 It does **not** yet support independent Shanghai parcel precision, recall, F1, accuracy, or area accuracy. A 400-parcel validation sample has been prepared, but its reference-label fields are intentionally blank until independent labels are collected. See [validation.md](docs/validation.md).
 
 ## Wall-to-wall deployment evaluation
 
-The full deployment products were evaluated against the official Shanghai rice
+The full deployment products were evaluated against the external Shanghai rice-map
 product as a **weak reference** — a consistency and coverage check, not
 independent accuracy. All rasters are co-registered (EPSG:32651, 20 m, 1,500,751
 pixels), so no resampling was needed and predicted rice area is invariant between
@@ -202,15 +227,15 @@ the two evaluation modes below.
 For M0, low weak-reference F1 is driven by precision (**0.202**) despite recall
 of **0.882**. The reference labels **7,134.28 ha** as rice within the evaluated
 footprint; rice prevalence is low, and many predicted rice pixels are reference
-non-rice. The saved alignment audit records a fully coded binary reference with
-no nodata, so these disagreements cannot be explained as unlabeled reference
-coverage. They remain product disagreements rather than verified field errors.
+non-rice. These count as false positives against the evaluated product, not
+verified field errors. The aligned raster has no nodata, but its preparation
+assigns zero to empty destinations; that does not establish the original
+product's coverage completeness. See the [provenance and alignment limits](DATA_AVAILABILITY.md#shanghai-reference-provenance).
 M2 and M2 QA produce identical masks, so QA does not change the
 weak-reference score. A block-level paired analysis (full details in
 [wall-to-wall report](results/summary/wall_to_wall_weak_reference_report.md)
 and [`docs/experiments.md`](docs/experiments.md)) shows M1/M1b improve block-level
 F1 versus M0 in 22/35 and 21/32 evaluable blocks, respectively; M2/M2 QA have median change zero.
-
 
 Values come from the [wall-to-wall metric table](results/tables/wall_to_wall_weak_reference_metrics.csv), [paired block summary](results/tables/wall_to_wall_block_summary.csv) and [alignment audit](results/summary/wall_to_wall_alignment_audit.json).
 
@@ -239,8 +264,7 @@ python scripts/validate_geoai_results.py
 python -m compileall -q src scripts
 ```
 
-Missing large raster/runtime files reported by `scripts/check_data.py` are expected in a clean Git clone. Large imagery, external model checkpoints, the official Shanghai reference raster, and generated GeoTIFF/GPKG products are not stored in Git. Public collection IDs, reconstruction scripts, file manifests, and expected missing-data behavior are documented in [DATA_AVAILABILITY.md](DATA_AVAILABILITY.md).
-
+Missing large raster/runtime files reported by `scripts/check_data.py` are expected in a clean Git clone. Large imagery, external model checkpoints, the Shanghai reference raster, and generated GeoTIFF/GPKG products are not stored in Git. Public collection IDs, reconstruction scripts, file manifests, and expected missing-data behavior are documented in [DATA_AVAILABILITY.md](DATA_AVAILABILITY.md).
 
 Research tables and figures can be rebuilt from committed aggregate results with
 `python scripts/make_paper_figures.py`. Run this in a disposable checkout when
@@ -267,7 +291,7 @@ tests/                   split, manifest, portability, and area tests
 
 ## Limitations
 
-- Shanghai evaluation currently relies on an official-product weak reference rather than independent field truth.
+- Reference provenance and original coverage remain incompletely documented; Shanghai scores measure product agreement rather than independent field truth.
 - Wall-to-wall scores measure product consistency; low M0 precision indicates many disagreements with reference non-rice, not independently verified field errors.
 - The deployment prototype covers central/eastern Chongming rather than all of Shanghai.
 - FTW boundaries are useful agricultural field approximations, not cadastral truth.

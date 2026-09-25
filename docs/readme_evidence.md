@@ -27,7 +27,7 @@ display; the saved tables remain authoritative and unchanged.
 | Historical 20 m raster and unchanged threshold 0.50 | [Methodology](methodology.md#representations-and-source-classifier), [frozen product manifest](../results/summary/final_chongming_parcel_product_manifest.json) and parcel configurations. The label-free comparison AOI is documented in the methodology. |
 | 400-parcel validation sample | [Sampling manifest](../results/summary/independent_validation_sampling_manifest.json); labels remain uncollected, not a completed accuracy evaluation. |
 | Wall-to-wall F1, coverage, precision, recall and reference rice area | [Metric table](../results/tables/wall_to_wall_weak_reference_metrics.csv). Mode A and B have different evaluation populations. M0 reference rice area is 7,134.28 ha. |
-| Grid, pixel count and reference coding | [Alignment audit](../results/summary/wall_to_wall_alignment_audit.json) and the metric table: EPSG:32651, 20 m, 1,500,751 common valid pixels; reference is fully coded with no nodata. Low rice prevalence is not missing reference coverage. |
+| Grid, pixel count and reference coding | [Alignment audit](../results/summary/wall_to_wall_alignment_audit.json) and the metric table: EPSG:32651, 20 m, 1,500,751 common valid pixels; the evaluated raster is fully coded with no nodata. Its alignment assigns zero to empty destinations, so original valid coverage cannot be inferred from the output encoding. |
 | Improved paired-block counts | [Block summary](../results/tables/wall_to_wall_block_summary.csv): M1 22/35, M1b 21/32 evaluable blocks; M2/M2 QA median change zero. |
 
 The historical domain-probability error AUROC (0.415 in the historical narrative)
@@ -39,3 +39,16 @@ combined into a single leaderboard.
 The parcel deployment retains its frozen historical classifier. Neither the
 representation comparison nor sample-level selective prediction silently
 changes the deployed model or adds a wall-to-wall OOD surface.
+
+
+## Reference identity and interpretation
+
+The [provenance audit](../DATA_AVAILABILITY.md#shanghai-reference-provenance)
+records the annual archive name and acquisition route, but finds no retained
+publisher, DOI or release record establishing official status. Public narrative
+therefore uses “external rice-map product” or “product-derived weak reference”.
+Legacy identifiers and frozen outputs retain their original names and bytes.
+
+The 50-label versus 500-label comparison is an observation under independently
+sampled, distributed weak-label budgets. It does not measure real annotation
+effort, establish a tenfold saving, or prove a universal representation ranking.

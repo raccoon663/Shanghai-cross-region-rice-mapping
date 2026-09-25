@@ -14,7 +14,12 @@ Recalculate their metrics (including new AUPRC) and assert that saved F1 agrees.
 Every representation uses exactly the same evaluation rows and adaptation draw.
 The additional 250-label condition uses five seeds (42–46), two sampling regimes
 and two fitting strategies, giving 80 new fits. Old 20/50/100/200/500 conditions
-retain 30 seeds each. Budgets are independently sampled, not nested.
+retain 30 seeds each. Budgets are independently sampled, not nested. A comparison
+between a 50-label and 500-label condition is therefore an observed performance
+contrast, not a sample-complexity guarantee or an estimate of annotation savings.
+Balanced weak-label sampling can require extra search and labeling effort in a
+field study. Reference identity and coverage limitations are documented in the
+[provenance audit](../DATA_AVAILABILITY.md#shanghai-reference-provenance).
 
 Joint fitting preserves the original equal total source/target weight and
 disables class weighting. Target-only fitting uses only the chosen pool labels.
